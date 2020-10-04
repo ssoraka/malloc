@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.17)
+project(malloc C)
+
+set(CMAKE_C_STANDARD 99)
+
+add_executable(malloc src/main.c includes/malloc.h src/malloc.c src/my_test.c)
