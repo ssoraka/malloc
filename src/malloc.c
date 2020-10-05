@@ -26,7 +26,7 @@ void	init_pages(t_pages *pages, char *mem, int page_size, int page_count)
 	while (i < page_count)
 	{
 		ft_bzero((void *)page, sizeof(t_page));
-		page->mem = mem + sizeof(t_page);
+//		page->mem = mem + sizeof(t_page);
 		page->size = page_size - sizeof(t_page);
 		page->next = (t_page *)(mem + page_size);
 		page++;
@@ -54,7 +54,7 @@ int		type_from_size(int size)
 	return (LARGE);
 }
 
-
+/*
 t_store		*create_new_store()
 {
 	t_store	*mem;
@@ -101,7 +101,7 @@ t_page *find_page(t_pages *pages, size_t size)
 	}
 	return (insert_new_page(pages, ));
 }
-
+*/
 
 /*
  * так, я начал неправильно
@@ -121,22 +121,103 @@ t_page *find_page(t_pages *pages, size_t size)
  * и отладить все изолированно
  */
 
-void	*ft_malloc(size_t size)
+
+
+
+t_root	*get_root()
 {
-	t_pages *pages;
-	t_store	*store;
-	void *ptr;
+	static t_root root;
+	return (&root);
+}
+
+void	insert_page(t_page *page)
+{
+	t_root  *root;
+
+	root = get_root();
+	if (!root->last)
+		root->page = page;
+	else
+	{
+		root->last->next = page;
+		page->prev = root->last;
+	}
+	root->last = page;
+}
+
+t_page	*new_page(int size)
+{
+	t_page *page;
 
 	size += sizeof(t_page);
-	store = get_store();
-	if (!store)
+	page = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
+	if (!page)
 		return (NULL);
-	pages = &store->p[type_from_size(size)];
-	ptr = find_page(pages, size);
-	if (!ptr)
-		return (NULL);
+	ft_bzero((void *)page, sizeof(t_page));
+	page->size = size;
+	page->alloc.empty = size - sizeof(t_page) - sizeof(t_block);
+	page->alloc.next = NULL;
+	insert_page(page);
+	return (page);
+}
 
+t_block	*find_empty_space_on_page(t_page *page, size_t size)
+{
+	t_block *block;
 
+	block = &page->alloc;
+	size += sizeof(t_block);
+	page = get_root()->page;
+	while(block)
+	{
+		if (block->empty >= size)
+			break ;
+		block = block->next;
+	}
+	return (block);
+}
 
+void	*alloc_mem(t_page *page, t_block *prev, size_t size)
+{
+	t_block *block;
+
+	page->alloc_count++;
+	block = (t_block *)((char *)(prev + 1) + prev->used) ;
+	block->next = prev->next;
+	prev->next = block;
+	block->used = size;
+	block->empty = prev->empty - size - sizeof(t_block);
+	prev->empty = 0;
+	return ((void *)(block++));
+}
+
+void	*try_alloc_in_used_memory(size_t size)
+{
+	t_page *page;
+	t_block *block;
+
+	page = get_root()->page;
+	while(page)
+	{
+		if (page->size > size)
+			if ((block = find_empty_space_on_page(page, size)))
+				return (alloc_mem(page, block, size));
+		page = page->next;
+	}
 	return (NULL);
+}
+
+
+
+void	*ft_malloc(size_t size)
+{
+	t_page	*page;
+	void	*ptr;
+
+	if ((ptr = try_alloc_in_used_memory(size)))
+		return (ptr);
+	//новую страницу надо получать из имеющихся, а только после этого создавать
+	if (!(page = new_page(size)))
+		return (NULL);
+	return (alloc_mem(page, &page->alloc, size));
 }

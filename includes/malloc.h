@@ -38,21 +38,21 @@ enum					e_size
 /*
 ** этот список будет сохранять указатели на выделенную память
 */
-typedef struct		s_link {
-	struct s_link	*next;
-	char			*mem;
-	size_t			size;
-}					t_link;
+typedef struct		s_block {
+	struct s_block	*next;
+	size_t			used;
+	size_t			empty;
+}					t_block;
 
 /*
 ** одна страница выделенной памяти
 */
 typedef struct		s_page {
-	char			*mem;
-	struct s_page	*next;
 	size_t			size;
-	size_t			used;
-	struct s_link	*links;
+	struct s_page	*prev;
+	struct s_page	*next;
+	struct s_block	alloc;
+	size_t			alloc_count;
 }					t_page;
 
 /*
@@ -68,16 +68,13 @@ typedef struct		s_pages {
 ** хранилище выделенной памяти
 */
 typedef struct		s_store {
-	t_pages			p[TYPE_COUNT];
+	t_page			*p[TYPE_COUNT];
 }					t_store;
 
-typedef struct		s_page {
-	char			*mem;
-	struct s_page	*next;
-	size_t			size;
-	size_t			used;
-	struct s_link	*links;
-}					t_page;
+typedef struct		s_root {
+	t_page			*page;
+	t_page			*last;
+}					t_root;
 
 void	*ft_malloc(size_t size);
 

@@ -1,1 +1,1 @@
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14 -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/malloc.dir/src/main.c.o CMakeFiles/malloc.dir/src/malloc.c.o CMakeFiles/malloc.dir/src/my_test.c.o  -o malloc 
+/usr/bin/cc -g   CMakeFiles/malloc.dir/src/main.c.o CMakeFiles/malloc.dir/src/malloc.c.o CMakeFiles/malloc.dir/src/my_test.c.o  -o malloc 

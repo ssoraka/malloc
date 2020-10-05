@@ -54,19 +54,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /snap/clion/126/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
+RM = /snap/clion/126/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/ssoraka/Desktop/project/malloc
+CMAKE_SOURCE_DIR = /home/ssoraka/Desktop/projects/malloc
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/ssoraka/Desktop/project/malloc/cmake-build-debug
+CMAKE_BINARY_DIR = /home/ssoraka/Desktop/projects/malloc/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/malloc.dir/depend.make
@@ -79,42 +79,42 @@ include CMakeFiles/malloc.dir/flags.make
 
 CMakeFiles/malloc.dir/src/main.c.o: CMakeFiles/malloc.dir/flags.make
 CMakeFiles/malloc.dir/src/main.c.o: ../src/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ssoraka/Desktop/project/malloc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/malloc.dir/src/main.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/malloc.dir/src/main.c.o   -c /Users/ssoraka/Desktop/project/malloc/src/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/malloc.dir/src/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/malloc.dir/src/main.c.o   -c /home/ssoraka/Desktop/projects/malloc/src/main.c
 
 CMakeFiles/malloc.dir/src/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/malloc.dir/src/main.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ssoraka/Desktop/project/malloc/src/main.c > CMakeFiles/malloc.dir/src/main.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ssoraka/Desktop/projects/malloc/src/main.c > CMakeFiles/malloc.dir/src/main.c.i
 
 CMakeFiles/malloc.dir/src/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/malloc.dir/src/main.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ssoraka/Desktop/project/malloc/src/main.c -o CMakeFiles/malloc.dir/src/main.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ssoraka/Desktop/projects/malloc/src/main.c -o CMakeFiles/malloc.dir/src/main.c.s
 
 CMakeFiles/malloc.dir/src/malloc.c.o: CMakeFiles/malloc.dir/flags.make
 CMakeFiles/malloc.dir/src/malloc.c.o: ../src/malloc.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ssoraka/Desktop/project/malloc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/malloc.dir/src/malloc.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/malloc.dir/src/malloc.c.o   -c /Users/ssoraka/Desktop/project/malloc/src/malloc.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/malloc.dir/src/malloc.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/malloc.dir/src/malloc.c.o   -c /home/ssoraka/Desktop/projects/malloc/src/malloc.c
 
 CMakeFiles/malloc.dir/src/malloc.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/malloc.dir/src/malloc.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ssoraka/Desktop/project/malloc/src/malloc.c > CMakeFiles/malloc.dir/src/malloc.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ssoraka/Desktop/projects/malloc/src/malloc.c > CMakeFiles/malloc.dir/src/malloc.c.i
 
 CMakeFiles/malloc.dir/src/malloc.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/malloc.dir/src/malloc.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ssoraka/Desktop/project/malloc/src/malloc.c -o CMakeFiles/malloc.dir/src/malloc.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ssoraka/Desktop/projects/malloc/src/malloc.c -o CMakeFiles/malloc.dir/src/malloc.c.s
 
 CMakeFiles/malloc.dir/src/my_test.c.o: CMakeFiles/malloc.dir/flags.make
 CMakeFiles/malloc.dir/src/my_test.c.o: ../src/my_test.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ssoraka/Desktop/project/malloc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/malloc.dir/src/my_test.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/malloc.dir/src/my_test.c.o   -c /Users/ssoraka/Desktop/project/malloc/src/my_test.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/malloc.dir/src/my_test.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/malloc.dir/src/my_test.c.o   -c /home/ssoraka/Desktop/projects/malloc/src/my_test.c
 
 CMakeFiles/malloc.dir/src/my_test.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/malloc.dir/src/my_test.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ssoraka/Desktop/project/malloc/src/my_test.c > CMakeFiles/malloc.dir/src/my_test.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ssoraka/Desktop/projects/malloc/src/my_test.c > CMakeFiles/malloc.dir/src/my_test.c.i
 
 CMakeFiles/malloc.dir/src/my_test.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/malloc.dir/src/my_test.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ssoraka/Desktop/project/malloc/src/my_test.c -o CMakeFiles/malloc.dir/src/my_test.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ssoraka/Desktop/projects/malloc/src/my_test.c -o CMakeFiles/malloc.dir/src/my_test.c.s
 
 # Object files for target malloc
 malloc_OBJECTS = \
@@ -130,7 +130,7 @@ malloc: CMakeFiles/malloc.dir/src/malloc.c.o
 malloc: CMakeFiles/malloc.dir/src/my_test.c.o
 malloc: CMakeFiles/malloc.dir/build.make
 malloc: CMakeFiles/malloc.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/ssoraka/Desktop/project/malloc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable malloc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable malloc"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/malloc.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -143,6 +143,6 @@ CMakeFiles/malloc.dir/clean:
 .PHONY : CMakeFiles/malloc.dir/clean
 
 CMakeFiles/malloc.dir/depend:
-	cd /Users/ssoraka/Desktop/project/malloc/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/ssoraka/Desktop/project/malloc /Users/ssoraka/Desktop/project/malloc /Users/ssoraka/Desktop/project/malloc/cmake-build-debug /Users/ssoraka/Desktop/project/malloc/cmake-build-debug /Users/ssoraka/Desktop/project/malloc/cmake-build-debug/CMakeFiles/malloc.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ssoraka/Desktop/projects/malloc/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ssoraka/Desktop/projects/malloc /home/ssoraka/Desktop/projects/malloc /home/ssoraka/Desktop/projects/malloc/cmake-build-debug /home/ssoraka/Desktop/projects/malloc/cmake-build-debug /home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles/malloc.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/malloc.dir/depend
 

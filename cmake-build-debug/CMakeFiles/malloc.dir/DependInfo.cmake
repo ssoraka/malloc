@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/ssoraka/Desktop/project/malloc/src/main.c" "/Users/ssoraka/Desktop/project/malloc/cmake-build-debug/CMakeFiles/malloc.dir/src/main.c.o"
-  "/Users/ssoraka/Desktop/project/malloc/src/malloc.c" "/Users/ssoraka/Desktop/project/malloc/cmake-build-debug/CMakeFiles/malloc.dir/src/malloc.c.o"
-  "/Users/ssoraka/Desktop/project/malloc/src/my_test.c" "/Users/ssoraka/Desktop/project/malloc/cmake-build-debug/CMakeFiles/malloc.dir/src/my_test.c.o"
+  "/home/ssoraka/Desktop/projects/malloc/src/main.c" "/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles/malloc.dir/src/main.c.o"
+  "/home/ssoraka/Desktop/projects/malloc/src/malloc.c" "/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles/malloc.dir/src/malloc.c.o"
+  "/home/ssoraka/Desktop/projects/malloc/src/my_test.c" "/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles/malloc.dir/src/my_test.c.o"
   )
-set(CMAKE_C_COMPILER_ID "AppleClang")
+set(CMAKE_C_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
