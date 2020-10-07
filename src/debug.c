@@ -58,11 +58,11 @@ void	ft_print_page(t_page *page) {
 
 void	ft_page_to_str(t_page *page) {
 
-	printf("размер страницы %zu, количество блоков %zu, занято %zu, свободно %zu\n", page->size, page->alloc_count, page->alloc.used, page->alloc.empty);
+	printf("размер страницы %zu, вес страницы %d, количество блоков %zu, занято %zu, свободно %zu\n", page->size, sizeof(t_page), page->alloc_count, page->alloc.used, page->alloc.empty);
 
 	t_block *block = page->alloc.next;
 	while (block){
-		printf("занято %zu, свободно %zu\n", block->used, block->empty);
+		printf("размер блока %d, занято %zu, свободно %zu\n", sizeof(t_block), block->used, block->empty);
 		block = block->next;
 	}
 }

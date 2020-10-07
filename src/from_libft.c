@@ -4,6 +4,17 @@
 
 #include "../includes/malloc.h"
 
+void	ft_memset(void *s, size_t n, char chr)
+{
+	size_t	i;
+	char	*str;
+
+	i = 0;
+	str = s;
+	while (i < n)
+		str[i++] = chr;
+}
+
 void	ft_bzero(void *s, size_t n)
 {
 	size_t	i;

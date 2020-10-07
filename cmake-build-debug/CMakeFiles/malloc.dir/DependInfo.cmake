@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/home/ssoraka/Desktop/projects/malloc/src/debug.c" "/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles/malloc.dir/src/debug.c.o"
+  "/home/ssoraka/Desktop/projects/malloc/src/free.c" "/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles/malloc.dir/src/free.c.o"
   "/home/ssoraka/Desktop/projects/malloc/src/from_libft.c" "/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles/malloc.dir/src/from_libft.c.o"
   "/home/ssoraka/Desktop/projects/malloc/src/main.c" "/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles/malloc.dir/src/main.c.o"
   "/home/ssoraka/Desktop/projects/malloc/src/malloc.c" "/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles/malloc.dir/src/malloc.c.o"

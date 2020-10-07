@@ -4,6 +4,9 @@
 CMakeFiles/malloc.dir/src/debug.c.o: ../includes/malloc.h
 CMakeFiles/malloc.dir/src/debug.c.o: ../src/debug.c
 
+CMakeFiles/malloc.dir/src/free.c.o: ../includes/malloc.h
+CMakeFiles/malloc.dir/src/free.c.o: ../src/free.c
+
 CMakeFiles/malloc.dir/src/from_libft.c.o: ../includes/malloc.h
 CMakeFiles/malloc.dir/src/from_libft.c.o: ../src/from_libft.c
 

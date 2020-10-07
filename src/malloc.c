@@ -143,7 +143,7 @@ t_page	*new_page(int size)
 	if (!page)
 		return (NULL);
 	ft_bzero((void *)page, sizeof(t_page));
-	page->size = size;
+	page->size = size - sizeof(t_page);
 	page->alloc.empty = size - sizeof(t_page);
 	page->alloc.next = NULL;
 	insert_page(page);
@@ -156,7 +156,6 @@ t_block	*find_empty_space_on_page(t_page *page, size_t size)
 
 	block = &page->alloc;
 	size += sizeof(t_block);
-	page = get_root()->page;
 	while(block)
 	{
 		if (block->empty >= size)
@@ -169,6 +168,7 @@ t_block	*find_empty_space_on_page(t_page *page, size_t size)
 void	*alloc_mem(t_page *page, t_block *prev, size_t size)
 {
 	t_block *block;
+	void *ptr;
 
 	page->alloc_count++;
 	block = (t_block *)((char *)(prev + 1) + prev->used) ;
@@ -176,9 +176,13 @@ void	*alloc_mem(t_page *page, t_block *prev, size_t size)
 	prev->next = block;
 	block->used = size;
 	block->empty = prev->empty - size - sizeof(t_block);
-
 	prev->empty = 0;
-	return ((void *)(++block));
+
+	ptr = (void *)(++block);
+	ft_memset(ptr, size, ' ');
+	ft_page_to_str(page);
+	ft_print_page(page);
+	return (ptr);
 }
 
 void	*try_alloc_in_used_memory(size_t size)
@@ -204,20 +208,16 @@ void	*ft_malloc(size_t size)
 	t_page	*page;
 	void	*ptr;
 
+	if (!size)
+		return (0);
 	if ((ptr = try_alloc_in_used_memory(size)))
 		return (ptr);
 	//новую страницу надо получать из имеющихся, а только после этого создавать
-	if (!(page = new_page(size + 30)))
+	if (!(page = new_page(128)))
 		return (NULL);
 	ptr = alloc_mem(page, &page->alloc, size);
 
 
-	int i = 0;
-	while (i < size) {
-		((char *)ptr)[i] = ' ';
-		i++;
-	}
-	ft_page_to_str(page);
-	ft_print_page(page);
+
 	return (ptr);
 }

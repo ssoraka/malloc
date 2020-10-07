@@ -84,6 +84,9 @@
 		<Unit filename="/home/ssoraka/Desktop/projects/malloc/src/debug.c">
 			<Option target="malloc"/>
 		</Unit>
+		<Unit filename="/home/ssoraka/Desktop/projects/malloc/src/free.c">
+			<Option target="malloc"/>
+		</Unit>
 		<Unit filename="/home/ssoraka/Desktop/projects/malloc/src/from_libft.c">
 			<Option target="malloc"/>
 		</Unit>
