@@ -4,17 +4,6 @@
 
 #include "../includes/malloc.h"
 
-void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
-	char	*str;
-
-	i = 0;
-	str = s;
-	while (i < n)
-		str[i++] = '\0';
-}
-
 void	init_pages(t_pages *pages, char *mem, int page_size, int page_count)
 {
 	int i;
@@ -155,7 +144,7 @@ t_page	*new_page(int size)
 		return (NULL);
 	ft_bzero((void *)page, sizeof(t_page));
 	page->size = size;
-	page->alloc.empty = size - sizeof(t_page) - sizeof(t_block);
+	page->alloc.empty = size - sizeof(t_page);
 	page->alloc.next = NULL;
 	insert_page(page);
 	return (page);
@@ -187,8 +176,9 @@ void	*alloc_mem(t_page *page, t_block *prev, size_t size)
 	prev->next = block;
 	block->used = size;
 	block->empty = prev->empty - size - sizeof(t_block);
+
 	prev->empty = 0;
-	return ((void *)(block++));
+	return ((void *)(++block));
 }
 
 void	*try_alloc_in_used_memory(size_t size)
@@ -217,7 +207,17 @@ void	*ft_malloc(size_t size)
 	if ((ptr = try_alloc_in_used_memory(size)))
 		return (ptr);
 	//новую страницу надо получать из имеющихся, а только после этого создавать
-	if (!(page = new_page(size)))
+	if (!(page = new_page(size + 30)))
 		return (NULL);
-	return (alloc_mem(page, &page->alloc, size));
+	ptr = alloc_mem(page, &page->alloc, size);
+
+
+	int i = 0;
+	while (i < size) {
+		((char *)ptr)[i] = ' ';
+		i++;
+	}
+	ft_page_to_str(page);
+	ft_print_page(page);
+	return (ptr);
 }

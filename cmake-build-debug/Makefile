@@ -143,6 +143,60 @@ malloc/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/build
 .PHONY : malloc/fast
 
+src/debug.o: src/debug.c.o
+
+.PHONY : src/debug.o
+
+# target to build an object file
+src/debug.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/debug.c.o
+.PHONY : src/debug.c.o
+
+src/debug.i: src/debug.c.i
+
+.PHONY : src/debug.i
+
+# target to preprocess a source file
+src/debug.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/debug.c.i
+.PHONY : src/debug.c.i
+
+src/debug.s: src/debug.c.s
+
+.PHONY : src/debug.s
+
+# target to generate assembly for a file
+src/debug.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/debug.c.s
+.PHONY : src/debug.c.s
+
+src/from_libft.o: src/from_libft.c.o
+
+.PHONY : src/from_libft.o
+
+# target to build an object file
+src/from_libft.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/from_libft.c.o
+.PHONY : src/from_libft.c.o
+
+src/from_libft.i: src/from_libft.c.i
+
+.PHONY : src/from_libft.i
+
+# target to preprocess a source file
+src/from_libft.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/from_libft.c.i
+.PHONY : src/from_libft.c.i
+
+src/from_libft.s: src/from_libft.c.s
+
+.PHONY : src/from_libft.s
+
+# target to generate assembly for a file
+src/from_libft.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/from_libft.c.s
+.PHONY : src/from_libft.c.s
+
 src/main.o: src/main.c.o
 
 .PHONY : src/main.o
@@ -233,6 +287,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... malloc"
+	@echo "... src/debug.o"
+	@echo "... src/debug.i"
+	@echo "... src/debug.s"
+	@echo "... src/from_libft.o"
+	@echo "... src/from_libft.i"
+	@echo "... src/from_libft.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
