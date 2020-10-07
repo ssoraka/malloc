@@ -24,7 +24,7 @@ fcntl.h
 sys/mman.h
 -
 
-/home/ssoraka/Desktop/projects/malloc/src/main.c
+/home/ssoraka/Desktop/projects/malloc/src/free.c
 ../includes/malloc.h
 /home/ssoraka/Desktop/projects/malloc/includes/malloc.h
 

@@ -86,8 +86,10 @@ void	ft_memset(void *s, size_t n, char chr);
 t_root	*get_root();
 void	*ft_malloc(size_t size);
 void	ft_free(void *ptr);
+void	*ft_realloc(void *ptr, size_t size);
 
 void	ft_print_page(t_page *page);
 void	ft_page_to_str(t_page *page);
+void	ft_print_mem();
 
 #endif //MALLOC_MALLOC_H

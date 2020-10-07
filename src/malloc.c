@@ -134,6 +134,15 @@ void	insert_page(t_page *page)
 	root->last = page;
 }
 
+size_t	ft_get_size(size_t size)
+{
+	if (size <= 128)
+		return (128);
+	if (size <= 256)
+		return (256);
+	return (size);
+}
+
 t_page	*new_page(int size)
 {
 	t_page *page;
@@ -180,8 +189,6 @@ void	*alloc_mem(t_page *page, t_block *prev, size_t size)
 
 	ptr = (void *)(++block);
 	ft_memset(ptr, size, ' ');
-	ft_page_to_str(page);
-	ft_print_page(page);
 	return (ptr);
 }
 
@@ -213,7 +220,7 @@ void	*ft_malloc(size_t size)
 	if ((ptr = try_alloc_in_used_memory(size)))
 		return (ptr);
 	//новую страницу надо получать из имеющихся, а только после этого создавать
-	if (!(page = new_page(128)))
+	if (!(page = new_page(ft_get_size(size))))
 		return (NULL);
 	ptr = alloc_mem(page, &page->alloc, size);
 
