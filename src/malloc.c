@@ -152,7 +152,7 @@ t_page	*new_page(int size)
 	if (!page)
 		return (NULL);
 	ft_bzero((void *)page, sizeof(t_page));
-	page->size = size - sizeof(t_page);
+	page->size = size;
 	page->alloc.empty = size - sizeof(t_page);
 	page->alloc.next = NULL;
 	insert_page(page);

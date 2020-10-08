@@ -305,6 +305,33 @@ src/my_test.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/my_test.c.s
 .PHONY : src/my_test.c.s
 
+src/show_alloc_mem.o: src/show_alloc_mem.c.o
+
+.PHONY : src/show_alloc_mem.o
+
+# target to build an object file
+src/show_alloc_mem.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/show_alloc_mem.c.o
+.PHONY : src/show_alloc_mem.c.o
+
+src/show_alloc_mem.i: src/show_alloc_mem.c.i
+
+.PHONY : src/show_alloc_mem.i
+
+# target to preprocess a source file
+src/show_alloc_mem.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/show_alloc_mem.c.i
+.PHONY : src/show_alloc_mem.c.i
+
+src/show_alloc_mem.s: src/show_alloc_mem.c.s
+
+.PHONY : src/show_alloc_mem.s
+
+# target to generate assembly for a file
+src/show_alloc_mem.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/show_alloc_mem.c.s
+.PHONY : src/show_alloc_mem.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -332,6 +359,9 @@ help:
 	@echo "... src/my_test.o"
 	@echo "... src/my_test.i"
 	@echo "... src/my_test.s"
+	@echo "... src/show_alloc_mem.o"
+	@echo "... src/show_alloc_mem.i"
+	@echo "... src/show_alloc_mem.s"
 .PHONY : help
 
 

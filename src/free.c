@@ -68,12 +68,13 @@ void	ft_free(void *ptr){
 	free_next_block(block);
 }
 
-void	*ft_realloc(void *ptr, size_t size)
+void	*ft_realloc(void *old, size_t size)
 {
 	t_block *block;
 	t_block *alloc;
+	void *ptr;
 
-	if (!(block = get_prev_block_in_mem(ptr)))
+	if (!(block = get_prev_block_in_mem(old)))
 		return (NULL);
 	alloc = block->next;
 	if (alloc->used + alloc->empty > size)
@@ -82,7 +83,19 @@ void	*ft_realloc(void *ptr, size_t size)
 		alloc->used = size;
 		return ((void *)(++alloc));
 	}
-	else
-		free_next_block(block);
-	return (ft_malloc(size));
+	if (!(ptr = ft_malloc(size)))
+		return (NULL);
+	ft_memcpy(ptr, old, alloc->used);
+	free_next_block(block);
+	return (ptr);
+}
+
+void	*ft_calloc(size_t size)
+{
+	void *ptr;
+
+	if (!(ptr = ft_malloc(size)))
+		return (NULL);
+	ft_bzero(ptr, size);
+	return (ptr);
 }

@@ -18,3 +18,6 @@ CMakeFiles/malloc.dir/src/malloc.c.o
  /home/ssoraka/Desktop/projects/malloc/src/malloc.c
 CMakeFiles/malloc.dir/src/my_test.c.o
  /home/ssoraka/Desktop/projects/malloc/src/my_test.c
+CMakeFiles/malloc.dir/src/show_alloc_mem.c.o
+ /home/ssoraka/Desktop/projects/malloc/includes/malloc.h
+ /home/ssoraka/Desktop/projects/malloc/src/show_alloc_mem.c

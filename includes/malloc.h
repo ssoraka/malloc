@@ -14,6 +14,8 @@
 # include <fcntl.h>
 # include <sys/mman.h>
 
+# define SYMBOLS "0123456789ABCDEF"
+
 enum					e_status
 {
 	FREE,
@@ -82,14 +84,20 @@ void	ft_bzero(void *s, size_t n);
 void	ft_putchar(int chr);
 void	ft_putstr(char *str);
 void	ft_memset(void *s, size_t n, char chr);
+void	ft_memcpy(void *dst, void *src, size_t n);
+char	*ft_strrevers(char *str);
+void	ft_putnbr(int n);
 
 t_root	*get_root();
 void	*ft_malloc(size_t size);
 void	ft_free(void *ptr);
 void	*ft_realloc(void *ptr, size_t size);
+void	*ft_calloc(size_t size);
 
 void	ft_print_page(t_page *page);
 void	ft_page_to_str(t_page *page);
 void	ft_print_mem();
+
+void	show_alloc_mem();
 
 #endif //MALLOC_MALLOC_H

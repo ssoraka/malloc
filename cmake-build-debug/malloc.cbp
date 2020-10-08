@@ -99,6 +99,9 @@
 		<Unit filename="/home/ssoraka/Desktop/projects/malloc/src/my_test.c">
 			<Option target="malloc"/>
 		</Unit>
+		<Unit filename="/home/ssoraka/Desktop/projects/malloc/src/show_alloc_mem.c">
+			<Option target="malloc"/>
+		</Unit>
 		<Unit filename="/home/ssoraka/Desktop/projects/malloc/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

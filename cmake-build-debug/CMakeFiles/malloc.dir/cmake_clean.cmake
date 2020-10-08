@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/malloc.dir/src/main.c.o"
   "CMakeFiles/malloc.dir/src/malloc.c.o"
   "CMakeFiles/malloc.dir/src/my_test.c.o"
+  "CMakeFiles/malloc.dir/src/show_alloc_mem.c.o"
   "malloc"
   "malloc.pdb"
 )

@@ -18,3 +18,6 @@ CMakeFiles/malloc.dir/src/malloc.c.o: ../src/malloc.c
 
 CMakeFiles/malloc.dir/src/my_test.c.o: ../src/my_test.c
 
+CMakeFiles/malloc.dir/src/show_alloc_mem.c.o: ../includes/malloc.h
+CMakeFiles/malloc.dir/src/show_alloc_mem.c.o: ../src/show_alloc_mem.c
+

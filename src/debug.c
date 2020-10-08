@@ -4,8 +4,6 @@
 
 #include "../includes/malloc.h"
 
-#define SYMBOLS "0123456789ABCDEF"
-
 char	*ft_color_from_status(int status){
 	if (status == BLOCK)
 		return ("\033[0;32m");
@@ -56,6 +54,9 @@ void	ft_print_page(t_page *page) {
 	}
 }
 
+/*
+ * это надо будет удалить нафиг
+ */
 void	ft_page_to_str(t_page *page) {
 
 	printf("размер страницы %zu, вес страницы %d, количество блоков %zu, занято %zu, свободно %zu\n", page->size, sizeof(t_page), page->alloc_count, page->alloc.used, page->alloc.empty);
