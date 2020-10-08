@@ -278,32 +278,32 @@ src/malloc.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/malloc.c.s
 .PHONY : src/malloc.c.s
 
-src/my_test.o: src/my_test.c.o
+src/page.o: src/page.c.o
 
-.PHONY : src/my_test.o
+.PHONY : src/page.o
 
 # target to build an object file
-src/my_test.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/my_test.c.o
-.PHONY : src/my_test.c.o
+src/page.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/page.c.o
+.PHONY : src/page.c.o
 
-src/my_test.i: src/my_test.c.i
+src/page.i: src/page.c.i
 
-.PHONY : src/my_test.i
+.PHONY : src/page.i
 
 # target to preprocess a source file
-src/my_test.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/my_test.c.i
-.PHONY : src/my_test.c.i
+src/page.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/page.c.i
+.PHONY : src/page.c.i
 
-src/my_test.s: src/my_test.c.s
+src/page.s: src/page.c.s
 
-.PHONY : src/my_test.s
+.PHONY : src/page.s
 
 # target to generate assembly for a file
-src/my_test.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/my_test.c.s
-.PHONY : src/my_test.c.s
+src/page.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/page.c.s
+.PHONY : src/page.c.s
 
 src/show_alloc_mem.o: src/show_alloc_mem.c.o
 
@@ -332,6 +332,33 @@ src/show_alloc_mem.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/show_alloc_mem.c.s
 .PHONY : src/show_alloc_mem.c.s
 
+src/store.o: src/store.c.o
+
+.PHONY : src/store.o
+
+# target to build an object file
+src/store.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/store.c.o
+.PHONY : src/store.c.o
+
+src/store.i: src/store.c.i
+
+.PHONY : src/store.i
+
+# target to preprocess a source file
+src/store.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/store.c.i
+.PHONY : src/store.c.i
+
+src/store.s: src/store.c.s
+
+.PHONY : src/store.s
+
+# target to generate assembly for a file
+src/store.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/store.c.s
+.PHONY : src/store.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -356,12 +383,15 @@ help:
 	@echo "... src/malloc.o"
 	@echo "... src/malloc.i"
 	@echo "... src/malloc.s"
-	@echo "... src/my_test.o"
-	@echo "... src/my_test.i"
-	@echo "... src/my_test.s"
+	@echo "... src/page.o"
+	@echo "... src/page.i"
+	@echo "... src/page.s"
 	@echo "... src/show_alloc_mem.o"
 	@echo "... src/show_alloc_mem.i"
 	@echo "... src/show_alloc_mem.s"
+	@echo "... src/store.o"
+	@echo "... src/store.i"
+	@echo "... src/store.s"
 .PHONY : help
 
 

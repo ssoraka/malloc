@@ -103,22 +103,9 @@ CMakeFiles/malloc.dir/src/malloc.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/malloc.dir/src/malloc.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ssoraka/Desktop/projects/malloc/src/malloc.c -o CMakeFiles/malloc.dir/src/malloc.c.s
 
-CMakeFiles/malloc.dir/src/my_test.c.o: CMakeFiles/malloc.dir/flags.make
-CMakeFiles/malloc.dir/src/my_test.c.o: ../src/my_test.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/malloc.dir/src/my_test.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/malloc.dir/src/my_test.c.o   -c /home/ssoraka/Desktop/projects/malloc/src/my_test.c
-
-CMakeFiles/malloc.dir/src/my_test.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/malloc.dir/src/my_test.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ssoraka/Desktop/projects/malloc/src/my_test.c > CMakeFiles/malloc.dir/src/my_test.c.i
-
-CMakeFiles/malloc.dir/src/my_test.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/malloc.dir/src/my_test.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ssoraka/Desktop/projects/malloc/src/my_test.c -o CMakeFiles/malloc.dir/src/my_test.c.s
-
 CMakeFiles/malloc.dir/src/debug.c.o: CMakeFiles/malloc.dir/flags.make
 CMakeFiles/malloc.dir/src/debug.c.o: ../src/debug.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/malloc.dir/src/debug.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/malloc.dir/src/debug.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/malloc.dir/src/debug.c.o   -c /home/ssoraka/Desktop/projects/malloc/src/debug.c
 
 CMakeFiles/malloc.dir/src/debug.c.i: cmake_force
@@ -131,7 +118,7 @@ CMakeFiles/malloc.dir/src/debug.c.s: cmake_force
 
 CMakeFiles/malloc.dir/src/from_libft.c.o: CMakeFiles/malloc.dir/flags.make
 CMakeFiles/malloc.dir/src/from_libft.c.o: ../src/from_libft.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/malloc.dir/src/from_libft.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/malloc.dir/src/from_libft.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/malloc.dir/src/from_libft.c.o   -c /home/ssoraka/Desktop/projects/malloc/src/from_libft.c
 
 CMakeFiles/malloc.dir/src/from_libft.c.i: cmake_force
@@ -144,7 +131,7 @@ CMakeFiles/malloc.dir/src/from_libft.c.s: cmake_force
 
 CMakeFiles/malloc.dir/src/free.c.o: CMakeFiles/malloc.dir/flags.make
 CMakeFiles/malloc.dir/src/free.c.o: ../src/free.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/malloc.dir/src/free.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/malloc.dir/src/free.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/malloc.dir/src/free.c.o   -c /home/ssoraka/Desktop/projects/malloc/src/free.c
 
 CMakeFiles/malloc.dir/src/free.c.i: cmake_force
@@ -157,7 +144,7 @@ CMakeFiles/malloc.dir/src/free.c.s: cmake_force
 
 CMakeFiles/malloc.dir/src/show_alloc_mem.c.o: CMakeFiles/malloc.dir/flags.make
 CMakeFiles/malloc.dir/src/show_alloc_mem.c.o: ../src/show_alloc_mem.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/malloc.dir/src/show_alloc_mem.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/malloc.dir/src/show_alloc_mem.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/malloc.dir/src/show_alloc_mem.c.o   -c /home/ssoraka/Desktop/projects/malloc/src/show_alloc_mem.c
 
 CMakeFiles/malloc.dir/src/show_alloc_mem.c.i: cmake_force
@@ -168,29 +155,57 @@ CMakeFiles/malloc.dir/src/show_alloc_mem.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/malloc.dir/src/show_alloc_mem.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ssoraka/Desktop/projects/malloc/src/show_alloc_mem.c -o CMakeFiles/malloc.dir/src/show_alloc_mem.c.s
 
+CMakeFiles/malloc.dir/src/store.c.o: CMakeFiles/malloc.dir/flags.make
+CMakeFiles/malloc.dir/src/store.c.o: ../src/store.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/malloc.dir/src/store.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/malloc.dir/src/store.c.o   -c /home/ssoraka/Desktop/projects/malloc/src/store.c
+
+CMakeFiles/malloc.dir/src/store.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/malloc.dir/src/store.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ssoraka/Desktop/projects/malloc/src/store.c > CMakeFiles/malloc.dir/src/store.c.i
+
+CMakeFiles/malloc.dir/src/store.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/malloc.dir/src/store.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ssoraka/Desktop/projects/malloc/src/store.c -o CMakeFiles/malloc.dir/src/store.c.s
+
+CMakeFiles/malloc.dir/src/page.c.o: CMakeFiles/malloc.dir/flags.make
+CMakeFiles/malloc.dir/src/page.c.o: ../src/page.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/malloc.dir/src/page.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/malloc.dir/src/page.c.o   -c /home/ssoraka/Desktop/projects/malloc/src/page.c
+
+CMakeFiles/malloc.dir/src/page.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/malloc.dir/src/page.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ssoraka/Desktop/projects/malloc/src/page.c > CMakeFiles/malloc.dir/src/page.c.i
+
+CMakeFiles/malloc.dir/src/page.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/malloc.dir/src/page.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ssoraka/Desktop/projects/malloc/src/page.c -o CMakeFiles/malloc.dir/src/page.c.s
+
 # Object files for target malloc
 malloc_OBJECTS = \
 "CMakeFiles/malloc.dir/src/main.c.o" \
 "CMakeFiles/malloc.dir/src/malloc.c.o" \
-"CMakeFiles/malloc.dir/src/my_test.c.o" \
 "CMakeFiles/malloc.dir/src/debug.c.o" \
 "CMakeFiles/malloc.dir/src/from_libft.c.o" \
 "CMakeFiles/malloc.dir/src/free.c.o" \
-"CMakeFiles/malloc.dir/src/show_alloc_mem.c.o"
+"CMakeFiles/malloc.dir/src/show_alloc_mem.c.o" \
+"CMakeFiles/malloc.dir/src/store.c.o" \
+"CMakeFiles/malloc.dir/src/page.c.o"
 
 # External object files for target malloc
 malloc_EXTERNAL_OBJECTS =
 
 malloc: CMakeFiles/malloc.dir/src/main.c.o
 malloc: CMakeFiles/malloc.dir/src/malloc.c.o
-malloc: CMakeFiles/malloc.dir/src/my_test.c.o
 malloc: CMakeFiles/malloc.dir/src/debug.c.o
 malloc: CMakeFiles/malloc.dir/src/from_libft.c.o
 malloc: CMakeFiles/malloc.dir/src/free.c.o
 malloc: CMakeFiles/malloc.dir/src/show_alloc_mem.c.o
+malloc: CMakeFiles/malloc.dir/src/store.c.o
+malloc: CMakeFiles/malloc.dir/src/page.c.o
 malloc: CMakeFiles/malloc.dir/build.make
 malloc: CMakeFiles/malloc.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable malloc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ssoraka/Desktop/projects/malloc/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking C executable malloc"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/malloc.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

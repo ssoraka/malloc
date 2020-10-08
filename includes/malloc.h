@@ -73,6 +73,8 @@ typedef struct		s_pages {
 */
 typedef struct		s_store {
 	t_page			*p[TYPE_COUNT];
+	int				size[TYPE_COUNT];
+	int 			is_init;
 }					t_store;
 
 typedef struct		s_root {
@@ -88,6 +90,11 @@ void	ft_memcpy(void *dst, void *src, size_t n);
 char	*ft_strrevers(char *str);
 void	ft_putnbr(int n);
 
+t_page	*new_page(int size);
+void	destroy_page(t_page *page);
+size_t	ft_get_size(size_t size);
+size_t	ft_get_memory_size_on_page(t_page *page);
+
 t_root	*get_root();
 void	*ft_malloc(size_t size);
 void	ft_free(void *ptr);
@@ -99,5 +106,11 @@ void	ft_page_to_str(t_page *page);
 void	ft_print_mem();
 
 void	show_alloc_mem();
+
+
+t_store	*get_store();
+void	free_store();
+void	store_page(t_page *page);
+t_page	*get_page_from_store(size_t size);
 
 #endif //MALLOC_MALLOC_H

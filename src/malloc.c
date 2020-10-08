@@ -34,14 +34,7 @@ int		ft_get_page_size(int type)
 		return (getpagesize() * SMALL_SIZE);
 }
 
-int		type_from_size(int size)
-{
-	if (size < ft_get_page_size(TINY))
-		return (TINY);
-	if (size < ft_get_page_size(SMALL))
-		return (SMALL);
-	return (LARGE);
-}
+
 
 /*
 t_store		*create_new_store()
@@ -52,7 +45,7 @@ t_store		*create_new_store()
 	int small_size;
 
 	tiny_size = (ft_get_page_size(TINY) + sizeof(t_page)) * 100;
-	small_size = (ft_get_page_size(SMALL) + sizeof(t_page)) * 100;
+	small_size = (ft_get_memory_size_on_page(SMALL) + sizeof(t_page)) * 100;
 	size = sizeof(t_store) + tiny_size + small_size;
 	mem = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
 	if (!mem)
@@ -119,7 +112,7 @@ t_root	*get_root()
 	return (&root);
 }
 
-void	insert_page(t_page *page)
+void	insert_page_in_root(t_page *page)
 {
 	t_root  *root;
 
@@ -132,31 +125,6 @@ void	insert_page(t_page *page)
 		page->prev = root->last;
 	}
 	root->last = page;
-}
-
-size_t	ft_get_size(size_t size)
-{
-	if (size <= 128)
-		return (128);
-	if (size <= 256)
-		return (256);
-	return (size);
-}
-
-t_page	*new_page(int size)
-{
-	t_page *page;
-
-	size += sizeof(t_page);
-	page = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
-	if (!page)
-		return (NULL);
-	ft_bzero((void *)page, sizeof(t_page));
-	page->size = size;
-	page->alloc.empty = size - sizeof(t_page);
-	page->alloc.next = NULL;
-	insert_page(page);
-	return (page);
 }
 
 t_block	*find_empty_space_on_page(t_page *page, size_t size)
@@ -220,8 +188,9 @@ void	*ft_malloc(size_t size)
 	if ((ptr = try_alloc_in_used_memory(size)))
 		return (ptr);
 	//новую страницу надо получать из имеющихся, а только после этого создавать
-	if (!(page = new_page(ft_get_size(size))))
+	if (!(page = new_page(size)))
 		return (NULL);
+	insert_page_in_root(page);
 	ptr = alloc_mem(page, &page->alloc, size);
 
 

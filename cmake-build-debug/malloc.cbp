@@ -96,10 +96,13 @@
 		<Unit filename="/home/ssoraka/Desktop/projects/malloc/src/malloc.c">
 			<Option target="malloc"/>
 		</Unit>
-		<Unit filename="/home/ssoraka/Desktop/projects/malloc/src/my_test.c">
+		<Unit filename="/home/ssoraka/Desktop/projects/malloc/src/page.c">
 			<Option target="malloc"/>
 		</Unit>
 		<Unit filename="/home/ssoraka/Desktop/projects/malloc/src/show_alloc_mem.c">
+			<Option target="malloc"/>
+		</Unit>
+		<Unit filename="/home/ssoraka/Desktop/projects/malloc/src/store.c">
 			<Option target="malloc"/>
 		</Unit>
 		<Unit filename="/home/ssoraka/Desktop/projects/malloc/CMakeLists.txt">
