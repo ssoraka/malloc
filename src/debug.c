@@ -71,7 +71,7 @@ void	ft_page_to_str(t_page *page) {
 void	ft_print_mem() {
 	t_page *page;
 
-	page = get_root()->page;
+	page = get_first_page();
 	ft_page_to_str(page);
 	while(page) {
 		ft_print_page(page);

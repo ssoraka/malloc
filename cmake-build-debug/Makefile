@@ -305,6 +305,33 @@ src/page.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/page.c.s
 .PHONY : src/page.c.s
 
+src/root.o: src/root.c.o
+
+.PHONY : src/root.o
+
+# target to build an object file
+src/root.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/root.c.o
+.PHONY : src/root.c.o
+
+src/root.i: src/root.c.i
+
+.PHONY : src/root.i
+
+# target to preprocess a source file
+src/root.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/root.c.i
+.PHONY : src/root.c.i
+
+src/root.s: src/root.c.s
+
+.PHONY : src/root.s
+
+# target to generate assembly for a file
+src/root.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/malloc.dir/build.make CMakeFiles/malloc.dir/src/root.c.s
+.PHONY : src/root.c.s
+
 src/show_alloc_mem.o: src/show_alloc_mem.c.o
 
 .PHONY : src/show_alloc_mem.o
@@ -386,6 +413,9 @@ help:
 	@echo "... src/page.o"
 	@echo "... src/page.i"
 	@echo "... src/page.s"
+	@echo "... src/root.o"
+	@echo "... src/root.i"
+	@echo "... src/root.s"
 	@echo "... src/show_alloc_mem.o"
 	@echo "... src/show_alloc_mem.i"
 	@echo "... src/show_alloc_mem.s"

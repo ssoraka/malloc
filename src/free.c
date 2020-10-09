@@ -4,13 +4,16 @@
 
 #include "../includes/malloc.h"
 
-void	free_next_block(t_block *block)
+void	free_next_block(t_page *page, t_block *block)
 {
 	t_block *next;
 
 	next = block->next;
 	block->next = next->next;
 	block->empty = next->empty + next->used + sizeof(t_block);
+	page->alloc_count--;
+	if (!page->alloc_count)
+		sub_page_from_root(page);
 }
 
 t_block	*get_prev_block_from_page(t_page *page, void *ptr)
@@ -19,6 +22,8 @@ t_block	*get_prev_block_from_page(t_page *page, void *ptr)
 	t_block *block;
 	void *mem;
 
+	if (!page || !ptr)
+		return (NULL);
 	prev = &page->alloc;
 	while (prev->next) {
 		block = prev->next;
@@ -35,7 +40,9 @@ t_page	*get_page_with_mem(void *ptr)
 	t_page *page;
 	void *end;
 
-	page = get_root()->page;
+	if (!ptr)
+		return (NULL);
+	page = get_first_page();
 	while(page)
 	{
 		end = (char *)(page + 1) + page->size;
@@ -46,35 +53,25 @@ t_page	*get_page_with_mem(void *ptr)
 	return (NULL);
 }
 
-t_block *get_prev_block_in_mem(void *ptr)
-{
+void	ft_free(void *ptr){
 	t_page *page;
 	t_block *block;
 
-	if (!ptr)
-		return (NULL);
-	if (!(page = get_page_with_mem(ptr)))
-		return (NULL);
+	page = get_page_with_mem(ptr);
 	if (!(block = get_prev_block_from_page(page, ptr)))
-		return (NULL);
-	return (block);
-}
-
-void	ft_free(void *ptr){
-	t_block *block;
-
-	if (!(block = get_prev_block_in_mem(ptr)))
 		return ;
-	free_next_block(block);
+	free_next_block(page, block);
 }
 
 void	*ft_realloc(void *old, size_t size)
 {
+	t_page *page;
 	t_block *block;
 	t_block *alloc;
 	void *ptr;
 
-	if (!(block = get_prev_block_in_mem(old)))
+	page = get_page_with_mem(old);
+	if (!(block = get_prev_block_from_page(page, old)))
 		return (NULL);
 	alloc = block->next;
 	if (alloc->used + alloc->empty > size)
@@ -86,7 +83,7 @@ void	*ft_realloc(void *old, size_t size)
 	if (!(ptr = ft_malloc(size)))
 		return (NULL);
 	ft_memcpy(ptr, old, alloc->used);
-	free_next_block(block);
+	free_next_block(page, block);
 	return (ptr);
 }
 

@@ -15,6 +15,7 @@
 # include <sys/mman.h>
 
 # define SYMBOLS "0123456789ABCDEF"
+# define FAIL_MMAP (void *)(-1)
 
 enum					e_status
 {
@@ -78,8 +79,9 @@ typedef struct		s_store {
 }					t_store;
 
 typedef struct		s_root {
-	t_page			*page;
+	t_page			page;
 	t_page			*last;
+	int 			is_init;
 }					t_root;
 
 void	ft_bzero(void *s, size_t n);
@@ -91,11 +93,17 @@ char	*ft_strrevers(char *str);
 void	ft_putnbr(int n);
 
 t_page	*new_page(int size);
-void	destroy_page(t_page *page);
+int		destroy_page(t_page *page);
 size_t	ft_get_size(size_t size);
 size_t	ft_get_memory_size_on_page(t_page *page);
+void	insert_page_after_page(t_page *prev, t_page *page);
+void	cut_page(t_page *page);
 
 t_root	*get_root();
+t_page	*get_first_page();
+void	add_page_in_root(t_page *page);
+void	sub_page_from_root(t_page *page);
+
 void	*ft_malloc(size_t size);
 void	ft_free(void *ptr);
 void	*ft_realloc(void *ptr, size_t size);

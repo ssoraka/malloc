@@ -23,27 +23,6 @@
  */
 
 
-t_root	*get_root()
-{
-	static t_root root;
-	return (&root);
-}
-
-void	insert_page_in_root(t_page *page)
-{
-	t_root  *root;
-
-	root = get_root();
-	if (!root->last)
-		root->page = page;
-	else
-	{
-		root->last->next = page;
-		page->prev = root->last;
-	}
-	root->last = page;
-}
-
 t_block	*find_empty_space_on_page(t_page *page, size_t size)
 {
 	t_block *block;
@@ -82,7 +61,7 @@ void	*try_alloc_in_used_memory(size_t size)
 	t_page *page;
 	t_block *block;
 
-	page = get_root()->page;
+	page = get_first_page();
 	while(page)
 	{
 		if (page->size > size)
@@ -107,7 +86,7 @@ void	*ft_malloc(size_t size)
 	//новую страницу надо получать из имеющихся, а только после этого создавать
 	if (!(page = new_page(size)))
 		return (NULL);
-	insert_page_in_root(page);
+	add_page_in_root(page);
 	ptr = alloc_mem(page, &page->alloc, size);
 	return (ptr);
 }

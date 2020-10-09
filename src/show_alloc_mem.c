@@ -63,7 +63,7 @@ void	show_alloc_mem()
 	size_t total;
 
 	total = 0;
-	page = get_root()->page;
+	page = get_first_page();
 	while(page)
 	{
 		print_first_string(page);
@@ -78,14 +78,3 @@ void	show_alloc_mem()
 	}
 	print_total(total);
 }
-
-/*
-TINY : 0xA0000
-0xA0020 - 0xA004A : 42 bytes
-0xA006A - 0xA00BE : 84 bytes
-		SMALL : 0xAD000
-0xAD020 - 0xADEAD : 3725 bytes
-		LARGE : 0xB0000
-0xB0020 - 0xBBEEF : 48847 bytes
-		Total : 52698 bytes
-*/

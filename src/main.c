@@ -3,14 +3,16 @@
 int main() {
 	char *ptr;
 	char *ptr2;
+	void *ptr3;
 
 	ptr = ft_malloc(10);
 	ft_memcpy(ptr, "aaaaa", 6);
 	ft_malloc(10);
 	ft_realloc(ptr, 30);
 	ft_calloc(10);
-	ft_malloc(10000);
-	ft_malloc(100000);
+	ptr2 = ft_malloc(10000);
+	ptr3 = ft_malloc(100000);
+	ft_free(ptr2);
 //	ptr = ft_realloc(ptr, 5);
 //	ptr = ft_realloc(ptr, 30);
 
