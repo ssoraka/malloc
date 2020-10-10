@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/ssoraka/Desktop/project/malloc/src/main.c" "/Users/ssoraka/Desktop/project/malloc/cmake-build-debug/CMakeFiles/malloc.dir/src/main.c.o"
   "/Users/ssoraka/Desktop/project/malloc/src/malloc.c" "/Users/ssoraka/Desktop/project/malloc/cmake-build-debug/CMakeFiles/malloc.dir/src/malloc.c.o"
   "/Users/ssoraka/Desktop/project/malloc/src/page.c" "/Users/ssoraka/Desktop/project/malloc/cmake-build-debug/CMakeFiles/malloc.dir/src/page.c.o"
+  "/Users/ssoraka/Desktop/project/malloc/src/page_size.c" "/Users/ssoraka/Desktop/project/malloc/cmake-build-debug/CMakeFiles/malloc.dir/src/page_size.c.o"
   "/Users/ssoraka/Desktop/project/malloc/src/root.c" "/Users/ssoraka/Desktop/project/malloc/cmake-build-debug/CMakeFiles/malloc.dir/src/root.c.o"
   "/Users/ssoraka/Desktop/project/malloc/src/show_alloc_mem.c" "/Users/ssoraka/Desktop/project/malloc/cmake-build-debug/CMakeFiles/malloc.dir/src/show_alloc_mem.c.o"
   "/Users/ssoraka/Desktop/project/malloc/src/store.c" "/Users/ssoraka/Desktop/project/malloc/cmake-build-debug/CMakeFiles/malloc.dir/src/store.c.o"

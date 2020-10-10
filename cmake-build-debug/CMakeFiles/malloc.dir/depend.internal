@@ -19,6 +19,9 @@ CMakeFiles/malloc.dir/src/malloc.c.o
 CMakeFiles/malloc.dir/src/page.c.o
  /Users/ssoraka/Desktop/project/malloc/includes/malloc.h
  /Users/ssoraka/Desktop/project/malloc/src/page.c
+CMakeFiles/malloc.dir/src/page_size.c.o
+ /Users/ssoraka/Desktop/project/malloc/includes/malloc.h
+ /Users/ssoraka/Desktop/project/malloc/src/page_size.c
 CMakeFiles/malloc.dir/src/root.c.o
  /Users/ssoraka/Desktop/project/malloc/includes/malloc.h
  /Users/ssoraka/Desktop/project/malloc/src/root.c

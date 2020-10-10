@@ -5,12 +5,12 @@ int main() {
 	char *ptr2;
 	void *ptr3;
 
-	ptr = ft_malloc(10);
-	ft_memcpy(ptr, "aaaaa", 6);
-	ft_malloc(10);
-	ft_realloc(ptr, 6);
-	ft_print_mem();
-	ft_realloc(ptr, 30);
+//	ptr = ft_malloc(10);
+//	ft_memcpy(ptr, "aaaaa", 6);
+//	ft_malloc(10);
+//	ft_realloc(ptr, 6);
+//	ft_print_mem();
+//	ft_realloc(ptr, 30);
 //	ft_malloc(1);
 //	ft_calloc(10);
 //	ptr2 = ft_malloc(10000);
@@ -23,10 +23,13 @@ int main() {
 	//ft_free(ptr);
 	//ptr = ft_malloc(5);
 
-	ft_print_mem();
+//	ft_print_mem();
 //	show_alloc_mem();
 
+	t_store	*store = get_store();
 
+
+	store_to_string(store);
 
 	return 0;
 }

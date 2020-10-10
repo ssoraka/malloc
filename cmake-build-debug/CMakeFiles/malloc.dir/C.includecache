@@ -24,35 +24,7 @@ fcntl.h
 sys/mman.h
 -
 
-/Users/ssoraka/Desktop/project/malloc/src/debug.c
-../includes/malloc.h
-/Users/ssoraka/Desktop/project/malloc/includes/malloc.h
-
-/Users/ssoraka/Desktop/project/malloc/src/free.c
-../includes/malloc.h
-/Users/ssoraka/Desktop/project/malloc/includes/malloc.h
-
-/Users/ssoraka/Desktop/project/malloc/src/from_libft.c
-../includes/malloc.h
-/Users/ssoraka/Desktop/project/malloc/includes/malloc.h
-
 /Users/ssoraka/Desktop/project/malloc/src/main.c
-../includes/malloc.h
-/Users/ssoraka/Desktop/project/malloc/includes/malloc.h
-
-/Users/ssoraka/Desktop/project/malloc/src/malloc.c
-../includes/malloc.h
-/Users/ssoraka/Desktop/project/malloc/includes/malloc.h
-
-/Users/ssoraka/Desktop/project/malloc/src/page.c
-../includes/malloc.h
-/Users/ssoraka/Desktop/project/malloc/includes/malloc.h
-
-/Users/ssoraka/Desktop/project/malloc/src/root.c
-../includes/malloc.h
-/Users/ssoraka/Desktop/project/malloc/includes/malloc.h
-
-/Users/ssoraka/Desktop/project/malloc/src/show_alloc_mem.c
 ../includes/malloc.h
 /Users/ssoraka/Desktop/project/malloc/includes/malloc.h
 

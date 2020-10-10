@@ -99,6 +99,9 @@
 		<Unit filename="/Users/ssoraka/Desktop/project/malloc/src/page.c">
 			<Option target="malloc"/>
 		</Unit>
+		<Unit filename="/Users/ssoraka/Desktop/project/malloc/src/page_size.c">
+			<Option target="malloc"/>
+		</Unit>
 		<Unit filename="/Users/ssoraka/Desktop/project/malloc/src/root.c">
 			<Option target="malloc"/>
 		</Unit>

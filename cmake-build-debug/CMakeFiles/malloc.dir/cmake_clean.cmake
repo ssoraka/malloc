@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/malloc.dir/src/main.c.o"
   "CMakeFiles/malloc.dir/src/malloc.c.o"
   "CMakeFiles/malloc.dir/src/page.c.o"
+  "CMakeFiles/malloc.dir/src/page_size.c.o"
   "CMakeFiles/malloc.dir/src/root.c.o"
   "CMakeFiles/malloc.dir/src/show_alloc_mem.c.o"
   "CMakeFiles/malloc.dir/src/store.c.o"

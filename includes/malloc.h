@@ -97,7 +97,6 @@ int		ft_isprint(int c);
 t_page	*new_page(int size);
 int		destroy_page(t_page *page);
 size_t	ft_get_size(size_t size);
-size_t	ft_get_memory_size_on_page(t_page *page);
 void	insert_page_after_page(t_page *prev, t_page *page);
 void	cut_page(t_page *page);
 
@@ -123,5 +122,10 @@ t_store	*get_store();
 void	free_store();
 void	store_page(t_page *page);
 t_page	*get_page_from_store(size_t size);
+void	store_to_string();
+
+
+int		type_from_size(size_t size);
+int		size_from_type(int type);
 
 #endif //MALLOC_MALLOC_H

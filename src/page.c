@@ -4,25 +4,6 @@
 
 #include "../includes/malloc.h"
 
-size_t	ft_get_memory_size_on_page(t_page *page)
-{
-	return (page->size - sizeof(t_page) - sizeof(t_block));
-}
-
-size_t	ft_get_size(size_t size)
-{
-	size += sizeof(t_page) + sizeof(t_block);
-/*	if (size <= getpagesize() * TINY_SIZE)
-		return (getpagesize() * TINY_SIZE);
-	if (size <= getpagesize() * SMALL_SIZE)
-		return (getpagesize() * SMALL_SIZE);*/
-	if (size <= 128)
-		return (128);
-	if (size <= 256)
-		return (256);
-	return (size);
-}
-
 t_page	*new_page(int size)
 {
 	t_page *page;

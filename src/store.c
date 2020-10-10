@@ -4,7 +4,7 @@
 
 #include "../includes/malloc.h"
 
-#define PAGE_COUNT 10
+#define PAGE_COUNT 1
 
 void	free_store()
 {
@@ -28,22 +28,13 @@ void	free_store()
 	}
 }
 
-int		type_from_size(size_t size)
-{
-	if (size <= getpagesize() * TINY_SIZE - sizeof(t_page) - sizeof(t_block))
-		return (TINY);
-	if (size <= getpagesize() * SMALL_SIZE - sizeof(t_page) - sizeof(t_block))
-		return (SMALL);
-	return (LARGE);
-}
-
 void	store_page(t_page *page)
 {
 	t_store *store;
 	int i;
 
 	store = get_store();
-	i = type_from_size(ft_get_memory_size_on_page(page));
+	i = type_from_size(page->size);
 	if (store->size[i] < PAGE_COUNT)
 	{
 		page->next = store->p[i];
@@ -81,13 +72,13 @@ int		create_new_store(t_store *store)
 	i = 0;
 	while (i < PAGE_COUNT)
 	{
-		if (!(page = new_page(getpagesize() * TINY_SIZE)))
+		if (!(page = new_page(size_from_type(TINY) - sizeof(t_page) - sizeof(t_block))))
 		{
 			free_store();
 			return (0);
 		}
 		store_page(page);
-		if (!(page = new_page(getpagesize() * SMALL_SIZE)))
+		if (!(page = new_page(size_from_type(SMALL) - sizeof(t_page) - sizeof(t_block))))
 		{
 			free_store();
 			return (0);
@@ -114,13 +105,19 @@ t_store	*get_store()
 void	store_to_string()
 {
 	t_store *store;
+	t_page *page;
 	int i;
 
 	store = get_store();
 	i = 0;
 	while (i < TYPE_COUNT)
 	{
-		printf("%d", store->size);
+		page = store->p[i];
+		while (page)
+		{
+			ft_print_page(page);
+			page = page->next;
+		}
 		i++;
 	}
 }
