@@ -96,3 +96,10 @@ void	ft_putnbr(int n)
 		ft_putnbr(n / 10);
 	ft_putchar('0' + n % 10);
 }
+
+int		ft_isprint(int c)
+{
+	if (c >= 32 && c <= 126)
+		return (1);
+	return (0);
+}

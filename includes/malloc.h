@@ -16,6 +16,7 @@
 
 # define SYMBOLS "0123456789ABCDEF"
 # define FAIL_MMAP (void *)(-1)
+# define BYTES_IN_LINE 16
 
 enum					e_status
 {
@@ -91,6 +92,7 @@ void	ft_memset(void *s, size_t n, char chr);
 void	ft_memcpy(void *dst, void *src, size_t n);
 char	*ft_strrevers(char *str);
 void	ft_putnbr(int n);
+int		ft_isprint(int c);
 
 t_page	*new_page(int size);
 int		destroy_page(t_page *page);
@@ -109,6 +111,7 @@ void	ft_free(void *ptr);
 void	*ft_realloc(void *ptr, size_t size);
 void	*ft_calloc(size_t size);
 
+void	ft_print_addres(void *ptr);
 void	ft_print_page(t_page *page);
 void	ft_page_to_str(t_page *page);
 void	ft_print_mem();

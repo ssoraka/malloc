@@ -45,20 +45,49 @@ int		is_mem(void *ptr, t_page *page)
 	return (FREE);
 }
 
+void	ft_print_chars(char *ptr, int count)
+{
+	int i;
+
+	i = count;
+	while (++i < BYTES_IN_LINE)
+		ft_putstr("   ");
+	ft_putstr("|");
+	i = 0;
+	while (i < BYTES_IN_LINE)
+	{
+		if (i > count)
+			ft_putchar(' ');
+		else if (ft_isprint(ptr[i]))
+			ft_putchar(ptr[i]);
+		else
+			ft_putchar('.');
+		i++;
+	}
+	ft_putstr("|\n");
+}
+
 void	ft_print_page(t_page *page) {
 	int i;
 	unsigned char *ptr;
+	char *chr;
 
 	ptr = (unsigned char *)(page);
 	i = 0;
 	while (i < page->size)
 	{
+		if (!(i % BYTES_IN_LINE))
+		{
+			chr = (char *)ptr + i;
+			ft_print_addres(chr);
+			ft_putstr("  ");
+		}
 		ft_print_char(ptr[i], is_mem(ptr + i, page));
-		if (!((i + 1) % 16) && i != page->size - 1)
-			ft_putchar('\n');
+		if (!((i + 1) % BYTES_IN_LINE) || i == page->size - 1)
+			ft_print_chars(chr, i % BYTES_IN_LINE);
 		i++;
 	}
-	ft_putstr("\n\n");
+	ft_putstr("\n");
 }
 
 /*
@@ -79,7 +108,7 @@ void	ft_print_mem() {
 	t_page *page;
 
 	page = get_first_page();
-	ft_page_to_str(page);
+//	ft_page_to_str(page);
 	while(page) {
 		ft_print_page(page);
 		page = page->next;

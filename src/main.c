@@ -10,8 +10,8 @@ int main() {
 	ft_malloc(10);
 	ft_realloc(ptr, 6);
 	ft_print_mem();
-	ft_realloc(ptr, 70);
-	ft_malloc(7);
+	ft_realloc(ptr, 30);
+//	ft_malloc(1);
 //	ft_calloc(10);
 //	ptr2 = ft_malloc(10000);
 //	ptr3 = ft_malloc(100000);
