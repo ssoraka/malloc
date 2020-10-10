@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/ssoraka/Desktop/projects/malloc/includes/malloc.h
+/Users/ssoraka/Desktop/project/malloc/includes/malloc.h
 stdlib.h
 -
 string.h
@@ -24,7 +24,7 @@ fcntl.h
 sys/mman.h
 -
 
-/home/ssoraka/Desktop/projects/malloc/src/main.c
+/Users/ssoraka/Desktop/project/malloc/src/debug.c
 ../includes/malloc.h
-/home/ssoraka/Desktop/projects/malloc/includes/malloc.h
+/Users/ssoraka/Desktop/project/malloc/includes/malloc.h
 

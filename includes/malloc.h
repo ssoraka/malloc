@@ -22,6 +22,7 @@ enum					e_status
 	FREE,
 	BLOCK,
 	ALLOC,
+	PAGE,
 	STATUS_COUNT
 };
 
@@ -30,7 +31,6 @@ enum					e_type
 	TINY,
 	SMALL,
 	LARGE,
-	LINKS,
 	TYPE_COUNT
 }					t_type;
 

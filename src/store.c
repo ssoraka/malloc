@@ -4,7 +4,7 @@
 
 #include "../includes/malloc.h"
 
-#define PAGE_COUNT 100
+#define PAGE_COUNT 10
 
 void	free_store()
 {
@@ -109,4 +109,18 @@ t_store	*get_store()
 			return (NULL);
 	}
 	return (&store);
+}
+
+void	store_to_string()
+{
+	t_store *store;
+	int i;
+
+	store = get_store();
+	i = 0;
+	while (i < TYPE_COUNT)
+	{
+		printf("%d", store->size);
+		i++;
+	}
 }
