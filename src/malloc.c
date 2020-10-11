@@ -52,7 +52,7 @@ void	*alloc_mem(t_page *page, t_block *prev, size_t size)
 	prev->empty = 0;
 
 	ptr = (void *)(++block);
-	ft_memset(ptr, size, ' ');
+	ft_memset(ptr, size, 'X');
 	return (ptr);
 }
 

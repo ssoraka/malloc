@@ -28,7 +28,3 @@ sys/mman.h
 ../includes/malloc.h
 /Users/ssoraka/Desktop/project/malloc/includes/malloc.h
 
-/Users/ssoraka/Desktop/project/malloc/src/store.c
-../includes/malloc.h
-/Users/ssoraka/Desktop/project/malloc/includes/malloc.h
-

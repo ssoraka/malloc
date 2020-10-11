@@ -11,6 +11,8 @@ char	*ft_color_from_status(int status){
 		return ("\033[7;37m");
 	if (status == PAGE)
 		return ("\033[0;31m");
+	if (status == NUM)
+		return ("\033[0;30m");
 	return ("\033[00m");
 }
 
@@ -49,10 +51,7 @@ void	ft_print_chars(char *ptr, int count)
 {
 	int i;
 
-	i = count;
-	while (++i < BYTES_IN_LINE)
-		ft_putstr("   ");
-	ft_putstr("|");
+	ft_putchar('|');
 	i = 0;
 	while (i < BYTES_IN_LINE)
 	{
@@ -64,28 +63,52 @@ void	ft_print_chars(char *ptr, int count)
 			ft_putchar('.');
 		i++;
 	}
-	ft_putstr("|\n");
+	ft_putchar('|');
+}
+
+void	ft_print_page_header(t_page *page)
+{
+	int i;
+
+//	ft_print_addres(page);
+//	ft_putstr("  ");
+	ft_putstr("             ");
+	i = -1;
+	while (++i < BYTES_IN_LINE)
+		ft_print_char((unsigned char)i, NUM);
+	ft_putstr("\n");
+}
+
+void	ft_print_page_lines(t_page *page, char *chr, int count)
+{
+	int i;
+
+	ft_print_addres(chr);
+	ft_putstr("  ");
+	i = -1;
+	while (++i < count)
+		ft_print_char(chr[i], is_mem(chr + i, page));
+	while (++i <= BYTES_IN_LINE)
+		ft_putstr("   ");
+	ft_print_chars(chr, count);
+	ft_putstr("\n");
 }
 
 void	ft_print_page(t_page *page) {
 	int i;
-	unsigned char *ptr;
 	char *chr;
+	int count;
 
-	ptr = (unsigned char *)(page);
+	ft_print_page_header(page);
+	chr = (char *)(page);
 	i = 0;
 	while (i < page->size)
 	{
-		if (!(i % BYTES_IN_LINE))
-		{
-			chr = (char *)ptr + i;
-			ft_print_addres(chr);
-			ft_putstr("  ");
-		}
-		ft_print_char(ptr[i], is_mem(ptr + i, page));
-		if (!((i + 1) % BYTES_IN_LINE) || i == page->size - 1)
-			ft_print_chars(chr, i % BYTES_IN_LINE);
-		i++;
+		count = BYTES_IN_LINE;
+		if (i + BYTES_IN_LINE > page->size)
+			count = page->size % BYTES_IN_LINE;
+		ft_print_page_lines(page, chr + i, count);
+		i += BYTES_IN_LINE;
 	}
 	ft_putstr("\n");
 }

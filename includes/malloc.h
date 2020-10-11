@@ -24,6 +24,7 @@ enum					e_status
 	BLOCK,
 	ALLOC,
 	PAGE,
+	NUM,
 	STATUS_COUNT
 };
 

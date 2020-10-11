@@ -4,7 +4,7 @@
 
 #include "../includes/malloc.h"
 
-#define PAGE_COUNT 1
+#define PAGE_COUNT 2
 
 void	free_store()
 {
