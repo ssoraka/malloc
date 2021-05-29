@@ -13,10 +13,13 @@ int main() {
 
 	ptr = ft_malloc(10);
 	ft_memcpy(ptr, "aaaaa", 5);
+	ft_print_mem();
 	ft_malloc(10);
+	ft_print_mem();
 	ft_realloc(ptr, 6);
-//	ft_print_mem();
+	ft_print_mem();
 	ft_realloc(ptr, 30);
+	ft_print_mem();
 	ft_malloc(3);
 //	ft_malloc(1);
 //	ft_calloc(10);
