@@ -11,7 +11,7 @@ int		size_from_type(int type)
 //	if (type == SMALL)
 //		return (getpagesize() * SMALL_SIZE);
 	if (type == TINY)
-		return (128);
+		return (256);
 	if (type == SMALL)
 		return (256);
 	return (0);
@@ -26,9 +26,15 @@ int		type_from_size(size_t size)
 	return (LARGE);
 }
 
+size_t	ft_round(size_t size, int mod)
+{
+	return (size + (mod - size % mod) * (size % mod > 0));
+}
+
 size_t	ft_get_size(size_t size)
 {
 	size += sizeof(t_page) + sizeof(t_block);
+	size = ft_round(size, sizeof(long));
 	if (size <= size_from_type(TINY))
 		return (size_from_type(TINY));
 	if (size <= size_from_type(SMALL))

@@ -49,14 +49,14 @@ t_page	*get_page_from_store(size_t size)
 {
 	t_store *store;
 	t_page *page;
-	int i;
+	int type;
 
 	store = get_store();
-	i = type_from_size(size);
-	page = store->p[i];
+	type = type_from_size(size);
+	page = store->p[type];
 	if (page)
 	{
-		store->p[i] = page->next;
+		store->p[type] = page->next;
 		page->next = NULL;
 	}
 	return (page);
@@ -67,7 +67,8 @@ int		create_new_store(t_store *store)
 	t_page *page;
 	int i;
 
-	ft_bzero(store, sizeof(t_store));
+//	ft_bzero(store, sizeof(t_store));
+//	вот это прикол, функция get_store() вызывается рекурсивно
 	store->is_init = 1;
 	i = 0;
 	while (i < PAGE_COUNT)

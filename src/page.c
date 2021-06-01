@@ -48,6 +48,10 @@ void	cut_page(t_page *page)
 	page->prev = NULL;
 }
 
+int		is_empty(t_page *page) {
+	return (page->size == page->alloc.empty + sizeof(t_page));
+}
+
 int		destroy_page(t_page *page)
 {
 	return (munmap(page, page->size));

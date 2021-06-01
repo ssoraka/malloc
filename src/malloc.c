@@ -73,7 +73,6 @@ void	*try_alloc_in_used_memory(size_t size)
 }
 
 
-
 void	*ft_malloc(size_t size)
 {
 	t_page	*page;
@@ -81,12 +80,15 @@ void	*ft_malloc(size_t size)
 
 	if (!size)
 		return (0);
+	size = ft_round(size, sizeof(long));
 	if ((ptr = try_alloc_in_used_memory(size)))
 		return (ptr);
-	//новую страницу надо получать из имеющихся, а только после этого создавать
-	if (!(page = new_page(size)))
-		return (NULL);
-	add_page_in_root(page);
+	if (!(page = get_page_from_store(size)))
+	{
+		if (!(page = new_page(size)))
+			return (NULL);
+		add_page_in_root(page);
+	}
 	ptr = alloc_mem(page, &page->alloc, size);
 	return (ptr);
 }

@@ -57,10 +57,17 @@ void	ft_free(void *ptr){
 	t_page *page;
 	t_block *block;
 
-	page = get_page_with_mem(ptr);
-	if (!(block = get_prev_block_from_page(page, ptr)))
-		return ;
+	if (!(page = get_page_with_mem(ptr))
+	|| !(block = get_prev_block_from_page(page, ptr)))
+	{
+		/*TODO надо сделать ошибку освобождения неаллоцированной памяти*/
+		return;
+	}
+	/*TODO надо исправить косяк в этой функции, смотри main*/
 	free_next_block(page, block);
+	/*TODO проверить работоспособность*/
+	if (is_empty(page))
+		store_page(page);
 }
 
 void	*ft_realloc(void *old, size_t size)
@@ -70,6 +77,7 @@ void	*ft_realloc(void *old, size_t size)
 	t_block *alloc;
 	void *ptr;
 
+	size = ft_round(size, sizeof(long));
 	page = get_page_with_mem(old);
 	if (!(block = get_prev_block_from_page(page, old)))
 		return (NULL);
@@ -91,6 +99,7 @@ void	*ft_calloc(size_t size)
 {
 	void *ptr;
 
+	size = ft_round(size, sizeof(long));
 	if (!(ptr = ft_malloc(size)))
 		return (NULL);
 	ft_bzero(ptr, size);
