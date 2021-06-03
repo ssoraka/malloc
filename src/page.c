@@ -33,7 +33,6 @@ void	insert_page_after_page(t_page *prev, t_page *page)
 	page->prev = prev;
 }
 
-
 void	cut_page(t_page *page)
 {
 	t_page *prev;
@@ -46,10 +45,6 @@ void	cut_page(t_page *page)
 		next->prev = prev;
 	page->next = NULL;
 	page->prev = NULL;
-}
-
-int		is_empty(t_page *page) {
-	return (page->size == page->alloc.empty + sizeof(t_page));
 }
 
 int		destroy_page(t_page *page)

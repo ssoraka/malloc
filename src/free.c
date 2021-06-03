@@ -10,10 +10,8 @@ void	free_next_block(t_page *page, t_block *block)
 
 	next = block->next;
 	block->next = next->next;
-	block->empty = next->empty + next->used + sizeof(t_block);
+	block->empty += next->empty + next->used + sizeof(t_block);
 	page->alloc_count--;
-	if (!page->alloc_count)
-		sub_page_from_root(page);
 }
 
 t_block	*get_prev_block_from_page(t_page *page, void *ptr)
@@ -63,11 +61,14 @@ void	ft_free(void *ptr){
 		/*TODO надо сделать ошибку освобождения неаллоцированной памяти*/
 		return;
 	}
-	/*TODO надо исправить косяк в этой функции, смотри main*/
 	free_next_block(page, block);
 	/*TODO проверить работоспособность*/
-	if (is_empty(page))
+	if (!page->alloc_count)
+	{
+		cut_page_from_root(page);
 		store_page(page);
+	}
+
 }
 
 void	*ft_realloc(void *old, size_t size)

@@ -8,8 +8,6 @@ int main() {
 //	test();
 //	return 0;
 
-//TODO косяк в количестве свободного пространства после free
-
 //	char *ptr;
 //	ptr = ft_malloc(10);
 //	ptr = ft_malloc(15);
@@ -23,11 +21,12 @@ int main() {
 
 	ptr = ft_malloc(10);
 	ft_memcpy(ptr, "aaaaaaaaaaaaaaa", 16);
-	ptr = ft_malloc(15);
+//	ptr = ft_malloc(15);
 //	ft_memcpy(ptr, "bbbbbbb", 7);
 //	char *ptr1 = ft_malloc(20);
 //	ft_memcpy(ptr1, "ZZZZZZZZZZZZZZZZZZZZZZZ", 24);
-//	ft_free(ptr);
+	ft_print_mem();
+	ft_free(ptr);
 //	ft_free(ptr1);
 
 

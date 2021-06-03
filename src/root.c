@@ -27,7 +27,7 @@ void	add_page_in_root(t_page *page)
 	get_root()->last = page;
 }
 
-void	sub_page_from_root(t_page *page)
+void	cut_page_from_root(t_page *page)
 {
 	t_root *root;
 
@@ -35,5 +35,4 @@ void	sub_page_from_root(t_page *page)
 	if (root->last == page)
 		root->last = page->prev;
 	cut_page(page);
-	destroy_page(page);
 }

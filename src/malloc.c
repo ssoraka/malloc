@@ -83,12 +83,10 @@ void	*ft_malloc(size_t size)
 	size = ft_round(size, sizeof(long));
 	if ((ptr = try_alloc_in_used_memory(size)))
 		return (ptr);
-	if (!(page = get_page_from_store(size)))
-	{
-		if (!(page = new_page(size)))
+	if (!(page = get_page_from_store(size))
+	&& !(page = new_page(size)))
 			return (NULL);
-		add_page_in_root(page);
-	}
+	add_page_in_root(page);
 	ptr = alloc_mem(page, &page->alloc, size);
 	return (ptr);
 }

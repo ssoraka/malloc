@@ -102,11 +102,10 @@ size_t	ft_round(size_t size, int mod);
 void	insert_page_after_page(t_page *prev, t_page *page);
 void	cut_page(t_page *page);
 
-t_root	*get_root();
 t_page	*get_first_page();
 int		is_empty(t_page *page);
 void	add_page_in_root(t_page *page);
-void	sub_page_from_root(t_page *page);
+void	cut_page_from_root(t_page *page);
 
 void	*ft_malloc(size_t size);
 void	ft_free(void *ptr);
