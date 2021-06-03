@@ -27,10 +27,9 @@ void	insert_page_after_page(t_page *prev, t_page *page)
 
 	next = prev->next;
 	page->next = next;
-	if (next)
-		next->prev = page;
 	prev->next = page;
 	page->prev = prev;
+	next->prev = page;
 }
 
 void	cut_page(t_page *page)
@@ -41,8 +40,7 @@ void	cut_page(t_page *page)
 	next = page->next;
 	prev = page->prev;
 	prev->next = next;
-	if (next)
-		next->prev = prev;
+	next->prev = prev;
 	page->next = NULL;
 	page->prev = NULL;
 }

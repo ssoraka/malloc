@@ -41,7 +41,7 @@ t_page	*get_page_with_mem(void *ptr)
 	if (!ptr)
 		return (NULL);
 	page = get_first_page();
-	while(page)
+	while(not_end(page))
 	{
 		end = (char *)(page + 1) + page->size;
 		if (ptr > (void *)page && ptr < end)

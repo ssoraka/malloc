@@ -132,9 +132,9 @@ void	ft_print_mem() {
 
 	page = get_first_page();
 //	ft_page_to_str(page);
-	if (!page)
+	if (!not_end(page))
 		ft_putstr("Where is no used memory\n");
-	while(page) {
+	while(not_end(page)) {
 		ft_print_page(page);
 		page = page->next;
 	}

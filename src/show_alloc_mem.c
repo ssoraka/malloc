@@ -64,7 +64,7 @@ void	show_alloc_mem()
 
 	total = 0;
 	page = get_first_page();
-	while(page)
+	while(not_end(page))
 	{
 		print_first_string(page);
 		block = page->alloc.next;

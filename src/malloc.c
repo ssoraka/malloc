@@ -62,7 +62,7 @@ void	*try_alloc_in_used_memory(size_t size)
 	t_block *block;
 
 	page = get_first_page();
-	while(page)
+	while(not_end(page))
 	{
 		if (page->size > size)
 			if ((block = find_empty_space_on_page(page, size)))

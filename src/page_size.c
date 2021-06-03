@@ -11,7 +11,7 @@ int		size_from_type(int type)
 //	if (type == SMALL)
 //		return (getpagesize() * SMALL_SIZE);
 	if (type == TINY)
-		return (256);
+		return (128);
 	if (type == SMALL)
 		return (256);
 	return (0);

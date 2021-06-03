@@ -18,23 +18,34 @@ int main() {
 
 
 	char *ptr;
+	char *ptr1;
+	char *ptr2;
 
-	ptr = ft_malloc(10);
-	ft_memcpy(ptr, "aaaaaaaaaaaaaaa", 16);
+	ptr = ft_malloc(30);
+	ptr1 = ft_malloc(40);
+	ptr2 = ft_malloc(48);
+
+
+//	ptr = ft_malloc(120);
+//	ptr = ft_malloc(120);
+//	ft_memcpy(ptr, "aaaaaaaaaaaaaaa", 16);
 //	ptr = ft_malloc(15);
 //	ft_memcpy(ptr, "bbbbbbb", 7);
 //	char *ptr1 = ft_malloc(20);
 //	ft_memcpy(ptr1, "ZZZZZZZZZZZZZZZZZZZZZZZ", 24);
-	ft_print_mem();
+//	ft_print_mem();
 	ft_free(ptr);
-//	ft_free(ptr1);
+	ft_free(ptr1);
+	ft_free(ptr2);
 
 
 //	ft_malloc(170);
 //	ft_memcpy(ptr, "b", 2);
 
 
-	ft_print_mem();
+//	ft_print_mem();
+
+	print_store();
 
 	return (0);
 
@@ -141,7 +152,7 @@ int main() {
 //	t_store	*store = get_store();
 //
 //
-//	store_to_string(store);
+//	print_store(store);
 
 
 //	int a = -1;

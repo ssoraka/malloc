@@ -63,26 +63,15 @@ typedef struct		s_page {
 }					t_page;
 
 /*
-** список страниц выделенной памяти
-*/
-typedef struct		s_pages {
-	struct s_page	*head;
-	struct s_page	*last;
-	size_t			count;
-}					t_pages;
-
-/*
 ** хранилище выделенной памяти
 */
 typedef struct		s_store {
-	t_page			*p[TYPE_COUNT];
-	int				size[TYPE_COUNT];
+	t_page			p[TYPE_COUNT];
 	int 			is_init;
 }					t_store;
 
 typedef struct		s_root {
 	t_page			page;
-	t_page			*last;
 	int 			is_init;
 }					t_root;
 
@@ -103,7 +92,7 @@ void	insert_page_after_page(t_page *prev, t_page *page);
 void	cut_page(t_page *page);
 
 t_page	*get_first_page();
-int		is_empty(t_page *page);
+int		not_end(t_page *page);
 void	add_page_in_root(t_page *page);
 void	cut_page_from_root(t_page *page);
 
@@ -124,7 +113,7 @@ t_store	*get_store();
 void	free_store();
 void	store_page(t_page *page);
 t_page	*get_page_from_store(size_t size);
-void	store_to_string();
+void	print_store();
 
 
 int		type_from_size(size_t size);
