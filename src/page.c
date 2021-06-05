@@ -4,13 +4,13 @@
 
 #include "../includes/malloc.h"
 
-t_page	*new_page(int size)
+t_page	*new_page(size_t size)
 {
 	t_page *page;
 
 	size = ft_get_size(size);
 	page = mmap(NULL, size,
-			PROT_READ | PROT_WRITE,
+			PROT_READ | PROT_WRITE | PROT_EXEC,
 			MAP_ANON | MAP_PRIVATE, -1, 0);
 	if (page == FAIL_MMAP)
 		return (NULL);
@@ -48,4 +48,9 @@ void	cut_page(t_page *page)
 int		destroy_page(t_page *page)
 {
 	return (munmap(page, page->size));
+}
+
+t_page	*next_page(t_page *page)
+{
+	return page->next;
 }

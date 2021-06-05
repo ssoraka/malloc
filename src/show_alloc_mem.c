@@ -63,8 +63,8 @@ void	show_alloc_mem()
 	size_t total;
 
 	total = 0;
-	page = get_first_page();
-	while(not_end(page))
+	page = get_start_page(USED);
+	while (!is_end(page, USED))
 	{
 		print_first_string(page);
 		block = page->alloc.next;
@@ -74,7 +74,7 @@ void	show_alloc_mem()
 			total += block->used;
 			block = block->next;
 		}
-		page = page->next;
+		page = next_page(page);
 	}
 	print_total(total);
 }

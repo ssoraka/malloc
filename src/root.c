@@ -4,35 +4,22 @@
 
 #include "../includes/malloc.h"
 
-t_root	*get_root()
+t_pages	*pages_by_type(int type)
 {
-	static t_root root;
-
-	if (!root.is_init)
-	{
-		root.page.next = &root.page;
-		root.page.prev = &root.page;
-		root.is_init = 1;
-	}
-	return (&root);
+	return (&(get_store()->p[type]));
 }
 
-t_page	*get_first_page()
+t_page	*get_start_page(int type)
 {
-	return (get_root()->page.next);
+	return (pages_by_type(type)->page.next);
 }
 
-void	add_page_in_root(t_page *page)
+int		is_end(t_page *page, int type)
 {
-	insert_page_after_page(get_root()->page.prev, page);
+	return (page == &pages_by_type(type)->page);
 }
 
-void	cut_page_from_root(t_page *page)
+void	insert_start_page(t_page *page, int type)
 {
-	cut_page(page);
-}
-
-int		not_end(t_page *page)
-{
-	return (page != &get_root()->page);
+	insert_page_after_page(pages_by_type(type)->page.prev, page);
 }

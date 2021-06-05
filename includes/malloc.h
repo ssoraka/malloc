@@ -30,10 +30,12 @@ enum					e_status
 
 enum					e_type
 {
-	TINY,
-	SMALL,
-	LARGE,
-	TYPE_COUNT
+	TINY = 0,
+	SMALL = 1,
+	LARGE = 2,
+	STORE_COUNT = 3,
+	USED = 3,
+	TYPE_COUNT = 4
 }					t_type;
 
 enum					e_size
@@ -62,18 +64,21 @@ typedef struct		s_page {
 	struct s_block	alloc;
 }					t_page;
 
+typedef struct		s_pages {
+	t_page			page;
+}					t_pages;
 /*
 ** хранилище выделенной памяти
 */
 typedef struct		s_store {
-	t_page			p[TYPE_COUNT];
+	struct s_pages	p[TYPE_COUNT];
 	int 			is_init;
 }					t_store;
 
-typedef struct		s_root {
-	t_page			page;
-	int 			is_init;
-}					t_root;
+//typedef struct		s_root {
+//	t_page			page;
+//	int 			is_init;
+//}					t_root;
 
 void	ft_bzero(void *s, size_t n);
 void	ft_putchar(int chr);
@@ -84,22 +89,18 @@ char	*ft_strrevers(char *str);
 void	ft_putnbr(int n);
 int		ft_isprint(int c);
 
-t_page	*new_page(int size);
+t_page	*new_page(size_t size);
 int		destroy_page(t_page *page);
 size_t	ft_get_size(size_t size);
 size_t	ft_round(size_t size, int mod);
 void	insert_page_after_page(t_page *prev, t_page *page);
 void	cut_page(t_page *page);
+t_page *next_page(t_page *page);
 
-t_page	*get_first_page();
-int		not_end(t_page *page);
-void	add_page_in_root(t_page *page);
-void	cut_page_from_root(t_page *page);
-
-void	*ft_malloc(size_t size);
-void	ft_free(void *ptr);
-void	*ft_realloc(void *ptr, size_t size);
-void	*ft_calloc(size_t size);
+void	*malloc(size_t size);
+void	free(void *ptr);
+void	*realloc(void *ptr, size_t size);
+void	*calloc(size_t count, size_t size);
 
 void	ft_print_addres(void *ptr);
 void	ft_print_page(t_page *page);
@@ -115,6 +116,9 @@ void	store_page(t_page *page);
 t_page	*get_page_from_store(size_t size);
 void	print_store();
 
+void	insert_start_page(t_page *page, int type);
+int		is_end(t_page *page, int type);
+t_page	*get_start_page(int type);
 
 int		type_from_size(size_t size);
 int		size_from_type(int type);

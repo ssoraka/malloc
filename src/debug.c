@@ -118,7 +118,7 @@ void	ft_print_page(t_page *page) {
  */
 void	ft_page_to_str(t_page *page) {
 
-	printf("размер страницы %zu, вес страницы %d, количество блоков %zu, занято %zu, свободно %zu\n", page->size, sizeof(t_page), page->alloc_count, page->alloc.used, page->alloc.empty);
+	printf("размер страницы %zu, вес страницы %lu, количество блоков %zu, занято %zu, свободно %zu\n", page->size, sizeof(t_page), page->alloc_count, page->alloc.used, page->alloc.empty);
 
 	t_block *block = page->alloc.next;
 	while (block){
@@ -130,12 +130,12 @@ void	ft_page_to_str(t_page *page) {
 void	ft_print_mem() {
 	t_page *page;
 
-	page = get_first_page();
+	page = get_start_page(USED);
 //	ft_page_to_str(page);
-	if (!not_end(page))
+	if (is_end(page, USED))
 		ft_putstr("Where is no used memory\n");
-	while(not_end(page)) {
+	while(!is_end(page, USED)) {
 		ft_print_page(page);
-		page = page->next;
+		page = next_page(page);
 	}
 }

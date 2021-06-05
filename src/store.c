@@ -8,52 +8,46 @@
 
 void	free_store()
 {
-	t_page *start;
 	t_page *page;
-	int i;
+	int type;
 
-	i = 0;
-	while (i < TYPE_COUNT)
+	type = 0;
+	while (type < TYPE_COUNT)
 	{
-		start = &get_store()->p[i];
-		page = start->next;
-		while (page != start)
+		page = get_start_page(type);
+		while (!is_end(page, type))
 		{
 			cut_page(page);
 			destroy_page(page);
-			page = start->next;
+			page = get_start_page(type);
 		}
-		i++;
+		type++;
 	}
 }
 
 void	store_page(t_page *page)
 {
-	t_page *start;
 	int type;
 
 	type = type_from_size(page->size);
-	start = &get_store()->p[type];
-	insert_page_after_page(start, page);
+	insert_start_page(page, type);
 }
 
 t_page	*get_page_from_store(size_t size)
 {
-	t_page *start;
 	t_page *page;
 	int type;
 
 	size = ft_get_size(size);
 	type = type_from_size(size);
-	start = &get_store()->p[type];
-	page = start->next;
-	if (page == start)
+	page = get_start_page(type);
+	if (is_end(page, type))
 		return (NULL);
 	cut_page(page);
 	return (page);
 }
 
-int		fill_store(t_store *store)
+int		fill_store()
 {
 	t_page *page;
 	int i;
@@ -81,15 +75,16 @@ int		fill_store(t_store *store)
 
 void	init_store(t_store *store)
 {
-	t_page *page;
+	t_pages *pages;
 	int i;
 
+	pages = store->p;
 	i = 0;
 	while (i < TYPE_COUNT)
 	{
-		page = &store->p[i];
-		page->next = page;
-		page->prev = page;
+		pages->page.next = &pages->page;
+		pages->page.prev = &pages->page;
+		pages++;
 		i++;
 	}
 	store->is_init = 1;
@@ -102,7 +97,7 @@ t_store	*get_store()
 	if (!store.is_init)
 	{
 		init_store(&store);
-		if (!fill_store(&store))
+		if (!fill_store())
 			return (NULL);
 	}
 	return (&store);
@@ -122,22 +117,20 @@ void	print_parameters(int type)
 
 void	print_store()
 {
-	t_page *start;
 	t_page *page;
-	int i;
+	int type;
 
-	i = 0;
-	while (i < TYPE_COUNT)
+	type = 0;
+	while (type < STORE_COUNT)
 	{
-		start = &get_store()->p[i];
-		page = start->next;
-		if (page != start)
-			print_parameters(i);
-		while (page != start)
+		page = get_start_page(type);
+		if (!is_end(page, type))
+			print_parameters(type);
+		while (!is_end(page, type))
 		{
 			ft_print_page(page);
-			page = page->next;
+			page = next_page(page);
 		}
-		i++;
+		type++;
 	}
 }

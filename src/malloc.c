@@ -61,19 +61,19 @@ void	*try_alloc_in_used_memory(size_t size)
 	t_page *page;
 	t_block *block;
 
-	page = get_first_page();
-	while(not_end(page))
+	page = get_start_page(USED);
+	while (!is_end(page, USED))
 	{
 		if (page->size > size)
 			if ((block = find_empty_space_on_page(page, size)))
 				return (alloc_mem(page, block, size));
-		page = page->next;
+		page = next_page(page);
 	}
 	return (NULL);
 }
 
 
-void	*ft_malloc(size_t size)
+void	*malloc(size_t size)
 {
 	t_page	*page;
 	void	*ptr;
@@ -86,7 +86,7 @@ void	*ft_malloc(size_t size)
 	if (!(page = get_page_from_store(size))
 	&& !(page = new_page(size)))
 			return (NULL);
-	add_page_in_root(page);
+	insert_start_page(page,USED);
 	ptr = alloc_mem(page, &page->alloc, size);
 	return (ptr);
 }

@@ -2,6 +2,9 @@
 
 void test();
 
+int test2() {
+	return -1;
+}
 
 int main() {
 
@@ -9,42 +12,67 @@ int main() {
 //	return 0;
 
 //	char *ptr;
-//	ptr = ft_malloc(10);
-//	ptr = ft_malloc(15);
-//	char *ptr1 = ft_malloc(20);
-//	ft_free(ptr);
-//	ft_free(ptr1);
+//	ptr = malloc(10);
+//	ptr = malloc(15);
+//	char *ptr1 = malloc(20);
+//	free(ptr);
+//	free(ptr1);
 
 
 
 	char *ptr;
 	char *ptr1;
 	char *ptr2;
+	char *ptr3;
 
-	ptr = ft_malloc(30);
-	ptr1 = ft_malloc(40);
-	ptr2 = ft_malloc(48);
+	ptr = malloc(32);
+	ptr1 = malloc(24);
+	ptr2 = malloc(48);
+
+	ptr3 = malloc(8);
 
 
-//	ptr = ft_malloc(120);
-//	ptr = ft_malloc(120);
+
+//	ptr = malloc(120);
+//	ptr = malloc(120);
 //	ft_memcpy(ptr, "aaaaaaaaaaaaaaa", 16);
-//	ptr = ft_malloc(15);
+//	ptr = malloc(15);
 //	ft_memcpy(ptr, "bbbbbbb", 7);
-//	char *ptr1 = ft_malloc(20);
+//	char *ptr1 = malloc(20);
 //	ft_memcpy(ptr1, "ZZZZZZZZZZZZZZZZZZZZZZZ", 24);
 //	ft_print_mem();
-	ft_free(ptr);
-	ft_free(ptr1);
-	ft_free(ptr2);
+//	free(ptr);
+//	free(ptr1);
+//	free(ptr2);
+
+	char *ptr4 = malloc(100);
+	char *ptr5 = malloc(100);
 
 
-//	ft_malloc(170);
+//	malloc(170);
 //	ft_memcpy(ptr, "b", 2);
 
+//	free(ptr);
+//	free(ptr1);
+//	free(ptr2);
+//	free(ptr3);
+//	free(ptr4);
+//	free(ptr5);
 
-//	ft_print_mem();
+	ft_print_mem();
 
+
+//	char *a = test2;
+//	for (int i = 0; i < 20; i++) {
+//		printf("%02hhx ", *a);
+//		a++;
+//	}
+//
+//	ft_memcpy(ptr1, test2, 24);
+//
+//	int (*f)(void) = ptr1;
+//
+//	printf("\n%d\n", f());
 	print_store();
 
 	return (0);
@@ -129,22 +157,22 @@ int main() {
 //	00 90 6e 01 01 00
 //	00 b0 93 05 01 00
 //	ft_print_mem();
-//	ft_realloc(ptr, 6);
+//	realloc(ptr, 6);
 //	ft_print_mem();
-//	ft_realloc(ptr, 30);
+//	realloc(ptr, 30);
 //	ft_print_mem();
-//	ft_malloc(3);
-//	ft_malloc(1);
-//	ft_calloc(10);
-//	ptr2 = ft_malloc(10000);
-//	ptr3 = ft_malloc(100000);
-//	ft_free(ptr2);
-//	ptr = ft_realloc(ptr, 5);
-//	ptr = ft_realloc(ptr, 30);
+//	malloc(3);
+//	malloc(1);
+//	calloc(10);
+//	ptr2 = malloc(10000);
+//	ptr3 = malloc(100000);
+//	free(ptr2);
+//	ptr = realloc(ptr, 5);
+//	ptr = realloc(ptr, 30);
 
-	//ptr2 = ft_malloc(10);
-	//ft_free(ptr);
-	//ptr = ft_malloc(5);
+	//ptr2 = malloc(10);
+	//free(ptr);
+	//ptr = malloc(5);
 
 //	ft_print_mem();
 //	show_alloc_mem();
