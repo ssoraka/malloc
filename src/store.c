@@ -6,10 +6,10 @@
 
 #define PAGE_COUNT 2
 
-void	free_store()
+void	free_store(void)
 {
-	t_page *page;
-	int type;
+	t_page	*page;
+	int		type;
 
 	type = 0;
 	while (type < TYPE_COUNT)
@@ -27,7 +27,7 @@ void	free_store()
 
 void	store_page(t_page *page)
 {
-	int type;
+	int	type;
 
 	type = type_from_size(page->size);
 	insert_start_page(page, type);
@@ -35,8 +35,8 @@ void	store_page(t_page *page)
 
 t_page	*get_page_from_store(size_t size)
 {
-	t_page *page;
-	int type;
+	t_page	*page;
+	int		type;
 
 	size = ft_get_size(size);
 	type = type_from_size(size);
@@ -47,36 +47,39 @@ t_page	*get_page_from_store(size_t size)
 	return (page);
 }
 
-int		fill_store()
+int	new_page_by_type(int type)
 {
-	t_page *page;
-	int i;
+	t_page	*page;
+
+	page = new_page(size_from_type(type) - sizeof(t_page) - sizeof(t_block));
+	if (!page)
+		return (0);
+	store_page(page);
+	return (1);
+}
+
+int	fill_store(void)
+{
+	int		i;
 
 	i = 0;
 	while (i < PAGE_COUNT)
 	{
-		if (!(page = new_page(size_from_type(TINY) - sizeof(t_page) - sizeof(t_block))))
+		if (!new_page_by_type(TINY)
+			|| !new_page_by_type(SMALL))
 		{
 			free_store();
 			return (0);
 		}
-		store_page(page);
-		if (!(page = new_page(size_from_type(SMALL) - sizeof(t_page) - sizeof(t_block))))
-		{
-			free_store();
-			return (0);
-		}
-		store_page(page);
 		i++;
 	}
 	return (1);
 }
 
-
 void	init_store(t_store *store)
 {
-	t_pages *pages;
-	int i;
+	t_pages	*pages;
+	int		i;
 
 	pages = store->p;
 	i = 0;
@@ -90,9 +93,9 @@ void	init_store(t_store *store)
 	store->is_init = 1;
 }
 
-t_store	*get_store()
+t_store	*get_store(void)
 {
-	static t_store store;
+	static t_store	store;
 
 	if (!store.is_init)
 	{
@@ -115,10 +118,10 @@ void	print_parameters(int type)
 	ft_putstr("\n");
 }
 
-void	print_store()
+void	print_store(void)
 {
-	t_page *page;
-	int type;
+	t_page	*page;
+	int		type;
 
 	type = 0;
 	while (type < STORE_COUNT)

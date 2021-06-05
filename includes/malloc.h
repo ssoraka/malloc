@@ -75,11 +75,6 @@ typedef struct		s_store {
 	int 			is_init;
 }					t_store;
 
-//typedef struct		s_root {
-//	t_page			page;
-//	int 			is_init;
-//}					t_root;
-
 void	ft_bzero(void *s, size_t n);
 void	ft_putchar(int chr);
 void	ft_putstr(char *str);
@@ -104,14 +99,13 @@ void	*calloc(size_t count, size_t size);
 
 void	ft_print_addres(void *ptr);
 void	ft_print_page(t_page *page);
-void	ft_page_to_str(t_page *page);
-void	ft_print_mem();
+void	ft_print_mem(void);
 
-void	show_alloc_mem();
+void	show_alloc_mem(void);
 
 
-t_store	*get_store();
-void	free_store();
+t_store	*get_store(void);
+void	free_store(void);
 void	store_page(t_page *page);
 t_page	*get_page_from_store(size_t size);
 void	print_store();

@@ -6,7 +6,7 @@
 
 t_page	*new_page(size_t size)
 {
-	t_page *page;
+	t_page	*page;
 
 	size = ft_get_size(size);
 	page = mmap(NULL, size,
@@ -23,7 +23,7 @@ t_page	*new_page(size_t size)
 
 void	insert_page_after_page(t_page *prev, t_page *page)
 {
-	t_page *next;
+	t_page	*next;
 
 	next = prev->next;
 	page->next = next;
@@ -34,8 +34,8 @@ void	insert_page_after_page(t_page *prev, t_page *page)
 
 void	cut_page(t_page *page)
 {
-	t_page *prev;
-	t_page *next;
+	t_page	*prev;
+	t_page	*next;
 
 	next = page->next;
 	prev = page->prev;
@@ -45,12 +45,12 @@ void	cut_page(t_page *page)
 	page->prev = NULL;
 }
 
-int		destroy_page(t_page *page)
+int	destroy_page(t_page *page)
 {
 	return (munmap(page, page->size));
 }
 
 t_page	*next_page(t_page *page)
 {
-	return page->next;
+	return (page->next);
 }

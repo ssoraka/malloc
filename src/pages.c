@@ -14,7 +14,7 @@ t_page	*get_start_page(int type)
 	return (pages_by_type(type)->page.next);
 }
 
-int		is_end(t_page *page, int type)
+int	is_end(t_page *page, int type)
 {
 	return (page == &pages_by_type(type)->page);
 }
