@@ -57,7 +57,7 @@ typedef struct s_page
 
 typedef struct s_pages
 {
-	t_page			page;
+	struct s_page	page;
 }					t_pages;
 
 /*
