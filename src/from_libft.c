@@ -37,26 +37,31 @@ void	ft_memcpy(void *dst, void *src, size_t n)
 		*(dest++) = *(source++);
 }
 
-void	ft_putchar_fd(int chr, int fd) {
+void	ft_putchar_fd(int chr, int fd)
+{
 	write(fd, (void *)&chr, 1);
 }
 
-void	ft_putchar(int chr) {
+void	ft_putchar(int chr)
+{
 	write(1, (void *)&chr, 1);
 }
 
-void	ft_putstr_fd(char *str, int fd) {
-	while (*str) {
+void	ft_putstr_fd(char *str, int fd)
+{
+	while (*str)
+	{
 		ft_putchar_fd(*str, fd);
 		str++;
 	}
 }
 
-void	ft_putstr(char *str) {
+void	ft_putstr(char *str)
+{
 	ft_putstr_fd(str, 1);
 }
 
-size_t		ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 	char	*s;
@@ -105,15 +110,15 @@ void	ft_putnbr_fd(int n, int fd)
 	ft_putchar_fd('0' + n % 10, fd);
 }
 
-int		ft_isprint(int c)
+int	ft_isprint(int c)
 {
 	if (c >= 32 && c <= 126)
 		return (1);
 	return (0);
 }
 
-int		is_null(void *ptr, void **addr)
+int	is_null(void *ptr, void **addr)
 {
 	*addr = ptr;
-	return ptr == NULL;
+	return (ptr == NULL);
 }
