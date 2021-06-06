@@ -4,32 +4,13 @@
 
 #include "../includes/malloc.h"
 
-/*
- * так, я начал неправильно
- * нужно сначала попытаться вставить в последний кадр новый блок памяти
- * далее проверить все предыдущие
- * далее доставать из хранилища выделенные блоки памяти
- * далее создавать
- *
- * при освобождении блоки возвращать в хранилище
- *
- * в каждом кадре храним список ссылок на выделенную память
- * для этих списков нужны свои кадры
- * но их уже не нужно жестко контролировать.
- * всю запись вести в обратном порядке, добавлять только в начало списка
- *
- * надо навставлять заглушек, вместо выделения памяти
- * и отладить все изолированно
- */
-
-
 t_block	*find_empty_space_on_page(t_page *page, size_t size)
 {
-	t_block *block;
+	t_block	*block;
 
 	block = &page->alloc;
 	size += sizeof(t_block);
-	while(block)
+	while (block)
 	{
 		if (block->empty >= size)
 			break ;
@@ -40,17 +21,16 @@ t_block	*find_empty_space_on_page(t_page *page, size_t size)
 
 void	*alloc_mem(t_page *page, t_block *prev, size_t size)
 {
-	t_block *block;
-	void *ptr;
+	t_block	*block;
+	void	*ptr;
 
 	page->alloc_count++;
-	block = (t_block *)((char *)(prev + 1) + prev->used) ;
+	block = (t_block *)((char *)(prev + 1) + prev->used);
 	block->next = prev->next;
 	prev->next = block;
 	block->used = size;
 	block->empty = prev->empty - size - sizeof(t_block);
 	prev->empty = 0;
-
 	ptr = (void *)(++block);
 	ft_memset(ptr, size, 'X');
 	return (ptr);
@@ -58,22 +38,21 @@ void	*alloc_mem(t_page *page, t_block *prev, size_t size)
 
 void	*try_alloc_in_used_memory(size_t size)
 {
-	t_page *page;
-	t_block *block;
+	t_page	*page;
+	t_block	*block;
 
 	page = get_start_page(USED);
 	while (!is_end(page, USED))
 	{
 		if (page->size > size)
-			if ((block = find_empty_space_on_page(page, size)))
+			if (!is_null(find_empty_space_on_page(page, size), (void **)&block))
 				return (alloc_mem(page, block, size));
 		page = next_page(page);
 	}
 	return (NULL);
 }
 
-
-void	*malloc(size_t size)
+void	*malloc1(size_t size)
 {
 	t_page	*page;
 	void	*ptr;
@@ -81,12 +60,12 @@ void	*malloc(size_t size)
 	if (!size)
 		return (0);
 	size = ft_round(size, sizeof(long));
-	if ((ptr = try_alloc_in_used_memory(size)))
+	if (!is_null(try_alloc_in_used_memory(size), &ptr))
 		return (ptr);
-	if (!(page = get_page_from_store(size))
-	&& !(page = new_page(size)))
-			return (NULL);
-	insert_start_page(page,USED);
+	if (is_null(get_page_from_store(size), (void **)&page)
+		&& is_null(new_page(size), (void **)&page))
+		return (NULL);
+	insert_start_page(page, USED);
 	ptr = alloc_mem(page, &page->alloc, size);
 	return (ptr);
 }

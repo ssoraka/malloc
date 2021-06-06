@@ -3,10 +3,12 @@
 //
 
 #include "../includes/malloc.h"
+#define FREE_ERROR1 "malloc: *** error for object "
+#define FREE_ERROR2 ": pointer being freed was not allocated\n"
 
 void	free_next_block(t_page *page, t_block *block)
 {
-	t_block *next;
+	t_block	*next;
 
 	next = block->next;
 	block->next = next->next;
@@ -16,14 +18,15 @@ void	free_next_block(t_page *page, t_block *block)
 
 t_block	*get_prev_block_from_page(t_page *page, void *ptr)
 {
-	t_block *prev;
-	t_block *block;
-	void *mem;
+	t_block	*prev;
+	t_block	*block;
+	void	*mem;
 
 	if (!page || !ptr)
 		return (NULL);
 	prev = &page->alloc;
-	while (prev->next) {
+	while (prev->next)
+	{
 		block = prev->next;
 		mem = (void *)(block + 1);
 		if (mem == ptr)
@@ -35,8 +38,8 @@ t_block	*get_prev_block_from_page(t_page *page, void *ptr)
 
 t_page	*get_page_with_mem(void *ptr)
 {
-	t_page *page;
-	void *end;
+	t_page	*page;
+	void	*end;
 
 	if (!ptr)
 		return (NULL);
@@ -51,35 +54,39 @@ t_page	*get_page_with_mem(void *ptr)
 	return (NULL);
 }
 
-void	free(void *ptr){
-	t_page *page;
-	t_block *block;
+void	free1(void *ptr)
+{
+	t_page	*page;
+	t_block	*block;
 
-	if (!(page = get_page_with_mem(ptr))
-	|| !(block = get_prev_block_from_page(page, ptr)))
+	page = get_page_with_mem(ptr);
+	block = get_prev_block_from_page(page, ptr);
+	if (!page || !block)
 	{
-		/*TODO надо сделать ошибку освобождения неаллоцированной памяти*/
-		return;
+		ft_putstr_fd(FREE_ERROR1, 2);
+		ft_print_addres(ptr, 2);
+		ft_putstr_fd(FREE_ERROR2, 2);
+		free_store();
+		exit(134);
 	}
 	free_next_block(page, block);
-	/*TODO проверить работоспособность*/
 	if (!page->alloc_count)
 	{
 		cut_page(page);
 		store_page(page);
 	}
-
 }
 
 void	*realloc(void *ptr, size_t size)
 {
-	t_page *page;
-	t_block *block;
-	t_block *alloc;
+	t_page	*page;
+	t_block	*block;
+	t_block	*alloc;
 
 	size = ft_round(size, sizeof(long));
 	page = get_page_with_mem(ptr);
-	if (!(block = get_prev_block_from_page(page, ptr)))
+	block = get_prev_block_from_page(page, ptr);
+	if (!block)
 		return (NULL);
 	alloc = block->next;
 	if (alloc->used + alloc->empty > size)
@@ -88,7 +95,8 @@ void	*realloc(void *ptr, size_t size)
 		alloc->used = size;
 		return ((void *)(++alloc));
 	}
-	if (!(ptr = malloc(size)))
+	ptr = malloc1(size);
+	if (!ptr)
 		return (NULL);
 	ft_memcpy(ptr, ptr, alloc->used);
 	free_next_block(page, block);
@@ -97,10 +105,11 @@ void	*realloc(void *ptr, size_t size)
 
 void	*calloc(size_t count, size_t size)
 {
-	void *ptr;
+	void	*ptr;
 
 	size = ft_round(size * count, sizeof(long));
-	if (!(ptr = malloc(size)))
+	ptr = malloc1(size);
+	if (!ptr)
 		return (NULL);
 	ft_bzero(ptr, size);
 	return (ptr);

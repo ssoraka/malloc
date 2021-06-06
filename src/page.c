@@ -12,7 +12,7 @@ t_page	*new_page(size_t size)
 	page = mmap(NULL, size,
 			PROT_READ | PROT_WRITE | PROT_EXEC,
 			MAP_ANON | MAP_PRIVATE, -1, 0);
-	if (page == FAIL_MMAP)
+	if (page == (void *)FAIL_MMAP)
 		return (NULL);
 	ft_bzero((void *)page, sizeof(t_page));
 	page->size = size;

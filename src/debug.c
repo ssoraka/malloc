@@ -91,7 +91,7 @@ void	ft_print_page_lines(t_page *page, char *chr, int count)
 {
 	int	i;
 
-	ft_print_addres(chr);
+	ft_print_addres(chr, 1);
 	ft_putstr("  ");
 	i = -1;
 	while (++i < count)

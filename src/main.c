@@ -18,18 +18,19 @@ int main() {
 //	free(ptr);
 //	free(ptr1);
 
-
+	char *p1 = malloc1(10);
+	free1(p1);
 
 	char *ptr;
 	char *ptr1;
 	char *ptr2;
 	char *ptr3;
 
-	ptr = malloc(32);
-	ptr1 = malloc(24);
-	ptr2 = malloc(48);
+	ptr = malloc1(32);
+	ptr1 = malloc1(24);
+	ptr2 = malloc1(48);
 
-	ptr3 = malloc(8);
+	ptr3 = malloc1(8);
 
 
 
@@ -45,8 +46,8 @@ int main() {
 //	free(ptr1);
 //	free(ptr2);
 
-	char *ptr4 = malloc(100);
-	char *ptr5 = malloc(100);
+	char *ptr4 = malloc1(100);
+	char *ptr5 = malloc1(100);
 
 
 //	malloc(170);
@@ -73,19 +74,19 @@ int main() {
 //	int (*f)(void) = ptr1;
 //
 //	printf("\n%d\n", f());
-	print_store();
+//	print_store();
 
 	return (0);
 
 
-	printf("%p\n", malloc(3));
-	char *p = malloc(30);
+	printf("%p\n", malloc1(3));
+	char *p = malloc1(30);
 	printf("%p\n", p);
-	char *p2 = malloc(30);
+	char *p2 = malloc1(30);
 	printf("%p\n", p2);
-	printf("%p\n", malloc(1));
+	printf("%p\n", malloc1(1));
 
-	char *p3 = malloc(10000000);
+	char *p3 = malloc1(10000000);
 	printf("%p\n", p3);
 
 	//printf("%c\n", p[-1600]);

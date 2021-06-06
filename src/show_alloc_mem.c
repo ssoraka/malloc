@@ -6,7 +6,7 @@
 
 #define ADDRES_LEN 18
 
-void	ft_print_addres(void *ptr)
+void	ft_print_addres(void *ptr, int fd)
 {
 	char	temp[ADDRES_LEN];
 	size_t	i;
@@ -24,7 +24,7 @@ void	ft_print_addres(void *ptr)
 	temp[i++] = '0';
 	temp[i] = '\0';
 	ft_strrevers(temp);
-	ft_putstr(temp);
+	ft_putstr_fd(temp, fd);
 }
 
 void	print_first_string(t_page *page)
@@ -35,32 +35,32 @@ void	print_first_string(t_page *page)
 		ft_putstr("SMALL : ");
 	else
 		ft_putstr("LARGE : ");
-	ft_print_addres(page);
+	ft_print_addres(page, 1);
 	ft_putstr("\n");
 }
 
 void	print_block_info(t_block *block)
 {
-	ft_print_addres((void *)(block + 1));
+	ft_print_addres((void *)(block + 1), 1);
 	ft_putstr(" - ");
-	ft_print_addres((void *)((char *)(block + 1) + block->used));
+	ft_print_addres((void *)((char *)(block + 1) + block->used), 1);
 	ft_putstr(" : ");
-	ft_putnbr(block->used);
+	ft_putnbr_fd(block->used, 1);
 	ft_putstr(" bytes\n");
 }
 
 void	print_total(size_t total)
 {
 	ft_putstr("TOTAL : ");
-	ft_putnbr(total);
+	ft_putnbr_fd(total, 1);
 	ft_putstr(" bytes\n");
 }
 
-void	show_alloc_mem()
+void	show_alloc_mem(void)
 {
-	t_page *page;
-	t_block *block;
-	size_t total;
+	t_page	*page;
+	t_block	*block;
+	size_t	total;
 
 	total = 0;
 	page = get_start_page(USED);

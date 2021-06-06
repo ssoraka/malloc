@@ -37,15 +37,23 @@ void	ft_memcpy(void *dst, void *src, size_t n)
 		*(dest++) = *(source++);
 }
 
+void	ft_putchar_fd(int chr, int fd) {
+	write(fd, (void *)&chr, 1);
+}
+
 void	ft_putchar(int chr) {
 	write(1, (void *)&chr, 1);
 }
 
-void	ft_putstr(char *str) {
+void	ft_putstr_fd(char *str, int fd) {
 	while (*str) {
-		ft_putchar(*str);
+		ft_putchar_fd(*str, fd);
 		str++;
 	}
+}
+
+void	ft_putstr(char *str) {
+	ft_putstr_fd(str, 1);
 }
 
 size_t		ft_strlen(const char *str)
@@ -81,20 +89,20 @@ char	*ft_strrevers(char *str)
 	return (str);
 }
 
-void	ft_putnbr(int n)
+void	ft_putnbr_fd(int n, int fd)
 {
 	if (n < 0)
-		ft_putchar('-');
+		ft_putchar_fd('-', fd);
 	if (n == -2147483648)
 	{
 		n = 147483648;
-		ft_putchar('2');
+		ft_putchar_fd('2', fd);
 	}
 	if (n < 0)
 		n = -n;
 	if (n >= 10)
-		ft_putnbr(n / 10);
-	ft_putchar('0' + n % 10);
+		ft_putnbr_fd(n / 10, fd);
+	ft_putchar_fd('0' + n % 10, fd);
 }
 
 int		ft_isprint(int c)
@@ -102,4 +110,10 @@ int		ft_isprint(int c)
 	if (c >= 32 && c <= 126)
 		return (1);
 	return (0);
+}
+
+int		is_null(void *ptr, void **addr)
+{
+	*addr = ptr;
+	return ptr == NULL;
 }

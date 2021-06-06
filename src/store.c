@@ -114,7 +114,7 @@ void	print_parameters(int type)
 		ft_putstr("SMALL PAGES ");
 	else
 		ft_putstr("LARGE PAGES ");
-	ft_putnbr(size_from_type(type));
+	ft_putnbr_fd(size_from_type(type), 1);
 	ft_putstr("\n");
 }
 
