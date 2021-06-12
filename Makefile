@@ -14,8 +14,8 @@ ifeq ($(HOSTTYPE),)
 	HOSTTYPE := $(shell uname -m)_$(shell uname -s)
 endif
 
-SRCS	=	debug.c free.c from_libft.c main.c malloc.c \
-			page.c page_size.c pages.c show_alloc_mem.c store.c test.c
+SRCS	=	debug.c free.c from_libft.c malloc.c \
+			page.c page_size.c pages.c show_alloc_mem.c store.c
 
 PATH_OBJ	= obj
 PATH_SRC	= src

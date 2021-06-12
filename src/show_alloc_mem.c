@@ -29,9 +29,9 @@ void	ft_print_addres(void *ptr, int fd)
 
 void	print_first_string(t_page *page)
 {
-	if (page->size < getpagesize() * TINY_SIZE)
+	if (page->size < (size_t)getpagesize() * TINY_SIZE)
 		ft_putstr("TINY  : ");
-	else if (page->size < getpagesize() * SMALL_SIZE)
+	else if (page->size < (size_t)getpagesize() * SMALL_SIZE)
 		ft_putstr("SMALL : ");
 	else
 		ft_putstr("LARGE : ");

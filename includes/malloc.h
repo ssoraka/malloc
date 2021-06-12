@@ -61,6 +61,6 @@ int		is_end(t_page *page, int type);
 t_page	*get_start_page(int type);
 
 int		type_from_size(size_t size);
-int		size_from_type(int type);
+size_t	size_from_type(int type);
 
 #endif //MALLOC_MALLOC_H

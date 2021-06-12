@@ -104,9 +104,9 @@ void	ft_print_page_lines(t_page *page, char *chr, int count)
 
 void	ft_print_page(t_page *page)
 {
-	int		i;
+	size_t	i;
 	char	*chr;
-	int		count;
+	size_t	count;
 
 	ft_print_page_header(page);
 	chr = (char *)(page);
