@@ -16,20 +16,12 @@
 # define FAIL_MMAP -1
 # define BYTES_IN_LINE 16
 # include "malloc_structs.h"
+# include "../libft/libft.h"
 /*
  * (void *)(-1)
  */
 
-void	ft_bzero(void *s, size_t n);
-void	ft_putchar(int chr);
-void	ft_putstr(char *str);
-void	ft_memset(void *s, size_t n, char chr);
-void	ft_memcpy(void *dst, void *src, size_t n);
-char	*ft_strrevers(char *str);
-void	ft_putnbr_fd(int n, int fd);
-void	ft_putstr_fd(char *str, int fd);
-int		ft_isprint(int c);
-int		is_null(void *ptr, void **addr);
+
 
 t_page	*new_page(size_t size);
 int		destroy_page(t_page *page);
