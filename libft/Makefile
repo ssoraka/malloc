@@ -11,7 +11,7 @@
 #******************************************************************************#
 
 GCC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fPIC
 NAME = libft.a
 HEADER =	libft.h \
 			collections/collections_header.h \
