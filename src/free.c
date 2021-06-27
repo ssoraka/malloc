@@ -90,22 +90,25 @@ void	*ft_realloc(void *ptr, size_t size)
 	t_page	*page;
 	t_block	*block;
 	t_block	*alloc;
+	void	*new_alloc;
 
 	page = get_page_with_mem(ptr);
 	block = get_prev_block_from_page(page, ptr);
 	if (!block)
 		return (NULL);
 	alloc = block->next;
-	if (alloc->used + alloc->empty > size)
+	if (type_from_size(get_page_size(size)) == type_from_size(page->size)
+			&& alloc->used + alloc->empty >= size)
 	{
 		alloc->empty = alloc->used + alloc->empty - size;
 		alloc->used = size;
-		return ((void *)(++alloc));
+		return (ptr);
 	}
-	ptr = ft_malloc(size);
-	if (!ptr)
+	new_alloc = ft_malloc(size);
+	if (!new_alloc)
 		return (NULL);
-	ft_memcpy(ptr, ptr, alloc->used);
+	size = (size < alloc->used) ? size : alloc->used;
+	ft_memcpy(new_alloc, ptr, size);
 	free_next_block(page, block);
-	return (ptr);
+	return (new_alloc);
 }

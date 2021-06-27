@@ -21,7 +21,9 @@ enum				e_status
 	PAGE = 3,
 	NUM = 4,
 	STATUS_COUNT = 5
-}					t_status;
+};
+
+typedef enum e_status t_status;
 
 enum				e_type
 {
@@ -31,13 +33,15 @@ enum				e_type
 	STORE_COUNT = 3,
 	USED = 3,
 	TYPE_COUNT = 4
-}					t_type;
+};
+
+typedef enum e_type t_type;
 
 enum				e_size
 {
 	TINY_SIZE = 1,
 	SMALL_SIZE = 8
-}					t_size;
+};
 
 /*
 ** этот список будет сохранять указатели на выделенную память

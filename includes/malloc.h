@@ -21,22 +21,25 @@
 # include <fcntl.h>
 # include <sys/mman.h>
 # include <pthread.h>
-# define SYMBOLS "0123456789ABCDEFGHIJKLMOPQRSTUVWXYZ"
-# define FAIL_MMAP -1
-# define BYTES_IN_LINE 16
 # include "malloc_structs.h"
 # include "../libft/libft.h"
+
+# define SYMBOLS "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+# define BYTES_IN_LINE 16
+# define ALLOCS_COUNT 3
+# define FAIL_MMAP -1
 /*
  * (void *)(-1)
  */
 
 extern pthread_mutex_t	g_mutex;
 
-
 t_page	*new_page(size_t size);
 int		destroy_page(t_page *page);
-size_t	ft_get_size(size_t size);
-size_t	ft_round(size_t size, int mod);
+size_t	get_page_size(size_t size);
+//size_t	ft_round(size_t size, size_t mod);
+size_t	calculate_block_size(size_t size);
+size_t	calculate_large_page_size(size_t size);
 void	insert_page_after_page(t_page *prev, t_page *page);
 void	cut_page(t_page *page);
 t_page	*next_page(t_page *page);
@@ -62,11 +65,11 @@ void	store_page(t_page *page);
 t_page	*get_page_from_store(size_t size);
 void	print_store(void);
 
-void	insert_start_page(t_page *page, int type);
-int		is_end(t_page *page, int type);
-t_page	*get_start_page(int type);
+void	insert_page(t_page *page, t_type type);
+int		is_end(t_page *page, t_type type);
+t_page	*get_start_page(t_type type);
 
-int		type_from_size(size_t size);
-size_t	size_from_type(int type);
+t_type	type_from_size(size_t page_size);
+size_t	size_from_type(t_type type);
 
 #endif //MALLOC_MALLOC_H

@@ -13,6 +13,7 @@
 #include "../includes/malloc.h"
 
 #define PAGE_COUNT 2
+pthread_mutex_t g_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 void	free_store(void)
 {
@@ -38,7 +39,7 @@ void	store_page(t_page *page)
 	int	type;
 
 	type = type_from_size(page->size);
-	insert_start_page(page, type);
+	insert_page(page, type);
 }
 
 t_page	*get_page_from_store(size_t size)
@@ -46,7 +47,7 @@ t_page	*get_page_from_store(size_t size)
 	t_page	*page;
 	int		type;
 
-	size = ft_get_size(size);
+	size = get_page_size(size);
 	type = type_from_size(size);
 	page = get_start_page(type);
 	if (is_end(page, type))

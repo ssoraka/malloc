@@ -12,15 +12,12 @@
 
 #include "../includes/malloc.h"
 
-pthread_mutex_t	g_mutex = PTHREAD_MUTEX_INITIALIZER;
-
 void	*malloc(size_t size)
 {
 	void	*ptr;
 
 	if (!size)
 		return (NULL);
-	size = ft_round(size, sizeof(long));
 	pthread_mutex_lock(&g_mutex);
 	ptr = ft_malloc(size);
 	pthread_mutex_unlock(&g_mutex);
@@ -31,7 +28,7 @@ void	*calloc(size_t count, size_t size)
 {
 	void	*ptr;
 
-	size = ft_round(size * count, sizeof(long));
+	size = size * count;
 	pthread_mutex_lock(&g_mutex);
 	ptr = ft_malloc(size);
 	pthread_mutex_unlock(&g_mutex);
@@ -43,7 +40,6 @@ void	*calloc(size_t count, size_t size)
 
 void	*realloc(void *ptr, size_t size)
 {
-	size = ft_round(size, sizeof(long));
 	pthread_mutex_lock(&g_mutex);
 	ptr = ft_realloc(ptr, size);
 	pthread_mutex_unlock(&g_mutex);

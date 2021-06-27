@@ -30,7 +30,7 @@ SOURCE_HEADERS = $(addprefix ./$(PATH_INC)/,$(HEADERS))
 LIB_HEADER = ./$(PATH_LIB)/libft.h
 
 NAME		= libft_malloc_$(HOSTTYPE).so
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -fPIC
 DLFLAGS		= -shared -fPIC -Wall -Wextra -Werror
 OBJECTS		= $(patsubst %.c, $(PATH_OBJ)/%.o, $(SRCS))
 DEBUG		= -g -O0
@@ -38,6 +38,8 @@ DEBUG		= -g -O0
 .PHONY: all clean fclean re libs_refresh
 
 all: libs_refresh $(NAME)
+	gcc src/main.c -L. -lft_malloc
+	./a.out
 
 libs_refresh:
 	@make -C ./$(PATH_LIB)/

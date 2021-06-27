@@ -12,7 +12,7 @@
 
 #include "../includes/malloc.h"
 
-char	*ft_color_from_status(int status)
+char	*ft_color_from_status(t_status status)
 {
 	if (status == BLOCK)
 		return ("\033[0;32m");
@@ -25,7 +25,7 @@ char	*ft_color_from_status(int status)
 	return ("\033[00m");
 }
 
-void	ft_print_char(unsigned char chr, int is_mem)
+void	ft_print_char(unsigned char chr, t_status is_mem)
 {
 	if (is_mem != FREE)
 		ft_putstr(ft_color_from_status(is_mem));
@@ -36,7 +36,7 @@ void	ft_print_char(unsigned char chr, int is_mem)
 	ft_putchar(' ');
 }
 
-int	is_mem(void *ptr, t_page *page)
+t_status	is_mem(void *ptr, t_page *page)
 {
 	t_block	*block;
 	void	*start;

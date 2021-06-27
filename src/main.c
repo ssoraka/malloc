@@ -18,6 +18,10 @@ int test2() {
 	return -1;
 }
 
+/*
+ * todo нужно все проверить дофига чего поменял
+ */
+
 int main() {
 
 //	test();
@@ -30,19 +34,18 @@ int main() {
 //	free(ptr);
 //	free(ptr1);
 
-	char *p1 = ft_malloc(10);
-	ft_free(p1);
+	char *p1 = malloc(10);
+//	free(p1);
 
 	char *ptr;
 	char *ptr1;
 	char *ptr2;
 	char *ptr3;
 
-	ptr = ft_malloc(32);
-	ptr1 = ft_malloc(24);
-	ptr2 = ft_malloc(48);
-
-	ptr3 = ft_malloc(8);
+//	ptr = malloc(32);
+//	ptr1 = malloc(24);
+//	ptr2 = malloc(48);
+//	ptr3 = malloc(8);
 
 
 
@@ -58,8 +61,8 @@ int main() {
 //	free(ptr1);
 //	free(ptr2);
 
-	char *ptr4 = ft_malloc(100);
-	char *ptr5 = ft_malloc(100);
+//	char *ptr4 = malloc(100);
+//	char *ptr5 = malloc(100);
 
 
 //	malloc(170);
