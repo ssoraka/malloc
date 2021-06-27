@@ -36,10 +36,10 @@ extern pthread_mutex_t	g_mutex;
 
 t_page	*new_page(size_t size);
 int		destroy_page(t_page *page);
-size_t	get_page_size(size_t size);
-//size_t	ft_round(size_t size, size_t mod);
+size_t	get_page_size_from_alloc(size_t size);
 size_t	calculate_block_size(size_t size);
-size_t	calculate_large_page_size(size_t size);
+size_t	get_floor(size_t size, size_t mod);
+t_type	type_from_alloc_size(size_t size);
 void	insert_page_after_page(t_page *prev, t_page *page);
 void	cut_page(t_page *page);
 t_page	*next_page(t_page *page);
@@ -69,7 +69,7 @@ void	insert_page(t_page *page, t_type type);
 int		is_end(t_page *page, t_type type);
 t_page	*get_start_page(t_type type);
 
-t_type	type_from_size(size_t page_size);
+t_type	type_from_page_size(size_t size);
 size_t	size_from_type(t_type type);
 
 #endif //MALLOC_MALLOC_H

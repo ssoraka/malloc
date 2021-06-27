@@ -38,7 +38,7 @@ void	store_page(t_page *page)
 {
 	int	type;
 
-	type = type_from_size(page->size);
+	type = type_from_page_size(page->size);
 	insert_page(page, type);
 }
 
@@ -47,8 +47,7 @@ t_page	*get_page_from_store(size_t size)
 	t_page	*page;
 	int		type;
 
-	size = get_page_size(size);
-	type = type_from_size(size);
+	type = type_from_alloc_size(size);
 	page = get_start_page(type);
 	if (is_end(page, type))
 		return (NULL);

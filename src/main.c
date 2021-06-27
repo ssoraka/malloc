@@ -34,7 +34,7 @@ int main() {
 //	free(ptr);
 //	free(ptr1);
 
-	char *p1 = malloc(10);
+	char *p1 = malloc(8003);
 //	free(p1);
 
 	char *ptr;
@@ -42,10 +42,11 @@ int main() {
 	char *ptr2;
 	char *ptr3;
 
-//	ptr = malloc(32);
-//	ptr1 = malloc(24);
-//	ptr2 = malloc(48);
-//	ptr3 = malloc(8);
+//	ptr = malloc(31);
+//	ptr1 = malloc(25);
+//	free(ptr);
+//	ptr2 = calloc(19, 1);
+//	ptr3 = malloc(8002);
 
 
 

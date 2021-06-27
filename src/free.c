@@ -97,8 +97,8 @@ void	*ft_realloc(void *ptr, size_t size)
 	if (!block)
 		return (NULL);
 	alloc = block->next;
-	if (type_from_size(get_page_size(size)) == type_from_size(page->size)
-			&& alloc->used + alloc->empty >= size)
+	if (type_from_alloc_size(size) == type_from_page_size(page->size)
+		&& alloc->used + alloc->empty >= size)
 	{
 		alloc->empty = alloc->used + alloc->empty - size;
 		alloc->used = size;

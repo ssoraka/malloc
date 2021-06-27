@@ -16,7 +16,7 @@ t_page	*new_page(size_t size)
 {
 	t_page	*page;
 
-	size = get_page_size(size);
+	size = get_page_size_from_alloc(size);
 	page = mmap(NULL, size,
 			PROT_READ | PROT_WRITE | PROT_EXEC,
 			MAP_ANON | MAP_PRIVATE, -1, 0);

@@ -22,7 +22,7 @@ t_block	*find_empty_space_on_page(t_page *page, size_t size)
 	new_block_size = calculate_block_size(size);
 	while (block)
 	{
-		empty_space = block->empty - block->used % sizeof(int);
+		empty_space = block->empty - get_floor(block->used, sizeof(int));
 		if (empty_space >= new_block_size)
 			break ;
 		block = block->next;
@@ -37,7 +37,7 @@ void	*alloc_mem(t_page *page, t_block *prev, size_t size)
 	size_t	floor;
 
 	page->alloc_count++;
-	floor = prev->used % sizeof(int);
+	floor = get_floor(prev->used, sizeof(int));
 	block = (t_block *)((char *)(prev + 1) + prev->used + floor);
 	block->next = prev->next;
 	prev->next = block;
@@ -55,12 +55,12 @@ void	*try_alloc_in_used_memory(size_t size)
 	t_block	*block;
 	t_type type;
 
-	type = type_from_size(get_page_size(size));
+	type = type_from_alloc_size(size);
 	page = get_start_page(USED);
 	while (!is_end(page, USED))
 	{
-		if (type == type_from_size(page->size)
-				&& page->size > calculate_large_page_size(size)
+		if (type == type_from_page_size(page->size)
+				&& page->size >= get_page_size_from_alloc(size)
 				&& !is_null(find_empty_space_on_page(page, size), (void **)&block))
 			return (alloc_mem(page, block, size));
 		page = next_page(page);

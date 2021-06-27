@@ -28,41 +28,44 @@ size_t	size_from_type(t_type type)
 	return (0);
 }
 
-//size_t	ft_round(size_t size, size_t mod)
-//{
-//	return (size + (mod - size % mod) * (size % mod > 0));
-//}
+size_t	get_floor(size_t size, size_t mod)
+{
+	return ((mod - size % mod) * (size % mod > 0));
+}
 
 size_t	calculate_block_size(size_t size)
 {
-	return (size + size % sizeof(int) + sizeof(t_block));
+	return (size + get_floor(size, sizeof(int)) + sizeof(t_block));
 }
 
-size_t	ft_calculate_page_size(size_t size)
+t_type	type_from_page_size(size_t size)
 {
-	return (calculate_block_size(size) * ALLOCS_COUNT + sizeof(t_page));
-}
-
-size_t	calculate_large_page_size(size_t size)
-{
-	return (calculate_block_size(size) + sizeof(t_page));
-}
-
-t_type	type_from_size(size_t page_size)
-{
-	if (page_size <= size_from_type(TINY))
+	if (size <= size_from_type(TINY))
 		return (TINY);
-	if (page_size <= size_from_type(SMALL))
+	if (size <= size_from_type(SMALL))
 		return (SMALL);
 	return (LARGE);
 }
 
-size_t	get_page_size(size_t size)
+t_type	type_from_alloc_size(size_t size)
 {
-	size = ft_calculate_page_size(size);
-	if (size <= size_from_type(TINY))
-		return (size_from_type(TINY));
-	if (size <= size_from_type(SMALL))
-		return (size_from_type(SMALL));
-	return (size);
+	size_t max;
+
+	max = (size_from_type(TINY) - sizeof(t_page)) / ALLOCS_COUNT - sizeof(t_block);
+	if (size <= max)
+		return (TINY);
+	max = (size_from_type(SMALL) - sizeof(t_page)) / ALLOCS_COUNT - sizeof(t_block);
+	if (size <= max)
+		return (SMALL);
+	return (LARGE);
+}
+
+size_t	get_page_size_from_alloc(size_t size)
+{
+	t_type	type;
+
+	type = type_from_alloc_size(size);
+	if (type == TINY || type == SMALL)
+		return (size_from_type(type));
+	return (calculate_block_size(size) + sizeof(t_page));
 }
