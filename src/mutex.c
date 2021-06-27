@@ -14,13 +14,46 @@
 
 pthread_mutex_t	g_mutex = PTHREAD_MUTEX_INITIALIZER;
 
-void	lock(void)
+void	*malloc(size_t size)
 {
-	pthread_mutex_lock(&g_mutex);
-}
+	void	*ptr;
 
-void	*unlock(void *ptr)
-{
+	if (!size)
+		return (NULL);
+	size = ft_round(size, sizeof(long));
+	pthread_mutex_lock(&g_mutex);
+	ptr = ft_malloc(size);
 	pthread_mutex_unlock(&g_mutex);
 	return (ptr);
 }
+
+void	*calloc(size_t count, size_t size)
+{
+	void	*ptr;
+
+	size = ft_round(size * count, sizeof(long));
+	pthread_mutex_lock(&g_mutex);
+	ptr = ft_malloc(size);
+	pthread_mutex_unlock(&g_mutex);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, size);
+	return (ptr);
+}
+
+void	*realloc(void *ptr, size_t size)
+{
+	size = ft_round(size, sizeof(long));
+	pthread_mutex_lock(&g_mutex);
+	ptr = ft_realloc(ptr, size);
+	pthread_mutex_unlock(&g_mutex);
+	return (ptr);
+}
+
+void	free(void *ptr)
+{
+	pthread_mutex_lock(&g_mutex);
+	ft_free(ptr);
+	pthread_mutex_unlock(&g_mutex);
+}
+

@@ -62,12 +62,11 @@ t_page	*get_page_with_mem(void *ptr)
 	return (NULL);
 }
 
-void	free1(void *ptr)
+void	ft_free(void *ptr)
 {
 	t_page	*page;
 	t_block	*block;
 
-	lock();
 	page = get_page_with_mem(ptr);
 	block = get_prev_block_from_page(page, ptr);
 	if (!page || !block)
@@ -76,7 +75,6 @@ void	free1(void *ptr)
 		ft_print_addres(ptr, 2);
 		ft_putstr_fd(FREE_ERROR2, 2);
 		free_store();
-		unlock(ptr);
 		exit(134);
 	}
 	free_next_block(page, block);
@@ -85,46 +83,29 @@ void	free1(void *ptr)
 		cut_page(page);
 		store_page(page);
 	}
-	unlock(ptr);
 }
 
-void	*realloc(void *ptr, size_t size)
+void	*ft_realloc(void *ptr, size_t size)
 {
 	t_page	*page;
 	t_block	*block;
 	t_block	*alloc;
 
-	size = ft_round(size, sizeof(long));
-	lock();
 	page = get_page_with_mem(ptr);
 	block = get_prev_block_from_page(page, ptr);
 	if (!block)
-		return (unlock(NULL));
+		return (NULL);
 	alloc = block->next;
 	if (alloc->used + alloc->empty > size)
 	{
 		alloc->empty = alloc->used + alloc->empty - size;
 		alloc->used = size;
-		return (unlock((void *)(++alloc)));
+		return ((void *)(++alloc));
 	}
-	unlock(ptr);
-	ptr = malloc1(size);
+	ptr = ft_malloc(size);
 	if (!ptr)
 		return (NULL);
 	ft_memcpy(ptr, ptr, alloc->used);
-	lock();
 	free_next_block(page, block);
-	return (unlock(ptr));
-}
-
-void	*calloc(size_t count, size_t size)
-{
-	void	*ptr;
-
-	size = ft_round(size * count, sizeof(long));
-	ptr = malloc1(size);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, size);
 	return (ptr);
 }

@@ -60,21 +60,17 @@ void	*try_alloc_in_used_memory(size_t size)
 	return (NULL);
 }
 
-void	*malloc1(size_t size)
+void	*ft_malloc(size_t size)
 {
 	t_page	*page;
 	void	*ptr;
 
-	if (!size)
-		return (0);
-	size = ft_round(size, sizeof(long));
-	lock();
 	if (!is_null(try_alloc_in_used_memory(size), &ptr))
-		return (unlock(ptr));
+		return (ptr);
 	if (is_null(get_page_from_store(size), (void **)&page)
 		&& is_null(new_page(size), (void **)&page))
-		return (unlock(NULL));
+		return (NULL);
 	insert_start_page(page, USED);
 	ptr = alloc_mem(page, &page->alloc, size);
-	return (unlock(ptr));
+	return (ptr);
 }

@@ -82,6 +82,7 @@ void	ft_print_page_header(t_page *page)
 	int		i;
 	size_t	l;
 
+	ft_putstr("\033[00m");
 	l = *((long *)&page);
 	while (l > 0)
 	{
@@ -134,7 +135,7 @@ void	ft_print_mem(void)
 {
 	t_page	*page;
 
-	lock();
+	pthread_mutex_lock(&g_mutex);
 	page = get_start_page(USED);
 	if (is_end(page, USED))
 		ft_putstr("Where is no used memory\n");
@@ -143,5 +144,5 @@ void	ft_print_mem(void)
 		ft_print_page(page);
 		page = next_page(page);
 	}
-	unlock(NULL);
+	pthread_mutex_unlock(&g_mutex);
 }

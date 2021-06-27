@@ -41,10 +41,14 @@ void	insert_page_after_page(t_page *prev, t_page *page);
 void	cut_page(t_page *page);
 t_page	*next_page(t_page *page);
 
-void	*malloc1(size_t size);
-void	free1(void *ptr);
-void	*realloc(void *ptr, size_t size);
+void	*ft_malloc(size_t size);
+void	ft_free(void *ptr);
+void	*ft_realloc(void *ptr, size_t size);
+
+void	*malloc(size_t size);
 void	*calloc(size_t count, size_t size);
+void	*realloc(void *ptr, size_t size);
+void	free(void *ptr);
 
 void	ft_print_addres(void *ptr, int fd);
 void	ft_print_page(t_page *page);
@@ -64,8 +68,5 @@ t_page	*get_start_page(int type);
 
 int		type_from_size(size_t size);
 size_t	size_from_type(int type);
-
-void	lock(void);
-void	*unlock(void *ptr);
 
 #endif //MALLOC_MALLOC_H
