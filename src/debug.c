@@ -134,6 +134,7 @@ void	ft_print_mem(void)
 {
 	t_page	*page;
 
+	lock();
 	page = get_start_page(USED);
 	if (is_end(page, USED))
 		ft_putstr("Where is no used memory\n");
@@ -142,4 +143,5 @@ void	ft_print_mem(void)
 		ft_print_page(page);
 		page = next_page(page);
 	}
+	unlock(NULL);
 }

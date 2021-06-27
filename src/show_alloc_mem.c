@@ -70,6 +70,7 @@ void	show_alloc_mem(void)
 	t_block	*block;
 	size_t	total;
 
+	lock();
 	total = 0;
 	page = get_start_page(USED);
 	while (!is_end(page, USED))
@@ -85,4 +86,5 @@ void	show_alloc_mem(void)
 		page = next_page(page);
 	}
 	print_total(total);
+	unlock(NULL);
 }

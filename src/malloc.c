@@ -68,12 +68,13 @@ void	*malloc1(size_t size)
 	if (!size)
 		return (0);
 	size = ft_round(size, sizeof(long));
+	lock();
 	if (!is_null(try_alloc_in_used_memory(size), &ptr))
-		return (ptr);
+		return (unlock(ptr));
 	if (is_null(get_page_from_store(size), (void **)&page)
 		&& is_null(new_page(size), (void **)&page))
-		return (NULL);
+		return (unlock(NULL));
 	insert_start_page(page, USED);
 	ptr = alloc_mem(page, &page->alloc, size);
-	return (ptr);
+	return (unlock(ptr));
 }

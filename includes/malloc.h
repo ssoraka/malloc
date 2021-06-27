@@ -20,6 +20,7 @@
 # include <sys/uio.h>
 # include <fcntl.h>
 # include <sys/mman.h>
+# include <pthread.h>
 # define SYMBOLS "0123456789ABCDEFGHIJKLMOPQRSTUVWXYZ"
 # define FAIL_MMAP -1
 # define BYTES_IN_LINE 16
@@ -29,6 +30,7 @@
  * (void *)(-1)
  */
 
+extern pthread_mutex_t	g_mutex;
 
 
 t_page	*new_page(size_t size);
@@ -62,5 +64,8 @@ t_page	*get_start_page(int type);
 
 int		type_from_size(size_t size);
 size_t	size_from_type(int type);
+
+void	lock(void);
+void	*unlock(void *ptr);
 
 #endif //MALLOC_MALLOC_H

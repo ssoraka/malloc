@@ -67,6 +67,7 @@ void	free1(void *ptr)
 	t_page	*page;
 	t_block	*block;
 
+	lock();
 	page = get_page_with_mem(ptr);
 	block = get_prev_block_from_page(page, ptr);
 	if (!page || !block)
@@ -75,6 +76,7 @@ void	free1(void *ptr)
 		ft_print_addres(ptr, 2);
 		ft_putstr_fd(FREE_ERROR2, 2);
 		free_store();
+		unlock(ptr);
 		exit(134);
 	}
 	free_next_block(page, block);
@@ -83,6 +85,7 @@ void	free1(void *ptr)
 		cut_page(page);
 		store_page(page);
 	}
+	unlock(ptr);
 }
 
 void	*realloc(void *ptr, size_t size)
@@ -92,23 +95,26 @@ void	*realloc(void *ptr, size_t size)
 	t_block	*alloc;
 
 	size = ft_round(size, sizeof(long));
+	lock();
 	page = get_page_with_mem(ptr);
 	block = get_prev_block_from_page(page, ptr);
 	if (!block)
-		return (NULL);
+		return (unlock(NULL));
 	alloc = block->next;
 	if (alloc->used + alloc->empty > size)
 	{
 		alloc->empty = alloc->used + alloc->empty - size;
 		alloc->used = size;
-		return ((void *)(++alloc));
+		return (unlock((void *)(++alloc)));
 	}
+	unlock(ptr);
 	ptr = malloc1(size);
 	if (!ptr)
 		return (NULL);
 	ft_memcpy(ptr, ptr, alloc->used);
+	lock();
 	free_next_block(page, block);
-	return (ptr);
+	return (unlock(ptr));
 }
 
 void	*calloc(size_t count, size_t size)
