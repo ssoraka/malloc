@@ -32,13 +32,14 @@ void	insert_page(t_page *page, t_type type)
 	t_page *prev;
 
 	prev = &pages_by_type(type)->page;
-	while (!is_end(prev, type))
+	while (!is_end(prev->next, type))
 	{
 		if (page < prev->next)
 		{
 			insert_page_after_page(prev, page);
 			return ;
 		}
+		prev = next_page(prev);
 	}
 	insert_page_after_page(pages_by_type(type)->page.prev, page);
 }

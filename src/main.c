@@ -34,7 +34,7 @@ int main() {
 //	free(ptr);
 //	free(ptr1);
 
-	char *p1 = malloc(8003);
+	char *p1 = malloc(17);
 //	free(p1);
 
 	char *ptr;
@@ -42,14 +42,29 @@ int main() {
 	char *ptr2;
 	char *ptr3;
 
-//	ptr = malloc(31);
-//	ptr1 = malloc(25);
+	ptr = malloc(20);
+	ptr1 = malloc(12);
+
 //	free(ptr);
-//	ptr2 = calloc(19, 1);
-//	ptr3 = malloc(8002);
+	ptr2 = calloc(12, 1);
+	ptr3 = malloc(20);
 
+	malloc(20000);
 
-
+	char *a[50];
+	for(int i = 0; i < 30; i++) {
+		a[i] = malloc(30);
+		a[i + 1] = NULL;
+	}
+	malloc(20000);
+	for(int i = 0; i < 25; i++) {
+		free(a[i]);
+	}
+	malloc(20000);
+	for(int i = 0; i < 25; i++) {
+		a[i] = malloc(30);
+	}
+	malloc(20000);
 //	ptr = malloc(120);
 //	ptr = malloc(120);
 //	ft_memcpy(ptr, "aaaaaaaaaaaaaaa", 16);
@@ -76,8 +91,8 @@ int main() {
 //	free(ptr4);
 //	free(ptr5);
 
-	ft_print_mem();
-
+//	ft_print_mem();
+	show_alloc_mem();
 
 //	char *a = test2;
 //	for (int i = 0; i < 20; i++) {

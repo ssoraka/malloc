@@ -12,7 +12,7 @@
 
 #include "../includes/malloc.h"
 
-void	ft_memset(void *s, size_t n, char chr)
+void	ft_memset(void *s, int chr, size_t n)
 {
 	size_t	i;
 	char	*str;
