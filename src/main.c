@@ -19,7 +19,11 @@ int test2() {
 }
 
 /*
- * todo нужно все проверить дофига чего поменял
+ * todo так, ну вставка кадров идет в порядке возрастания адресов
+ * надо проверить работу с пустыми областями,
+ * без маллока
+ * разбить по файлам
+ * вынести в глобалку хранилище кадров
  */
 
 int main() {
@@ -34,7 +38,7 @@ int main() {
 //	free(ptr);
 //	free(ptr1);
 
-	char *p1 = malloc(17);
+	char *p1 = ft_malloc(0);
 //	free(p1);
 
 	char *ptr;
@@ -42,8 +46,16 @@ int main() {
 	char *ptr2;
 	char *ptr3;
 
-	ptr = malloc(20);
-	ptr1 = malloc(12);
+	ptr = ft_malloc(0);
+	ptr1 = ft_malloc(0);
+
+	ptr1 = ft_realloc(ptr1, 1);
+	ptr = ft_realloc(ptr, 1);
+	ptr = ft_realloc(ptr, 0);
+//	ft_realloc(ptr, 5);
+	ft_print_mem();
+	return 0;
+
 
 //	free(ptr);
 	ptr2 = calloc(12, 1);

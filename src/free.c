@@ -13,6 +13,7 @@
 #include "../includes/malloc.h"
 #define FREE_ERROR1 "malloc: *** error for object "
 #define FREE_ERROR2 ": pointer being freed was not allocated\n"
+#define REALLOC_ERROR2 ": pointer being realloc'd was not allocated\n"
 
 void	free_next_block(t_page *page, t_block *block)
 {
@@ -62,6 +63,15 @@ t_page	*get_page_with_mem(void *ptr)
 	return (NULL);
 }
 
+void	exit_with_error(void *ptr, char *msg1, char *msg2)
+{
+	ft_putstr_fd(msg1, 2);
+	ft_print_addres(ptr, 2);
+	ft_putstr_fd(msg2, 2);
+	free_store();
+	exit(134);
+}
+
 void	ft_free(void *ptr)
 {
 	t_page	*page;
@@ -70,13 +80,7 @@ void	ft_free(void *ptr)
 	page = get_page_with_mem(ptr);
 	block = get_prev_block_from_page(page, ptr);
 	if (!page || !block)
-	{
-		ft_putstr_fd(FREE_ERROR1, 2);
-		ft_print_addres(ptr, 2);
-		ft_putstr_fd(FREE_ERROR2, 2);
-		free_store();
-		exit(134);
-	}
+		exit_with_error(ptr, FREE_ERROR1, FREE_ERROR2);
 	free_next_block(page, block);
 	if (!page->alloc_count)
 	{
@@ -95,7 +99,7 @@ void	*ft_realloc(void *ptr, size_t size)
 	page = get_page_with_mem(ptr);
 	block = get_prev_block_from_page(page, ptr);
 	if (!block)
-		return (NULL);
+		exit_with_error(ptr, FREE_ERROR1, REALLOC_ERROR2);
 	alloc = block->next;
 	if (type_from_alloc_size(size) == type_from_page_size(page->size)
 		&& alloc->used + alloc->empty >= size)

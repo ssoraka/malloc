@@ -16,8 +16,6 @@ void	*malloc(size_t size)
 {
 	void	*ptr;
 
-	if (!size)
-		return (NULL);
 	pthread_mutex_lock(&g_mutex);
 	ptr = ft_malloc(size);
 	pthread_mutex_unlock(&g_mutex);
@@ -40,6 +38,8 @@ void	*calloc(size_t count, size_t size)
 
 void	*realloc(void *ptr, size_t size)
 {
+	if (!ptr)
+		return ;
 	pthread_mutex_lock(&g_mutex);
 	ptr = ft_realloc(ptr, size);
 	pthread_mutex_unlock(&g_mutex);
@@ -48,6 +48,8 @@ void	*realloc(void *ptr, size_t size)
 
 void	free(void *ptr)
 {
+	if (!ptr)
+		return ;
 	pthread_mutex_lock(&g_mutex);
 	ft_free(ptr);
 	pthread_mutex_unlock(&g_mutex);
