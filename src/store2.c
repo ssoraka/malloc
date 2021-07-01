@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   page.c                                             :+:      :+:    :+:   */
+/*   store2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssoraka <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,53 +12,58 @@
 
 #include "../includes/ft_malloc.h"
 
-t_page	*new_page(size_t size)
+t_page	*get_page_from_store(size_t size)
 {
 	t_page	*page;
+	int		type;
 
-	size = get_page_size_from_alloc(size);
-	page = mmap(NULL, size,
-			PROT_READ | PROT_WRITE | PROT_EXEC,
-			MAP_ANON | MAP_PRIVATE, -1, 0);
-	if (page == (void *)FAIL_MMAP)
+	type = type_from_alloc_size(size);
+	page = get_start_page(type);
+	if (is_end(page, type))
 		return (NULL);
-	ft_bzero((void *)page, sizeof(t_page));
-	page->size = size;
-	page->alloc.empty = size - sizeof(t_page);
-	page->alloc.next = NULL;
+	cut_page(page);
 	return (page);
 }
 
-void	insert_page_after_page(t_page *prev, t_page *page)
+t_store	*get_store(void)
 {
-	t_page	*next;
-
-	next = prev->next;
-	page->next = next;
-	prev->next = page;
-	page->prev = prev;
-	next->prev = page;
+	if (!g_store.is_init)
+	{
+		init_store(&g_store);
+		if (!fill_store())
+			return (NULL);
+	}
+	return (&g_store);
 }
 
-void	cut_page(t_page *page)
+void	print_parameters(int type)
 {
-	t_page	*prev;
-	t_page	*next;
-
-	next = page->next;
-	prev = page->prev;
-	prev->next = next;
-	next->prev = prev;
-	page->next = NULL;
-	page->prev = NULL;
+	if (type == TINY)
+		ft_putstr("TINY PAGES ");
+	else if (type == SMALL)
+		ft_putstr("SMALL PAGES ");
+	else
+		ft_putstr("LARGE PAGES ");
+	ft_putnbr_fd(size_from_type(type), 1);
+	ft_putstr("\n");
 }
 
-int	destroy_page(t_page *page)
+void	print_store(void)
 {
-	return (munmap(page, page->size));
-}
+	t_page	*page;
+	int		type;
 
-t_page	*next_page(t_page *page)
-{
-	return (page->next);
+	type = 0;
+	while (type < STORE_COUNT)
+	{
+		page = get_start_page(type);
+		if (!is_end(page, type))
+			print_parameters(type);
+		while (!is_end(page, type))
+		{
+			ft_print_page(page);
+			page = next_page(page);
+		}
+		type++;
+	}
 }

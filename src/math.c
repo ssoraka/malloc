@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mutex.c                                            :+:      :+:    :+:   */
+/*   math.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssoraka <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,48 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/malloc.h"
+#include "../includes/ft_malloc.h"
 
-void	*malloc(size_t size)
+size_t	get_floor(size_t size, size_t mod)
 {
-	void	*ptr;
-
-	pthread_mutex_lock(&g_mutex);
-	ptr = ft_malloc(size);
-	pthread_mutex_unlock(&g_mutex);
-	return (ptr);
+	return ((mod - size % mod) * (size % mod > 0));
 }
-
-void	*calloc(size_t count, size_t size)
-{
-	void	*ptr;
-
-	size = size * count;
-	pthread_mutex_lock(&g_mutex);
-	ptr = ft_malloc(size);
-	pthread_mutex_unlock(&g_mutex);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, size);
-	return (ptr);
-}
-
-void	*realloc(void *ptr, size_t size)
-{
-	if (!ptr)
-		return ;
-	pthread_mutex_lock(&g_mutex);
-	ptr = ft_realloc(ptr, size);
-	pthread_mutex_unlock(&g_mutex);
-	return (ptr);
-}
-
-void	free(void *ptr)
-{
-	if (!ptr)
-		return ;
-	pthread_mutex_lock(&g_mutex);
-	ft_free(ptr);
-	pthread_mutex_unlock(&g_mutex);
-}
-

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MALLOC_MALLOC_STRUCTS_H
-# define MALLOC_MALLOC_STRUCTS_H
+#ifndef MALLOC_STRUCTS_H
+# define MALLOC_STRUCTS_H
 
 enum				e_status
 {
@@ -23,7 +23,7 @@ enum				e_status
 	STATUS_COUNT = 5
 };
 
-typedef enum e_status t_status;
+typedef enum e_status	t_stat;
 
 enum				e_type
 {
@@ -35,7 +35,7 @@ enum				e_type
 	TYPE_COUNT = 4
 };
 
-typedef enum e_type t_type;
+typedef enum e_type		t_type;
 
 enum				e_size
 {
@@ -82,4 +82,4 @@ typedef struct s_store
 	int				is_init;
 }					t_store;
 
-#endif //MALLOC_MALLOC_STRUCTS_H
+#endif

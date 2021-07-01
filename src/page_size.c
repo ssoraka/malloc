@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/malloc.h"
+#include "../includes/ft_malloc.h"
 
 /*
- * //	if (type == TINY)
- * //		return (getpagesize() * TINY_SIZE);
- * //	if (type == SMALL)
- * //		return (getpagesize() * SMALL_SIZE);
- */
+* //	if (type == TINY)
+* //		return (getpagesize() * TINY_SIZE);
+* //	if (type == SMALL)
+* //		return (getpagesize() * SMALL_SIZE);
+*/
 
 size_t	size_from_type(t_type type)
 {
@@ -26,11 +26,6 @@ size_t	size_from_type(t_type type)
 	if (type == SMALL)
 		return (512);
 	return (0);
-}
-
-size_t	get_floor(size_t size, size_t mod)
-{
-	return ((mod - size % mod) * (size % mod > 0));
 }
 
 size_t	calculate_block_size(size_t size)
@@ -49,12 +44,14 @@ t_type	type_from_page_size(size_t size)
 
 t_type	type_from_alloc_size(size_t size)
 {
-	size_t max;
+	size_t	max;
 
-	max = (size_from_type(TINY) - sizeof(t_page)) / ALLOCS_COUNT - sizeof(t_block);
+	max = (size_from_type(TINY) - sizeof(t_page)) / ALLOCS_COUNT
+		- sizeof(t_block);
 	if (size <= max)
 		return (TINY);
-	max = (size_from_type(SMALL) - sizeof(t_page)) / ALLOCS_COUNT - sizeof(t_block);
+	max = (size_from_type(SMALL) - sizeof(t_page)) / ALLOCS_COUNT
+		- sizeof(t_block);
 	if (size <= max)
 		return (SMALL);
 	return (LARGE);

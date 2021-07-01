@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/malloc.h"
+#include "../includes/ft_malloc.h"
 
 typedef struct		s_chunk {
 	void			*ptr;

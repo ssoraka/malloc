@@ -10,10 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/malloc.h"
+#include "../includes/ft_malloc.h"
 
 #define PAGE_COUNT 2
-pthread_mutex_t g_mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t	g_mutex = PTHREAD_MUTEX_INITIALIZER;
+t_store			g_store = {.is_init = 0};
 
 void	free_store(void)
 {
@@ -40,19 +41,6 @@ void	store_page(t_page *page)
 
 	type = type_from_page_size(page->size);
 	insert_page(page, type);
-}
-
-t_page	*get_page_from_store(size_t size)
-{
-	t_page	*page;
-	int		type;
-
-	type = type_from_alloc_size(size);
-	page = get_start_page(type);
-	if (is_end(page, type))
-		return (NULL);
-	cut_page(page);
-	return (page);
 }
 
 int	new_page_by_type(int type)
@@ -89,6 +77,7 @@ void	init_store(t_store *store)
 	t_pages	*pages;
 	int		i;
 
+	ft_bzero(store, sizeof(t_store));
 	pages = store->p;
 	i = 0;
 	while (i < TYPE_COUNT)
@@ -97,51 +86,5 @@ void	init_store(t_store *store)
 		pages->page.prev = &pages->page;
 		pages++;
 		i++;
-	}
-	store->is_init = 1;
-}
-
-t_store	*get_store(void)
-{
-	static t_store	store;
-
-	if (!store.is_init)
-	{
-		init_store(&store);
-		if (!fill_store())
-			return (NULL);
-	}
-	return (&store);
-}
-
-void	print_parameters(int type)
-{
-	if (type == TINY)
-		ft_putstr("TINY PAGES ");
-	else if (type == SMALL)
-		ft_putstr("SMALL PAGES ");
-	else
-		ft_putstr("LARGE PAGES ");
-	ft_putnbr_fd(size_from_type(type), 1);
-	ft_putstr("\n");
-}
-
-void	print_store(void)
-{
-	t_page	*page;
-	int		type;
-
-	type = 0;
-	while (type < STORE_COUNT)
-	{
-		page = get_start_page(type);
-		if (!is_end(page, type))
-			print_parameters(type);
-		while (!is_end(page, type))
-		{
-			ft_print_page(page);
-			page = next_page(page);
-		}
-		type++;
 	}
 }

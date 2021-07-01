@@ -16,8 +16,10 @@ endif
 
 GCC = gcc
 
-SRCS	=	debug.c free.c malloc.c mutex.c \
-			page.c page_size.c pages.c show_alloc_mem.c store.c
+SRCS	=	debug.c		print.c		math.c		\
+			malloc.c ft_free_realloc.c  ft_malloc.c \
+			page.c page_size.c pages.c \
+			show_alloc_mem.c store.c store2.c error.c
 
 HEADERS	=	malloc.h malloc_structs.h
 
@@ -38,7 +40,7 @@ DEBUG		= -g -O0
 .PHONY: all clean fclean re libs_refresh
 
 all: libs_refresh $(NAME)
-	gcc src/main.c -L. -lft_malloc
+	gcc garbage/main.c -L. -lft_malloc
 	./a.out
 
 libs_refresh:

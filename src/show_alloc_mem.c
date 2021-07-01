@@ -10,30 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/malloc.h"
-
-#define ADDRES_LEN 18
-
-void	ft_print_addres(void *ptr, int fd)
-{
-	char	temp[ADDRES_LEN];
-	size_t	i;
-	size_t	addr;
-
-	addr = *((size_t *)&ptr);
-	i = 0;
-	while (addr != 0 || i == 0)
-	{
-		temp[i] = SYMBOLS[addr % 16];
-		addr = addr / 16;
-		i++;
-	}
-	temp[i++] = 'x';
-	temp[i++] = '0';
-	temp[i] = '\0';
-	ft_strrevers(temp);
-	ft_putstr_fd(temp, fd);
-}
+#include "../includes/ft_malloc.h"
 
 void	print_first_string(t_page *page)
 {

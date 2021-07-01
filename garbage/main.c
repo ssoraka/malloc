@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/malloc.h"
+#include "../includes/ft_malloc.h"
 
 void test();
 
@@ -38,6 +38,12 @@ int main() {
 //	free(ptr);
 //	free(ptr1);
 
+	show_alloc_mem();
+	char *ptrp = (void*)show_alloc_mem;
+
+	free(ptrp);
+//	ft_print_mem();
+	return (0);
 	char *p1 = ft_malloc(0);
 //	free(p1);
 

@@ -10,72 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/malloc.h"
-
-char	*ft_color_from_status(t_status status)
-{
-	if (status == BLOCK)
-		return ("\033[0;32m");
-	if (status == ALLOC)
-		return ("\033[7;37m");
-	if (status == PAGE)
-		return ("\033[0;31m");
-	if (status == NUM)
-		return ("\033[0;30m");
-	return ("\033[00m");
-}
-
-void	ft_print_char(unsigned char chr, t_status is_mem)
-{
-	if (is_mem != FREE)
-		ft_putstr(ft_color_from_status(is_mem));
-	ft_putchar(SYMBOLS[chr / 16]);
-	ft_putchar(SYMBOLS[chr % 16]);
-	if (is_mem != FREE)
-		ft_putstr("\033[00m");
-	ft_putchar(' ');
-}
-
-t_status	is_mem(void *ptr, t_page *page)
-{
-	t_block	*block;
-	void	*start;
-	void	*end;
-
-	if (ptr < (void *)(page + 1))
-		return (PAGE);
-	block = page->alloc.next;
-	while (block)
-	{
-		start = block + 1;
-		end = (char *)start + block->used;
-		if (ptr >= (void *)block && ptr < start)
-			return (BLOCK);
-		if (ptr >= start && ptr < end)
-			return (ALLOC);
-		block = block->next;
-	}
-	return (FREE);
-}
-
-void	ft_print_chars(char *ptr, int count)
-{
-	int	i;
-
-	ft_putchar('|');
-	i = 0;
-	while (i < BYTES_IN_LINE)
-	{
-		if (i > count)
-			ft_putchar(' ');
-		else if (ft_isprint(ptr[i]))
-			ft_putchar(ptr[i]);
-		else
-			ft_putchar('.');
-		i++;
-	}
-	ft_putchar('|');
-}
+#include "../includes/ft_malloc.h"
 
 void	ft_print_page_header(t_page *page)
 {

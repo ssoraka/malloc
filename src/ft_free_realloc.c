@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_free_realloc.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssoraka <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/malloc.h"
+#include "../includes/ft_malloc.h"
 #define FREE_ERROR1 "malloc: *** error for object "
 #define FREE_ERROR2 ": pointer being freed was not allocated\n"
 #define REALLOC_ERROR2 ": pointer being realloc'd was not allocated\n"
@@ -63,15 +63,6 @@ t_page	*get_page_with_mem(void *ptr)
 	return (NULL);
 }
 
-void	exit_with_error(void *ptr, char *msg1, char *msg2)
-{
-	ft_putstr_fd(msg1, 2);
-	ft_print_addres(ptr, 2);
-	ft_putstr_fd(msg2, 2);
-	free_store();
-	exit(134);
-}
-
 void	ft_free(void *ptr)
 {
 	t_page	*page;
@@ -111,7 +102,7 @@ void	*ft_realloc(void *ptr, size_t size)
 	new_alloc = ft_malloc(size);
 	if (!new_alloc)
 		return (NULL);
-	size = (size < alloc->used) ? size : alloc->used;
+	size = (size < alloc->used) * size + (size >= alloc->used) * alloc->used;
 	ft_memcpy(new_alloc, ptr, size);
 	free_next_block(page, block);
 	return (new_alloc);
