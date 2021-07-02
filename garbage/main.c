@@ -41,7 +41,7 @@ int main() {
 	show_alloc_mem();
 	char *ptrp = (void*)show_alloc_mem;
 
-	free(ptrp);
+	//free(ptrp);
 //	ft_print_mem();
 	return (0);
 	char *p1 = ft_malloc(0);

@@ -21,7 +21,7 @@ SRCS	=	debug.c		print.c		math.c		\
 			page.c page_size.c pages.c \
 			show_alloc_mem.c store.c store2.c error.c
 
-HEADERS	=	malloc.h malloc_structs.h
+HEADERS	=	ft_malloc.h malloc_structs.h
 
 PATH_OBJ	= obj
 PATH_SRC	= src

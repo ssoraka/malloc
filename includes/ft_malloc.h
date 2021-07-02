@@ -24,6 +24,7 @@
 # include "malloc_structs.h"
 # include "../libft/libft.h"
 
+# define PAGE_COUNT 2
 # define SYMBOLS "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 # define BYTES_IN_LINE 16
 # define ALLOCS_COUNT 3
@@ -104,14 +105,15 @@ void	*ft_malloc(size_t size);
 ** store.c
 */
 void	free_store(void);
-void	init_store(t_store *store);
 void	store_page(t_page *page);
+t_store	*get_store(void);
+void	print_store(void);
 
 /*
 ** store2.c
 */
-void	print_store(void);
-t_store	*get_store(void);
+
+void	init_store(t_store *store);
 t_page	*get_page_from_store(size_t size);
 
 /*
@@ -122,4 +124,4 @@ void	*calloc(size_t count, size_t size);
 void	*realloc(void *ptr, size_t size);
 void	free(void *ptr);
 
-#endif //MALLOC_FT_MALLOC_H
+#endif
