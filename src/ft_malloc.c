@@ -30,7 +30,7 @@ t_block	*find_empty_space_on_page(t_page *page, size_t size)
 	return (block);
 }
 
-void	*alloc_mem(t_page *page, t_block *prev, size_t size)
+void	*alloc_mem(t_page *page, t_block *prev, size_t size, size_t params)
 {
 	t_block	*block;
 	void	*ptr;
@@ -45,11 +45,11 @@ void	*alloc_mem(t_page *page, t_block *prev, size_t size)
 	block->empty = prev->empty - floor - size - sizeof(t_block);
 	prev->empty = floor;
 	ptr = (void *)(++block);
-	ft_memset(ptr, 'X', size);
+	debug(page, ptr, size, params);
 	return (ptr);
 }
 
-void	*try_alloc_in_used_memory(size_t size)
+void	*try_alloc_in_used_memory(size_t size, size_t params)
 {
 	t_page	*page;
 	t_block	*block;
@@ -62,23 +62,23 @@ void	*try_alloc_in_used_memory(size_t size)
 		if (type == type_from_page_size(page->size)
 			&& page->size >= get_page_size_from_alloc(size)
 			&& !is_null(find_empty_space_on_page(page, size), (void **)&block))
-			return (alloc_mem(page, block, size));
+			return (alloc_mem(page, block, size, params));
 		page = next_page(page);
 	}
 	return (NULL);
 }
 
-void	*ft_malloc(size_t size)
+void	*ft_malloc(size_t size, size_t params)
 {
 	t_page	*page;
 	void	*ptr;
 
-	if (!is_null(try_alloc_in_used_memory(size), &ptr))
+	if (!is_null(try_alloc_in_used_memory(size, params), &ptr))
 		return (ptr);
 	if (is_null(get_page_from_store(size), (void **)&page)
 		&& is_null(new_page(size), (void **)&page))
 		return (NULL);
 	insert_page(page, USED);
-	ptr = alloc_mem(page, &page->alloc, size);
+	ptr = alloc_mem(page, &page->alloc, size, params);
 	return (ptr);
 }

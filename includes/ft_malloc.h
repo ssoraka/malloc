@@ -24,14 +24,33 @@
 # include "malloc_structs.h"
 # include "../libft/libft.h"
 
-# define PAGE_COUNT 2
-# define SYMBOLS "0123456789ABCDEF"
+# ifndef TEST
+#  define ALLOCS_COUNT 100
+#  define PAGE_COUNT 50
+# else
+#  define ALLOCS_COUNT 3
+#  define PAGE_COUNT 2
+# endif
+
+# ifndef DEBUG
+#  define DEBUG_MODE 0
+# else
+#  define DEBUG_MODE 1
+# endif
+
+# define NO_PARAMS  0
+# define NEED_CLEAR 1
+# define IS_FREE    2
+# define IS_MALLOC  4
+
+# define MALLOC_SYMB 'X'
+# define FREE_SYMB '_'
 # define BYTES_IN_LINE 32
-# define ALLOCS_COUNT 3
+# define SYMBOLS "0123456789ABCDEF"
 # define FAIL_MMAP -1
 /*
- * (void *)(-1)
- */
+** (void *)(-1)
+*/
 
 typedef enum e_type		t_type;
 typedef enum e_status	t_stat;
@@ -88,6 +107,7 @@ void	ft_print_addres(void *ptr, int fd);
 */
 void	ft_print_page(t_page *page);
 void	ft_print_mem(void);
+void	*debug(t_page *page, void *ptr, size_t size, size_t params);
 
 /*
 ** show_alloc_mem.c
@@ -108,7 +128,7 @@ void	*ft_realloc(void *ptr, size_t size);
 /*
 ** ft_malloc.c
 */
-void	*ft_malloc(size_t size);
+void	*ft_malloc(size_t size, size_t params);
 
 /*
 ** store.c

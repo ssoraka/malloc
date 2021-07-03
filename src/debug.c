@@ -81,3 +81,18 @@ void	ft_print_mem(void)
 	}
 	pthread_mutex_unlock(get_mutex());
 }
+
+void	*debug(t_page *page, void *ptr, size_t size, size_t params)
+{
+	if (params & NEED_CLEAR)
+		ft_bzero(ptr, size);
+	if (DEBUG_MODE)
+	{
+		if (params & IS_FREE)
+			ft_memset(ptr, FREE_SYMB, size);
+		if (params & IS_MALLOC)
+			ft_memset(ptr, MALLOC_SYMB, size);
+		ft_print_page(page);
+	}
+	return (ptr);
+}

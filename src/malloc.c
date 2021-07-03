@@ -17,7 +17,7 @@ void	*malloc(size_t size)
 	void	*ptr;
 
 	pthread_mutex_lock(get_mutex());
-	ptr = ft_malloc(size);
+	ptr = ft_malloc(size, FALSE);
 	pthread_mutex_unlock(get_mutex());
 	return (ptr);
 }
@@ -28,11 +28,8 @@ void	*calloc(size_t count, size_t size)
 
 	size = size * count;
 	pthread_mutex_lock(get_mutex());
-	ptr = ft_malloc(size);
+	ptr = ft_malloc(size, TRUE);
 	pthread_mutex_unlock(get_mutex());
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, size);
 	return (ptr);
 }
 
