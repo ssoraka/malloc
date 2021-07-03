@@ -3,5 +3,5 @@
 cmake-build-debug/*
 obj/*
 a.out
-libft/*.o
+libft/**/*.o
 libft/*.a
