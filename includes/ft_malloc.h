@@ -39,7 +39,7 @@
 # endif
 
 # define NO_PARAMS  0
-# define NEED_CLEAR 1
+# define IS_CALLOC  1
 # define IS_FREE    2
 # define IS_MALLOC  4
 

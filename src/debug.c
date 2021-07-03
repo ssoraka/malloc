@@ -84,7 +84,7 @@ void	ft_print_mem(void)
 
 void	*debug(t_page *page, void *ptr, size_t size, size_t params)
 {
-	if (params & NEED_CLEAR)
+	if (params & IS_CALLOC)
 		ft_bzero(ptr, size);
 	if (DEBUG_MODE)
 	{
