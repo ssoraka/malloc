@@ -31,26 +31,25 @@ int main() {
 //	test();
 //	return 0;
 
-//	char *ptr;
-//	ptr = malloc(10);
+	char *ptr;
+	char *ptr1;
+	char *ptr2;
+	char *ptr3;
+
+	ptr = malloc(1);
 //	ptr = malloc(15);
 //	char *ptr1 = malloc(20);
 //	free(ptr);
 //	free(ptr1);
 
 	show_alloc_mem();
-	char *ptrp = (void*)show_alloc_mem;
 
-	//free(ptrp);
 //	ft_print_mem();
 	return (0);
 	char *p1 = ft_malloc(0);
 //	free(p1);
 
-	char *ptr;
-	char *ptr1;
-	char *ptr2;
-	char *ptr3;
+
 
 	ptr = ft_malloc(0);
 	ptr1 = ft_malloc(0);

@@ -31,14 +31,20 @@ void	print_block_info(t_block *block)
 	ft_print_addres((void *)((char *)(block + 1) + block->used), 1);
 	ft_putstr(" : ");
 	ft_putnbr_fd(block->used, 1);
-	ft_putstr(" bytes\n");
+	if (block->used > 1)
+		ft_putstr(" bytes\n");
+	else
+		ft_putstr(" byte\n");
 }
 
 void	print_total(size_t total)
 {
 	ft_putstr("TOTAL : ");
 	ft_putnbr_fd(total, 1);
-	ft_putstr(" bytes\n");
+	if (total > 1)
+		ft_putstr(" bytes\n");
+	else
+		ft_putstr(" byte\n");
 }
 
 void	show_alloc_mem(void)
