@@ -36,7 +36,10 @@ void	store_page(t_page *page)
 	int	type;
 
 	type = type_from_page_size(page->size);
-	insert_page(page, type);
+	if (type == LARGE)
+		destroy_page(page);
+	else
+		insert_page(page, type);
 }
 
 void	init_store(t_store *store)

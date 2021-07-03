@@ -18,14 +18,6 @@ int test2() {
 	return -1;
 }
 
-/*
- * todo так, ну вставка кадров идет в порядке возрастания адресов
- * надо проверить работу с пустыми областями,
- * без маллока
- * разбить по файлам
- * вынести в глобалку хранилище кадров
- */
-
 int main() {
 
 //	test();
@@ -42,9 +34,15 @@ int main() {
 //	free(ptr);
 //	free(ptr1);
 
+	ptr1 = malloc(20000);
+	ptr2 = malloc(200010);
+
 	show_alloc_mem();
 
-//	ft_print_mem();
+	free(ptr1);
+	free(ptr2);
+	show_alloc_mem();
+	ft_print_mem();
 	return (0);
 	char *p1 = ft_malloc(0);
 //	free(p1);
@@ -66,7 +64,7 @@ int main() {
 	ptr2 = calloc(12, 1);
 	ptr3 = malloc(20);
 
-	malloc(20000);
+
 
 	char *a[50];
 	for(int i = 0; i < 30; i++) {

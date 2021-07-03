@@ -37,11 +37,13 @@ DLFLAGS		= -shared -fPIC -Wall -Wextra -Werror
 OBJECTS		= $(patsubst %.c, $(PATH_OBJ)/%.o, $(SRCS))
 DEBUG		= -g -O0
 
-.PHONY: all clean fclean re libs_refresh
+.PHONY: run all clean fclean re libs_refresh
 
-all: libs_refresh $(NAME)
+run: all
 	gcc garbage/main.c -L. -lft_malloc
 	./a.out
+
+all: libs_refresh $(NAME)
 
 libs_refresh:
 	@make -C ./$(PATH_LIB)/
