@@ -12,8 +12,6 @@
 
 #include "../includes/ft_malloc.h"
 
-pthread_mutex_t	g_mutex = PTHREAD_MUTEX_INITIALIZER;
-
 void	free_store(void)
 {
 	t_page	*page;

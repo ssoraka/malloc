@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   malloc.c                                           :+:      :+:    :+:   */
+/*   store.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssoraka <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,45 +12,9 @@
 
 #include "../includes/ft_malloc.h"
 
-void	*malloc(size_t size)
+t_mut	g_mutex = PTHREAD_MUTEX_INITIALIZER;
+
+t_mut	*get_mutex(void)
 {
-	void	*ptr;
-
-	pthread_mutex_lock(get_mutex());
-	ptr = ft_malloc(size);
-	pthread_mutex_unlock(get_mutex());
-	return (ptr);
-}
-
-void	*calloc(size_t count, size_t size)
-{
-	void	*ptr;
-
-	size = size * count;
-	pthread_mutex_lock(get_mutex());
-	ptr = ft_malloc(size);
-	pthread_mutex_unlock(get_mutex());
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, size);
-	return (ptr);
-}
-
-void	*realloc(void *ptr, size_t size)
-{
-	if (!ptr)
-		return (NULL);
-	pthread_mutex_lock(get_mutex());
-	ptr = ft_realloc(ptr, size);
-	pthread_mutex_unlock(get_mutex());
-	return (ptr);
-}
-
-void	free(void *ptr)
-{
-	if (!ptr)
-		return ;
-	pthread_mutex_lock(get_mutex());
-	ft_free(ptr);
-	pthread_mutex_unlock(get_mutex());
+	return (&g_mutex);
 }

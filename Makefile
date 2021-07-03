@@ -16,7 +16,7 @@ endif
 
 GCC = gcc
 
-SRCS	=	debug.c		print.c		math.c		\
+SRCS	=	debug.c	print.c	math.c	mutex.c	\
 			malloc.c ft_free_realloc.c  ft_malloc.c \
 			page.c page_size.c pages.c \
 			show_alloc_mem.c store.c store2.c error.c

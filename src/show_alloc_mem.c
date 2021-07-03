@@ -53,7 +53,7 @@ void	show_alloc_mem(void)
 	t_block	*block;
 	size_t	total;
 
-	pthread_mutex_lock(&g_mutex);
+	pthread_mutex_lock(get_mutex());
 	total = 0;
 	page = get_start_page(USED);
 	while (!is_end(page, USED))
@@ -69,5 +69,5 @@ void	show_alloc_mem(void)
 		page = next_page(page);
 	}
 	print_total(total);
-	pthread_mutex_unlock(&g_mutex);
+	pthread_mutex_unlock(get_mutex());
 }

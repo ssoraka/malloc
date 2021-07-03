@@ -23,8 +23,6 @@ enum				e_status
 	STATUS_COUNT = 5
 };
 
-typedef enum e_status	t_stat;
-
 enum				e_type
 {
 	TINY = 0,
@@ -34,8 +32,6 @@ enum				e_type
 	USED = 3,
 	TYPE_COUNT = 4
 };
-
-typedef enum e_type		t_type;
 
 enum				e_size
 {

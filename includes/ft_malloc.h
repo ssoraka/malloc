@@ -33,8 +33,16 @@
  * (void *)(-1)
  */
 
-extern pthread_mutex_t	g_mutex;
-struct s_store			g_store;
+typedef enum e_type		t_type;
+typedef enum e_status	t_stat;
+typedef pthread_mutex_t	t_mut;
+extern t_mut			g_mutex;
+extern t_store			g_store;
+
+/*
+** mutex.c
+*/
+t_mut	*get_mutex(void);
 
 /*
 ** math.c

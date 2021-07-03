@@ -70,7 +70,7 @@ void	ft_print_mem(void)
 {
 	t_page	*page;
 
-	pthread_mutex_lock(&g_mutex);
+	pthread_mutex_lock(get_mutex());
 	page = get_start_page(USED);
 	if (is_end(page, USED))
 		ft_putstr("Where is no used memory\n");
@@ -79,5 +79,5 @@ void	ft_print_mem(void)
 		ft_print_page(page);
 		page = next_page(page);
 	}
-	pthread_mutex_unlock(&g_mutex);
+	pthread_mutex_unlock(get_mutex());
 }
