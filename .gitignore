@@ -1,7 +1,7 @@
 .idea/*
 .DS_Store/*
 cmake-build-debug/*
-obj/*
 a.out
 *.o
-libft/*.a
+*.a
+*.so
