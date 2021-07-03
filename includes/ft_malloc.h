@@ -25,7 +25,7 @@
 # include "../libft/libft.h"
 
 # define PAGE_COUNT 2
-# define SYMBOLS "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+# define SYMBOLS "0123456789ABCDEF"
 # define BYTES_IN_LINE 32
 # define ALLOCS_COUNT 3
 # define FAIL_MMAP -1
@@ -48,6 +48,7 @@ t_mut	*get_mutex(void);
 ** math.c
 */
 size_t	get_floor(size_t size, size_t mod);
+size_t	calculate_block_size(size_t size);
 
 /*
 ** page.c

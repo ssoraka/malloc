@@ -12,13 +12,7 @@
 
 #include "../includes/ft_malloc.h"
 
-/*
-* //	if (type == TINY)
-* //		return (getpagesize() * TINY_SIZE);
-* //	if (type == SMALL)
-* //		return (getpagesize() * SMALL_SIZE);
-*/
-
+#ifdef TEST
 size_t	size_from_type(t_type type)
 {
 	if (type == TINY)
@@ -27,11 +21,17 @@ size_t	size_from_type(t_type type)
 		return (512);
 	return (0);
 }
+#else
 
-size_t	calculate_block_size(size_t size)
+size_t	size_from_type(t_type type)
 {
-	return (size + get_floor(size, sizeof(int)) + sizeof(t_block));
+	if (type == TINY)
+		return (getpagesize() * TINY_SIZE);
+	if (type == SMALL)
+		return (getpagesize() * SMALL_SIZE);
+	return (0);
 }
+#endif
 
 t_type	type_from_page_size(size_t size)
 {

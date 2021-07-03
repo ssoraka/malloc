@@ -71,15 +71,15 @@ int main() {
 		a[i] = malloc(30);
 		a[i + 1] = NULL;
 	}
-	malloc(20000);
+//	malloc(20000);
 	for(int i = 0; i < 25; i++) {
 		free(a[i]);
 	}
-	malloc(20000);
+//	malloc(20000);
 	for(int i = 0; i < 25; i++) {
 		a[i] = malloc(30);
 	}
-	malloc(20000);
+//	malloc(20000);
 //	ptr = malloc(120);
 //	ptr = malloc(120);
 //	ft_memcpy(ptr, "aaaaaaaaaaaaaaa", 16);

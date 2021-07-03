@@ -37,20 +37,22 @@ DLFLAGS		= -shared -fPIC -Wall -Wextra -Werror
 OBJECTS		= $(patsubst %.c, $(PATH_OBJ)/%.o, $(SRCS))
 DEBUG		= -g -O0
 
+TFLAGS		= $(patsubst TEST, -D TEST ,$(PROFILE))
+
 .PHONY: run all clean fclean re libs_refresh
 
-run: all
+all: libs_refresh $(NAME)
+
+run: re all
 	gcc garbage/main.c -L. -lft_malloc
 	./a.out
-
-all: libs_refresh $(NAME)
 
 libs_refresh:
 	@make -C ./$(PATH_LIB)/
 
 $(PATH_OBJ)/%.o: $(addprefix $(PATH_SRC)/,%.c) ${SOURCE_HEADERS} $(LIB_HEADER)
 	@mkdir -p $(PATH_OBJ)
-	$(GCC) $(CFLAGS) -g -c $< -o $@   $(addprefix -I ,${SOURCE_HEADERS}) -I $(LIB_HEADER)
+	$(GCC) $(CFLAGS) -g -c $< -o $@ $(TFLAGS) $(addprefix -I ,${SOURCE_HEADERS}) -I $(LIB_HEADER)
 
 $(NAME): $(OBJECTS) $(PATH_LIB)/libft.a
 	$(GCC) $(DLFLAGS) -g -o $@ $(OBJECTS) $(PATH_LIB)/libft.a

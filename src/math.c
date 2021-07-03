@@ -16,3 +16,8 @@ size_t	get_floor(size_t size, size_t mod)
 {
 	return ((mod - size % mod) * (size % mod > 0));
 }
+
+size_t	calculate_block_size(size_t size)
+{
+	return (size + get_floor(size, sizeof(int)) + sizeof(t_block));
+}
