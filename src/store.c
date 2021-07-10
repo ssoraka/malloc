@@ -57,6 +57,13 @@ void	init_store(t_store *store)
 		pages++;
 		i++;
 	}
+	store->debug = (getenv(DEBUG) != NULL);
+	store->color = (getenv(COLORS) != NULL);
+	store->mark = (getenv(MARK) != NULL);
+	store->err_off = (getenv(DYLD_FORCE) != NULL);
+	store->test = (getenv(TEST) != NULL);
+	store->page_count = (!store->test) ? PAGE_COUNT : TEST_PAGE_COUNT;
+	store->alloc_count = (!store->test) ? ALLOCS_COUNT : TEST_ALLOCS_COUNT;
 	store->is_init = 1;
 }
 

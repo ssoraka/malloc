@@ -23,7 +23,7 @@ void	free_next_block(t_page *page, t_block *block, size_t params)
 	block->next = next->next;
 	block->empty += next->empty + next->used + sizeof(t_block);
 	page->alloc_count--;
-	debug(page, (void *)(block + 1), next->used, params);
+	debug(page, (void *)(next + 1), next->used, params);
 }
 
 t_block	*get_prev_block_from_page(t_page *page, void *ptr)
@@ -72,7 +72,10 @@ void	ft_free(void *ptr)
 	page = get_page_with_mem(ptr);
 	block = get_prev_block_from_page(page, ptr);
 	if (!page || !block)
+	{
 		exit_with_error(ptr, FREE_ERROR1, FREE_ERROR2);
+		return ;
+	}
 	free_next_block(page, block, IS_FREE);
 	if (!page->alloc_count)
 	{
@@ -98,13 +101,13 @@ void	*ft_realloc(void *ptr, size_t size)
 	{
 		alloc->empty = alloc->used + alloc->empty - size;
 		alloc->used = size;
-		return (debug(page, ptr, size, IS_MALLOC));
+		return (debug(page, ptr, size, NO_PARAMS));
 	}
-	new_alloc = ft_malloc(size, NO_PARAMS);
+	new_alloc = ft_malloc(size, IS_MALLOC);
 	if (!new_alloc)
 		return (NULL);
 	size = (size < alloc->used) * size + (size >= alloc->used) * alloc->used;
 	ft_memcpy(new_alloc, ptr, size);
 	free_next_block(page, block, IS_FREE);
-	return (debug(page, new_alloc, size, IS_MALLOC));
+	return (debug(get_page_with_mem(new_alloc), new_alloc, size, NO_PARAMS));
 }

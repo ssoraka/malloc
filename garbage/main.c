@@ -10,7 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_malloc.h"
+//#include "../includes/ft_malloc.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
 
 void test();
 
@@ -23,40 +27,50 @@ int main() {
 //	test();
 //	return 0;
 
+
 	char *ptr;
 	char *ptr1;
 	char *ptr2;
 	char *ptr3;
 
-	ptr = malloc(1);
+//	ptr = malloc(1);
 //	ptr = malloc(15);
 //	char *ptr1 = malloc(20);
 //	free(ptr);
 //	free(ptr1);
 
-	ptr1 = malloc(20000);
-	ptr2 = malloc(200010);
+	ptr1 = realloc(NULL, 20);
+	ptr1[0] = '1';
 
-	show_alloc_mem();
+	ptr1 = malloc(1111);
 
-	free(ptr1);
-	free(ptr2);
-	show_alloc_mem();
-	ft_print_mem();
+
+//	show_alloc_mem();
+
+//	free(ptr1);
+//	free(ptr2);
+
+//	ft_strdup("hello");
+
+//	printf("qwerqwr %s\n", ptr1);
+	exit(0);
+
+//	show_alloc_mem();
+//	ft_print_mem();
 	return (0);
-	char *p1 = ft_malloc(0);
+	char *p1 = malloc(0);
 //	free(p1);
 
 
 
-	ptr = ft_malloc(0);
-	ptr1 = ft_malloc(0);
+	ptr = malloc(0);
+	ptr1 = malloc(0);
 
-	ptr1 = ft_realloc(ptr1, 1);
-	ptr = ft_realloc(ptr, 1);
-	ptr = ft_realloc(ptr, 0);
+	ptr1 = realloc(ptr1, 1);
+	ptr = realloc(ptr, 1);
+	ptr = realloc(ptr, 0);
 //	ft_realloc(ptr, 5);
-	ft_print_mem();
+//	ft_print_mem();
 	return 0;
 
 
@@ -107,7 +121,7 @@ int main() {
 //	free(ptr5);
 
 //	ft_print_mem();
-	show_alloc_mem();
+//	show_alloc_mem();
 
 //	char *a = test2;
 //	for (int i = 0; i < 20; i++) {
@@ -125,14 +139,14 @@ int main() {
 	return (0);
 
 
-	printf("%p\n", ft_malloc(3));
-	char *p = ft_malloc(30);
+	printf("%p\n", malloc(3));
+	char *p = malloc(30);
 	printf("%p\n", p);
-	char *p2 = ft_malloc(30);
+	char *p2 = malloc(30);
 	printf("%p\n", p2);
-	printf("%p\n", ft_malloc(1));
+	printf("%p\n", malloc(1));
 
-	char *p3 = ft_malloc(10000000);
+	char *p3 = malloc(10000000);
 	printf("%p\n", p3);
 
 	//printf("%c\n", p[-1600]);

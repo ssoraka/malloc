@@ -24,28 +24,27 @@
 # include "malloc_structs.h"
 # include "../libft/libft.h"
 
-# ifndef TEST
-#  define ALLOCS_COUNT 100
-#  define PAGE_COUNT 50
-# else
-#  define ALLOCS_COUNT 3
-#  define PAGE_COUNT 2
-# endif
+#define DYLD_FORCE "DYLD_FORCE_FLAT_NAMESPACE"
+#define COLORS "MALLOC_COLORS"
+#define DEBUG "MALLOC_DEBUG"
+#define MARK "MALLOC_MARK_MEMORY"
+#define TEST "MALLOC_TEST"
 
-# ifndef DEBUG
-#  define DEBUG_MODE 0
-# else
-#  define DEBUG_MODE 1
-# endif
+
+# define ALLOCS_COUNT 100
+# define PAGE_COUNT 50
+# define TEST_ALLOCS_COUNT 3
+# define TEST_PAGE_COUNT 2
+
 
 # define NO_PARAMS  0
 # define IS_CALLOC  1
 # define IS_FREE    2
 # define IS_MALLOC  4
 
-# define MALLOC_SYMB 'X'
-# define FREE_SYMB '_'
-# define BYTES_IN_LINE 32
+# define MALLOC_SYMB "malloc_"
+# define FREE_SYMB "free_"
+# define BYTES_IN_LINE 64
 # define SYMBOLS "0123456789ABCDEF"
 # define FAIL_MMAP -1
 /*

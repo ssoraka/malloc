@@ -76,6 +76,13 @@ typedef struct s_store
 {
 	struct s_pages	p[TYPE_COUNT];
 	int				is_init;
+	int				debug;
+	int				color;
+	int				mark;
+	int				err_off;
+	int				test;
+	int				page_count;
+	int				alloc_count;
 }					t_store;
 
 #endif

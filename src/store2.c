@@ -30,7 +30,7 @@ int	fill_store(void)
 	int		i;
 
 	i = 0;
-	while (i < PAGE_COUNT)
+	while (i < get_store()->page_count)
 	{
 		if (!new_page_by_type(TINY)
 			|| !new_page_by_type(SMALL))

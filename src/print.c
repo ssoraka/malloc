@@ -44,6 +44,8 @@ t_stat	is_mem(void *ptr, t_page *page)
 	void	*start;
 	void	*end;
 
+	if (!get_store()->color)
+		return (FREE);
 	if (ptr < (void *)(page + 1))
 		return (PAGE);
 	block = page->alloc.next;
@@ -68,7 +70,7 @@ void	ft_print_chars(char *ptr, int count)
 	i = 0;
 	while (i < BYTES_IN_LINE)
 	{
-		if (i > count)
+		if (i >= count)
 			ft_putchar(' ');
 		else if (ft_isprint(ptr[i]))
 			ft_putchar(ptr[i]);

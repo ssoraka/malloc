@@ -12,26 +12,22 @@
 
 #include "../includes/ft_malloc.h"
 
-#ifdef TEST
 size_t	size_from_type(t_type type)
 {
-	if (type == TINY)
-		return (256);
-	if (type == SMALL)
-		return (512);
-	return (0);
-}
-#else
+	int	test;
 
-size_t	size_from_type(t_type type)
-{
+	test = get_store()->test;
+	if (type == TINY && test)
+		return (256);
+	if (type == SMALL && test)
+		return (512);
 	if (type == TINY)
 		return (getpagesize() * TINY_SIZE);
 	if (type == SMALL)
 		return (getpagesize() * SMALL_SIZE);
 	return (0);
 }
-#endif
+
 
 t_type	type_from_page_size(size_t size)
 {
@@ -46,11 +42,11 @@ t_type	type_from_alloc_size(size_t size)
 {
 	size_t	max;
 
-	max = (size_from_type(TINY) - sizeof(t_page)) / ALLOCS_COUNT
+	max = (size_from_type(TINY) - sizeof(t_page)) / get_store()->alloc_count
 		- sizeof(t_block);
 	if (size <= max)
 		return (TINY);
-	max = (size_from_type(SMALL) - sizeof(t_page)) / ALLOCS_COUNT
+	max = (size_from_type(SMALL) - sizeof(t_page)) / get_store()->alloc_count
 		- sizeof(t_block);
 	if (size <= max)
 		return (SMALL);

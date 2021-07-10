@@ -14,6 +14,18 @@ ifeq ($(HOSTTYPE),)
 	HOSTTYPE := $(shell uname -m)_$(shell uname -s)
 endif
 
+ifneq ($(MALLOC_TEST),)
+	TFLAG :=  -D TEST
+endif
+
+ifneq ($(MALLOC_DEBUG),)
+	DFLAG :=  -D DEBUG
+endif
+
+ifneq ($(MALLOC_COLORS),)
+	CFLAG :=  -D COLORS
+endif
+
 GCC = gcc
 
 SRCS	=	debug.c	print.c	math.c	mutex.c	\
@@ -33,11 +45,11 @@ LIB_HEADER = ./$(PATH_LIB)/libft.h
 
 NAME		= libft_malloc_$(HOSTTYPE).so
 CFLAGS		= -Wall -Wextra -Werror -fPIC
-DLFLAGS		= -shared -fPIC -Wall -Wextra -Werror
+DLFLAGS		= -shared -Wl -fPIC -Wall -Wextra -Werror
 OBJECTS		= $(patsubst %.c, $(PATH_OBJ)/%.o, $(SRCS))
 DEBUG		= -g -O0
 
-TFLAGS		= $(patsubst TEST, -D TEST ,$(PROFILE))
+TFLAGS		= $(TFLAG) $(DFLAG) $(CFLAG)
 
 .PHONY: run all clean fclean re libs_refresh
 

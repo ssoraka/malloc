@@ -17,6 +17,10 @@ void	exit_with_error(void *ptr, char *msg1, char *msg2)
 	ft_putstr_fd(msg1, 2);
 	ft_print_addres(ptr, 2);
 	ft_putstr_fd(msg2, 2);
-	free_store();
-	exit(134);
+	if (!get_store()->err_off)
+	{
+		free_store();
+		exit(134);
+	}
 }
+
