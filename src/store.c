@@ -49,19 +49,19 @@ void	init_store(t_store *store)
 
 	ft_bzero(store, sizeof(t_store));
 	pages = store->p;
-	i = 0;
-	while (i < TYPE_COUNT)
+	i = -1;
+	while (++i < TYPE_COUNT)
 	{
 		pages->page.next = &pages->page;
 		pages->page.prev = &pages->page;
 		pages++;
-		i++;
 	}
 	store->debug = (getenv(DEBUG) != NULL);
 	store->color = (getenv(COLORS) != NULL);
 	store->mark = (getenv(MARK) != NULL);
 	store->err_off = (getenv(DYLD_FORCE) != NULL);
 	store->test = (getenv(TEST) != NULL);
+	store->step = (getenv(STEP) != NULL);
 	store->page_count = PAGE_COUNT;
 	store->alloc_count = ALLOCS_COUNT;
 	if (store->test)

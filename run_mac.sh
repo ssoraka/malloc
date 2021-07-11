@@ -1,5 +1,6 @@
 #!/bin/sh
-export MALLOC_DEBUG=1
+export MALLOC_STEPS_DEBUG=1
+export MALLOC_MEMORY_DUMP=1
 export MALLOC_TEST=1
 export MALLOC_MARK_MEMORY=1
 export MALLOC_COLORS=1

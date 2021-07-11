@@ -81,6 +81,7 @@ typedef struct s_store
 	int				mark;
 	int				err_off;
 	int				test;
+	int				step;
 	int				page_count;
 	int				alloc_count;
 }					t_store;

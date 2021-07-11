@@ -24,23 +24,30 @@
 # include "malloc_structs.h"
 # include "../libft/libft.h"
 
-#define DYLD_FORCE "DYLD_FORCE_FLAT_NAMESPACE"
-#define COLORS "MALLOC_COLORS"
-#define DEBUG "MALLOC_DEBUG"
-#define MARK "MALLOC_MARK_MEMORY"
-#define TEST "MALLOC_TEST"
-
+# define DYLD_FORCE "DYLD_FORCE_FLAT_NAMESPACE"
+# define COLORS "MALLOC_COLORS"
+# define DEBUG "MALLOC_MEMORY_DUMP"
+# define MARK "MALLOC_MARK_MEMORY"
+# define TEST "MALLOC_TEST"
+# define STEP "MALLOC_STEPS_DEBUG"
 
 # define ALLOCS_COUNT 100
 # define PAGE_COUNT 50
 # define TEST_ALLOCS_COUNT 3
 # define TEST_PAGE_COUNT 2
 
-
 # define NO_PARAMS  0
 # define IS_CALLOC  1
 # define IS_FREE    2
 # define IS_MALLOC  4
+
+/*
+** for debug printing
+*/
+# define START 1
+# define END 2
+# define SIZE 4
+# define PTR 8
 
 # define MALLOC_SYMB "malloc_"
 # define FREE_SYMB "free_"
@@ -61,6 +68,7 @@ extern t_store			g_store;
 ** helper.c
 */
 void	ft_memset2(void *s, char *chr, size_t n);
+void	print_func(char *name, size_t params, void *ptr, size_t size);
 
 /*
 ** mutex.c

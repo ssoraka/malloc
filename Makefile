@@ -14,18 +14,6 @@ ifeq ($(HOSTTYPE),)
 	HOSTTYPE := $(shell uname -m)_$(shell uname -s)
 endif
 
-ifneq ($(MALLOC_TEST),)
-	TFLAG :=  -D TEST
-endif
-
-ifneq ($(MALLOC_DEBUG),)
-	DFLAG :=  -D DEBUG
-endif
-
-ifneq ($(MALLOC_COLORS),)
-	CFLAG :=  -D COLORS
-endif
-
 GCC = gcc
 
 SRCS	=	debug.c	print.c	math.c	mutex.c	\
@@ -50,8 +38,6 @@ DLFLAGS		= -shared -Wl -fPIC -Wall -Wextra -Werror
 OBJECTS		= $(patsubst %.c, $(PATH_OBJ)/%.o, $(SRCS))
 DEBUG		= -g -O0
 
-TFLAGS		= $(TFLAG) $(DFLAG) $(CFLAG)
-
 .PHONY: run all clean fclean re libs_refresh
 
 all: libs_refresh $(NAME)
@@ -65,7 +51,7 @@ libs_refresh:
 
 $(PATH_OBJ)/%.o: $(addprefix $(PATH_SRC)/,%.c) ${SOURCE_HEADERS} $(LIB_HEADER)
 	@mkdir -p $(PATH_OBJ)
-	$(GCC) $(CFLAGS) -g -c $< -o $@ $(TFLAGS) $(addprefix -I ,${SOURCE_HEADERS}) -I $(LIB_HEADER)
+	$(GCC) $(CFLAGS) -g -c $< -o $@ $(addprefix -I ,${SOURCE_HEADERS}) -I $(LIB_HEADER)
 
 $(NAME): $(OBJECTS) $(PATH_LIB)/libft.a
 	$(GCC) $(DLFLAGS) -g -o $@ $(OBJECTS) $(PATH_LIB)/libft.a

@@ -16,14 +16,11 @@ void	*malloc(size_t size)
 {
 	void	*ptr;
 
-	ft_putstr("malloc start ");
-	ft_putnbr(size);
+	print_func("malloc", START | SIZE, NULL, size);
 	pthread_mutex_lock(get_mutex());
 	ptr = ft_malloc(size, IS_MALLOC);
 	pthread_mutex_unlock(get_mutex());
-	ft_putstr(" end ");
-	ft_print_addres(ptr, 1);
-	ft_putstr("\n");
+	print_func("malloc", END | PTR, ptr, size);
 	return (ptr);
 }
 
@@ -31,49 +28,35 @@ void	*calloc(size_t count, size_t size)
 {
 	void	*ptr;
 
-	ft_putstr("calloc start ");
-	ft_putnbr(count);
-	ft_putstr(" ");
-	ft_putnbr(size);
 	size = size * count;
+	print_func("calloc", START | SIZE, NULL, size);
 	pthread_mutex_lock(get_mutex());
 	ptr = ft_malloc(size, IS_CALLOC);
 	pthread_mutex_unlock(get_mutex());
-	ft_putstr(" end ");
-	ft_print_addres(ptr, 1);
-	ft_putstr("\n");
+	print_func("calloc", END | PTR, ptr, size);
 	return (ptr);
 }
 
 void	*realloc(void *ptr, size_t size)
 {
-	ft_putstr("realloc start ");
-	ft_putnbr(size);
-	ft_putstr(" ");
-	ft_print_addres(ptr, 1);
+	print_func("realloc", START | PTR | SIZE, ptr, size);
 	pthread_mutex_lock(get_mutex());
-	if (!ptr) {
+	if (!ptr)
 		ptr = ft_malloc(size, IS_MALLOC);
-	} else {
+	else
 		ptr = ft_realloc(ptr, size);
-	}
 	pthread_mutex_unlock(get_mutex());
-	ft_putstr(" end ");
-	ft_print_addres(ptr, 1);
-	ft_putstr("\n");
-
+	print_func("realloc", END | PTR, ptr, size);
 	return (ptr);
 }
 
 void	free(void *ptr)
 {
-	if (!ptr) {
+	if (!ptr)
 		return ;
-	}
-	ft_putstr("free start ");
-	ft_print_addres(ptr, 1);
+	print_func("free", START | PTR, ptr, 0);
 	pthread_mutex_lock(get_mutex());
 	ft_free(ptr);
 	pthread_mutex_unlock(get_mutex());
-	ft_putstr(" end\n");
+	print_func("free", END, ptr, 0);
 }
