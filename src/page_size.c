@@ -28,7 +28,6 @@ size_t	size_from_type(t_type type)
 	return (0);
 }
 
-
 t_type	type_from_page_size(size_t size)
 {
 	if (size <= size_from_type(TINY))

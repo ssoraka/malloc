@@ -58,6 +58,11 @@ extern t_mut			g_mutex;
 extern t_store			g_store;
 
 /*
+** helper.c
+*/
+void	ft_memset2(void *s, char *chr, size_t n);
+
+/*
 ** mutex.c
 */
 t_mut	*get_mutex(void);

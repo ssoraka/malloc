@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   helper.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssoraka <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,14 +12,18 @@
 
 #include "../includes/ft_malloc.h"
 
-void	exit_with_error(void *ptr, char *msg1, char *msg2)
+void	ft_memset2(void *s, char *chr, size_t n)
 {
-	ft_putstr_fd(msg1, 2);
-	ft_print_addres(ptr, 2);
-	ft_putstr_fd(msg2, 2);
-	if (!get_store()->err_off)
+	size_t	i;
+	char	*str;
+	int		len;
+
+	len = ft_strlen(chr);
+	i = 0;
+	str = s;
+	while (i < n)
 	{
-		free_store();
-		exit(134);
+		str[i] = chr[i % len];
+		i++;
 	}
 }

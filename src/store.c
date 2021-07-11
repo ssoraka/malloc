@@ -62,8 +62,12 @@ void	init_store(t_store *store)
 	store->mark = (getenv(MARK) != NULL);
 	store->err_off = (getenv(DYLD_FORCE) != NULL);
 	store->test = (getenv(TEST) != NULL);
-	store->page_count = (!store->test) ? PAGE_COUNT : TEST_PAGE_COUNT;
-	store->alloc_count = (!store->test) ? ALLOCS_COUNT : TEST_ALLOCS_COUNT;
+	store->page_count = PAGE_COUNT;
+	store->alloc_count = ALLOCS_COUNT;
+	if (store->test)
+		store->page_count = TEST_PAGE_COUNT;
+	if (store->test)
+		store->alloc_count = TEST_ALLOCS_COUNT;
 	store->is_init = 1;
 }
 

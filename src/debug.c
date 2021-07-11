@@ -81,22 +81,6 @@ void	ft_print_mem(void)
 	pthread_mutex_unlock(get_mutex());
 }
 
-void	ft_memset2(void *s, char *chr, size_t n)
-{
-	size_t	i;
-	char	*str;
-	int		len;
-
-	len = ft_strlen(chr);
-	i = 0;
-	str = s;
-	while (i < n)
-	{
-		str[i] = chr[i % len];
-		i++;
-	}
-}
-
 void	*debug(t_page *page, void *ptr, size_t size, size_t params)
 {
 	if (params & IS_CALLOC)
